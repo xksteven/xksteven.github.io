@@ -184,23 +184,23 @@ element, a:link, a:visited {
 	transition:color 0.3s ease-in-out;
 }
 
-element, a:hover {
+element:hover, a:hover {
 	text-decoration: none;
 	color: #c46040;
 	border-color: #c46040; 
 }
 
-element, a:active {
+element:active, a:active {
 	outline: 0;
 	position: relative;
 	top: 1px;
 }
 
-element, a:focus {
+element:focus, a:focus {
 	outline: none;
 }
 
-element, a.active-sec {
+element.active-sec, a.active-sec {
 	color: #c46040;
 	border-color: #c46040;
 }

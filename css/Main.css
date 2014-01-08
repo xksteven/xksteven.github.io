@@ -174,7 +174,7 @@ footer {
 	background-color: #ecf0f1;
 }
 
-a:link, a:visited {
+element, a:link, a:visited {
 	color: #444;
 	text-decoration: none;
 	border-bottom: 1px solid #AAA;
@@ -184,32 +184,32 @@ a:link, a:visited {
 	transition:color 0.3s ease-in-out;
 }
 
-a:hover {
+element, a:hover {
 	text-decoration: none;
 	color: #c46040;
 	border-color: #c46040; 
 }
 
-a:active {
+element, a:active {
 	outline: 0;
 	position: relative;
 	top: 1px;
 }
 
-a:focus {
+element, a:focus {
 	outline: none;
 }
 
-a.active-sec {
+element, a.active-sec {
 	color: #c46040;
 	border-color: #c46040;
 }
 
 /* ==========================================================================
    For the Random function
-   ========================================================================== */
+   ========================================================================== 
 
-element:link, a:visited {
+element:link {
 	color: #444;
 	text-decoration: none;
 	border-bottom: 1px solid #AAA;
@@ -238,7 +238,7 @@ element:focus {
 element.active-sec {
 	color: #c46040;
 	border-color: #c46040;
-}
+} */
 
 .amp {
 	font-family: "Adobe Caslon Pro", Baskerville, Palatino, "Palatino Linotype", serif;

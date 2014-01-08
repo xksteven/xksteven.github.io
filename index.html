@@ -22,12 +22,13 @@
                 function randomWeb() {
                         var website = ["http://www.kevinfiol.com","http://www.mit.ocw.edu"];
                         var randomInt = Math.round(Math.random*website.length);
-                                document.write("<p>This is a paragraph</p>" + randomInt);
+                                document.getElementById("myDiv").innerHTML=("My First JavaScript FunctionThis is a paragraph" + randomInt);
                         //window.location = website[randomInt];
                 }
         </script>
         
     </head>
+                        <div id="myDiv"></div>
     <body>
                 <div id="container">
                         <!--[if lt IE 7]>

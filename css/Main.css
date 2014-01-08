@@ -205,6 +205,41 @@ a.active-sec {
 	border-color: #c46040;
 }
 
+/* ==========================================================================
+   For the Random function
+   ========================================================================== */
+
+element:link, a:visited {
+	color: #444;
+	text-decoration: none;
+	border-bottom: 1px solid #AAA;
+	-webkit-transition:color 0.3s ease-in-out;
+	-moz-transition:color 0.3s ease-in-out;
+	-o-transition:color 0.3s ease-in-out;
+	transition:color 0.3s ease-in-out;
+}
+
+element:hover {
+	text-decoration: none;
+	color: #c46040;
+	border-color: #c46040; 
+}
+
+element:active {
+	outline: 0;
+	position: relative;
+	top: 1px;
+}
+
+element:focus {
+	outline: none;
+}
+
+element.active-sec {
+	color: #c46040;
+	border-color: #c46040;
+}
+
 .amp {
 	font-family: "Adobe Caslon Pro", Baskerville, Palatino, "Palatino Linotype", serif;
 	font-style: italic;

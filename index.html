@@ -21,11 +21,7 @@
         <script>
                 function randomWeb() {
                         var website = ["http://www.kevinfiol.com","http://www.ocw.mit.edu"];
-                        var length = website.length;
-                        var rand1 = Math.random();
-                        var rand2 = Math.random()*length;
                         var randomInt = Math.round(Math.random()*website.length);
-                                document.getElementById("myDiv").innerHTML=("This is a number " + length + " " + rand1 + " " + rand2 + " " + randomInt);
                         window.location = website[randomInt];
                 }
         </script>
@@ -44,7 +40,7 @@
                                 <ul>
                                         <li><a class="active-sec" href="/">Home</a></li>
                                         <li><a href="/landscapes.html">Portfolio</a></li>
-                                        <li><a href="/places.html">Places</a></li>
+                                        <li><a href="/places.html">People</a></li>
                                         <li><element onclick="randomWeb()">Random</element></li>
                                         <li><a href="/about.html">About</a></li>
                                         

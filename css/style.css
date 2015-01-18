@@ -279,13 +279,13 @@ nav {
 
 footer { 
   width: 980px;
-  font: 170% 'Yanone Kaffeesatz', arial, sans-serif;
+  font: 60% 'Yanone Kaffeesatz', arial, sans-serif;
   text-shadow: 1px 1px #000;
-  height: 30px;
+  height: 10px;
   padding: 5px 0 20px 0;
   text-align: center; 
   color: #FFF;
-  margin-top: 25px;
+  /*margin-top: 25px;*/
   background: transparent url(../images/transparent.png);
 }
 

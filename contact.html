@@ -70,9 +70,32 @@
         </div>
       </div>
       <div class="content">
-        <h1>Contact Us</h1>
+        <h1>Contact Me</h1>
         <p>Say hello, using this contact form. </p>
-        <form id="contact" action="contact.html" method="post">
+        
+        <?php
+          $name = $_POST['name'];
+          $email = $_POST['email'];
+          $message = $_POST['message'];
+          $from = 'From: TangledDemo'; 
+          $to = 'contact@tangledindesign.com'; 
+          $subject = 'Hello';
+          $human = $_POST['human'];
+			
+          $body = "From: $name\n E-Mail: $email\n Message:\n $message";
+				
+          if ($_POST['submit'] && $human == '4') {				 
+          if (mail ($to, $subject, $body, $from)) { 
+      	    echo '<p>Your message has been sent!</p>';
+        	} else { 
+	          echo '<p>Something went wrong, go back and try again!</p>'; 
+        	} 
+          } else if ($_POST['submit'] && $human != '4') {
+          	echo '<p>You answered the anti-spam question incorrectly!</p>';
+          }
+        ?>
+        
+        <form id="contact" action="contact.php" method="post">
           <div class="form_settings">
             <p><span>Name</span><input class="contact" type="text" name="your_name" value="" /></p>
             <p><span>Email Address</span><input class="contact" type="email" name="your_email" value="" /></p>

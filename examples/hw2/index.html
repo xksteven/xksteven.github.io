@@ -1,0 +1,161 @@
+<html>
+
+<head>
+<title>Learning WebGL &mdash; </title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript">
+    var gl;
+    var img;
+    var altImg;
+
+    function initGL(canvas) {
+        try {
+            gl = canvas.getContext("2d");
+            gl.viewportWidth = canvas.width;
+            gl.viewportHeight = canvas.height;
+        } catch (e) {
+        }
+        if (!gl) {
+            alert("Could not initialise canvas, sorry :-(");
+        }
+    }
+
+
+    function drawScene() {
+        gl.drawImage(img,0,0,img.width,img.height);
+    }
+
+    function drawRotation(imgd) {
+        var zeroX = Math.floor(img.width / 2);
+        var zeroY = Math.floor(img.height / 2);
+        var zerocanx = Math.floor(gl.viewportWidth / 2);
+        var zerocany = Math.floor(gl.viewportHeight / 2);
+
+        altImg = gl.getImageData(0,0,gl.viewportWidth,gl.viewportHeight);
+        var altpix = altImg.data;
+
+        var pix = imgd.data;
+        var imgX, imgY, currY,currX;
+        var theta = Math.PI / 4;
+        //var theta = 0;
+        var sinT = Math.sin(theta);
+        var cosT = Math.cos(theta);
+        var rowSize = gl.viewportWidth;
+        var colSize = gl.viewportHeight;
+
+        var counter = 0;
+
+        for (var row = 0; row < rowSize; row++) {
+            for (var col = 0; col < colSize; col++) {
+                currX = zerocanx - row;
+                currY = zerocany - col;
+                
+                if (sinT < 0.0001) {
+                    //console.log("sinT == 0");
+                    imgX = currX / cosT;
+                    imgY = currY / cosT;
+                } else if (cosT < 0.0001) {
+                    //console.log("cosT == 0");
+                    imgY = currX / sinT;
+                    imgX = (-1) * currY / sinT;
+                } else {
+
+                    imgY = ( (currY * cosT) + (currX) ) /(sinT + (cosT*cosT));
+                    imgX = (currX - imgY*sinT) /(cosT);
+                    //console.log("else",theta,imgX,imgY,sinT,cosT);
+                };
+
+                //console.log(zeroX, (zeroX - imgX),zeroY,(zeroY - imgY));
+
+
+                //Nearest neighbor interpolation
+                imgY = Math.round(imgY);
+                imgX = Math.round(imgX);
+
+                //console.log(zeroX, (zeroX - imgX),zeroY,(zeroY - imgY));
+
+
+                // if( (zeroY - imgY) >= zeroY && (zeroY - imgY) <= img.height && (zeroX - imgX) >= zeroX && (zeroX - imgX) <= img.width) {
+                    
+                //     //console.log("I crashed here",row,rowSize,col);
+                //     // if (counter % 100 == 0) {
+                //     //     console.log("alt[], pix[], alt len, pix len",row*rowSize+4*col,(zeroY - imgY) * img.height + 4 * (zeroX - imgX), altpix, pix.length);
+                //     // };
+                //     // counter++;
+                    
+                //     altpix[row*rowSize + 4*col ] = pix[(zeroY - imgY) * img.height + 4 * (zeroX - imgX)];
+                //     altpix[row*rowSize + 4*col+1 ] =  pix[(zeroY - imgY) * img.height + 4 * (zeroX - imgX) + 1];
+
+                //     altpix[row*rowSize + 4*col+2 ] =  pix[(zeroY - imgY) * img.height + 4 * (zeroX - imgX) + 2];
+
+                //     altpix[row*rowSize + 4*col+3 ] =  pix[(zeroY - imgY) * img.height + 4 * (zeroX - imgX) + 3];
+
+                // };
+
+                if( imgY >= 0 && imgY <= img.height && imgX >= 0 && imgX <= img.width) {
+                    
+                    //console.log("I crashed here",row,rowSize,col);
+                    // if (counter % 100 == 0) {
+                    //     console.log("alt[], pix[], alt len, pix len",row*rowSize+4*col,(zeroY - imgY) * img.height + 4 * (zeroX - imgX), altpix, pix.length);
+                    // };
+                    // counter++;
+                    
+                    altpix[row*rowSize + 4*col ] = pix[ imgY * img.height + 4 * imgX];
+                    altpix[row*rowSize + 4*col+1 ] =  pix[imgY * img.height + 4 * imgX + 1];
+
+                    altpix[row*rowSize + 4*col+2 ] =  pix[imgY * img.height + 4 * imgX + 2];
+
+                    altpix[row*rowSize + 4*col+3 ] =  pix[imgY * img.height + 4 * imgX + 3];
+
+                };
+            };
+
+        };
+        
+        gl.putImageData(altImg,zerocanx /2,zerocany / 2);
+        //console.log(img);
+        //console.log(zerocanx, gl.viewportWidth, gl.viewportWidth / 2, Math.floor(gl.viewportWidth/2th));
+        //gl.fillStyle = "rgba(200, 0, 0, 0.5)";
+        //gl.fillRect(0, 0, 500, 500);
+    }
+
+
+    function webGLStart() {
+        var canvas0 = document.getElementById("canvas0");
+        var canvas1 = document.getElementById("canvas1");
+        img = new Image();
+        img.src = "figure_problem_set_2.png";
+        initGL(canvas0);
+        var imgd;
+        img.onload = function() {
+            canvas0.width = img.width;
+            canvas0.height = img.height;
+            drawScene(img);
+            imgd = gl.getImageData(0,0,canvas0.width,canvas0.height);
+            initGL(canvas1);
+            drawRotation(imgd);
+        }
+    }
+</script>
+
+
+</head>
+
+
+<body onload="webGLStart();">
+    <p>Image to Use: </p>
+
+    <!--<img id="img" src="figure_problem_set_2.png" alt="lungs" width="220" height="277"-->
+
+    <canvas id="canvas0" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
+
+    <p>Altered Image:</p>
+
+    <canvas id="canvas1" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
+
+    <br/>
+    <a href="http://xksteven.com/">&lt;&lt; Back to Lesson 1</a><br />
+</body>
+
+</html>

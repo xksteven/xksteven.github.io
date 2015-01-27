@@ -226,6 +226,49 @@
 
     }
 
+    function getMaxSobel(h1,h2,h3,h4,h5,h6,h7,h8)
+    {
+        var val = [255,255,255,255];
+        var max = h8[0] + h8[1] +h8[2];
+        var temp = h1[0] + h1[1] + h1[2];
+        if (temp > max) {
+            max = temp;
+            val = [230,230,230,255];
+        }
+        temp = h2[0] + h2[1] + h2[2];
+        if (temp > max) {
+            max = temp;
+            val = [200,200,200,255];
+        }
+        temp = h3[0] + h3[1] + h3[2];
+        if (temp > max) {
+            max = temp;
+            val = [170,170,170,255];
+        }
+        temp = h4[0] + h4[1] + h4[2];
+        if (temp > max) {
+            max = temp;
+            val = [140,140,140,255];
+        }
+        temp = h5[0] + h5[1] + h5[2];
+        if (temp > max) {
+            max = temp;
+            val = [110,110,110,255];
+        }
+        temp = h6[0] + h6[1] + h6[2];
+        if (temp > max) {
+            max = temp;
+            val = [80,80,80,255];
+        }
+        temp = h7[0] + h7[1] + h7[2];
+        if (temp > max) {
+            max = temp;
+            val = [50,50,50,255];
+        }
+        return val;
+
+    }
+
     function SobelOp(imgd)
     {
         var zeroX = Math.floor(img.width / 2);
@@ -242,7 +285,7 @@
         var rowSize = gl.viewportHeight;
         var colSize = gl.viewportWidth;
 
-        var h1 = [], h2 = [], val = [];
+        var h1 = [], h2 = [], h3 = [], h4 = [], h5 = [], h6 = [], h7 = [], h8 = [], val = [];
 
         for (var row = 1; row < rowSize - 1; row++) {
             for (var col = 1; col < colSize - 1; col++) {
@@ -255,9 +298,9 @@
                     h1[2] = pix[4*((row - 1)* img.width + col-1)+2 ];
                     //h1[3] = pix[4*((row - 1)* img.width + col-1)+3 ];
 
-                    h1[0] += pix[4*((row - 1)* img.width + col-0)+0 ];
-                    h1[1] += pix[4*((row - 1)* img.width + col-0)+1 ];
-                    h1[2] += pix[4*((row - 1)* img.width + col-0)+2 ];
+                    h1[0] += 2*pix[4*((row - 1)* img.width + col-0)+0 ];
+                    h1[1] += 2*pix[4*((row - 1)* img.width + col-0)+1 ];
+                    h1[2] += 2*pix[4*((row - 1)* img.width + col-0)+2 ];
                     //h1[3] += pix[4*((row - 1)* img.width + col-0)+3 ];
 
                     h1[0] += pix[4*((row - 1)* img.width + col+1)+0 ];
@@ -270,9 +313,9 @@
                     h1[2] -= pix[4*((row + 1)* img.width + col-1)+2 ];
                     //h1[3] -= pix[4*((row + 1)* img.width + col-1)+3 ];
 
-                    h1[0] -= pix[4*((row + 1)* img.width + col-0)+0 ];
-                    h1[1] -= pix[4*((row + 1)* img.width + col-0)+1 ];
-                    h1[2] -= pix[4*((row + 1)* img.width + col-0)+2 ];
+                    h1[0] -= 2*pix[4*((row + 1)* img.width + col-0)+0 ];
+                    h1[1] -= 2*pix[4*((row + 1)* img.width + col-0)+1 ];
+                    h1[2] -= 2*pix[4*((row + 1)* img.width + col-0)+2 ];
                     //h1[3] -= pix[4*((row + 1)* img.width + col-0)+3 ];
 
                     h1[0] -= pix[4*((row + 1)* img.width + col+1)+0 ];
@@ -280,41 +323,205 @@
                     h1[2] -= pix[4*((row + 1)* img.width + col+1)+2 ];
                     //h1[3] -= pix[4*((row + 1)* img.width + col+1)+3 ];
 
+
                     //Second Sobel Operator
-                    h2[0] = pix[4*((row - 1)* img.width + col-1)+0 ];
-                    h2[1] = pix[4*((row - 1)* img.width + col-1)+1 ];
-                    h2[2] = pix[4*((row - 1)* img.width + col-1)+2 ];
-                    //h2[3] = pix[4*((row - 1)* img.width + col-1)+3 ];
+                    h2[0] = pix[4*((row - 1)* img.width + col-0)+0 ];
+                    h2[1] = pix[4*((row - 1)* img.width + col-0)+1 ];
+                    h2[2] = pix[4*((row - 1)* img.width + col-0)+2 ];
+                    //h1[3] = pix[4*((row - 1)* img.width + col-1)+3 ];
 
-                    h2[0] += pix[4*((row - 1)* img.width + col-0)+0 ];
-                    h2[1] += pix[4*((row - 1)* img.width + col-0)+1 ];
-                    h2[2] += pix[4*((row - 1)* img.width + col-0)+2 ];
-                    //h2[3] += pix[4*((row - 1)* img.width + col-0)+3 ];
+                    h2[0] += 2*pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h2[1] += 2*pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h2[2] += 2*pix[4*((row - 1)* img.width + col+1)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col-0)+3 ];
 
-                    h2[0] += pix[4*((row - 1)* img.width + col+1)+0 ];
-                    h2[1] += pix[4*((row - 1)* img.width + col+1)+1 ];
-                    h2[2] += pix[4*((row - 1)* img.width + col+1)+2 ];
-                    //h2[3] += pix[4*((row - 1)* img.width + col+1)+3 ];
-
-                    h2[0] -= pix[4*((row + 1)* img.width + col-1)+0 ];
-                    h2[1] -= pix[4*((row + 1)* img.width + col-1)+1 ];
-                    h2[2] -= pix[4*((row + 1)* img.width + col-1)+2 ];
-                    //h2[3] -= pix[4*((row + 1)* img.width + col-1)+3 ];
+                    h2[0] += pix[4*((row - 0)* img.width + col+0)+0 ];
+                    h2[1] += pix[4*((row - 0)* img.width + col+0)+1 ];
+                    h2[2] += pix[4*((row - 0)* img.width + col+0)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col+1)+3 ];
 
                     h2[0] -= pix[4*((row + 1)* img.width + col-0)+0 ];
                     h2[1] -= pix[4*((row + 1)* img.width + col-0)+1 ];
                     h2[2] -= pix[4*((row + 1)* img.width + col-0)+2 ];
-                    //h2[3] -= pix[4*((row + 1)* img.width + col-0)+3 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-1)+3 ];
 
-                    h2[0] -= pix[4*((row + 1)* img.width + col+1)+0 ];
-                    h2[1] -= pix[4*((row + 1)* img.width + col+1)+1 ];
-                    h2[2] -= pix[4*((row + 1)* img.width + col+1)+2 ];
-                    //h2[3] -= pix[4*((row + 1)* img.width + col+1)+3 ];
+                    h2[0] -= 2*pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h2[1] -= 2*pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h2[2] -= 2*pix[4*((row + 1)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-0)+3 ];
 
-                    val[0] = Math.sqrt(h1[0] * h1[0] + h2[0] * h2[0]);
-                    val[1] = Math.sqrt(h1[1] * h1[1] + h2[1] * h2[1]);
-                    val[2] = Math.sqrt(h1[2] * h1[2] + h2[2] * h2[2]);
-                    val[3] = 255;
+                    h2[0] -= pix[4*((row + 0)* img.width + col-1)+0 ];
+                    h2[1] -= pix[4*((row + 0)* img.width + col-1)+1 ];
+                    h2[2] -= pix[4*((row + 0)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col+1)+3 ];
+
+
+
+                    //Third Sobel Operator
+                    h3[0] = pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h3[1] = pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h3[2] = pix[4*((row - 1)* img.width + col+1)+2 ];
+
+                    h3[0] += 2*pix[4*((row - 0)* img.width + col+1)+0 ];
+                    h3[1] += 2*pix[4*((row - 0)* img.width + col+1)+1 ];
+                    h3[2] += 2*pix[4*((row - 0)* img.width + col+1)+2 ];
+
+                    h3[0] += pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h3[1] += pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h3[2] += pix[4*((row + 1)* img.width + col+1)+2 ];
+
+                    h3[0] -= pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h3[1] -= pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h3[2] -= pix[4*((row - 1)* img.width + col-1)+2 ];
+
+                    h3[0] -= 2*pix[4*((row + 0)* img.width + col-1)+0 ];
+                    h3[1] -= 2*pix[4*((row + 0)* img.width + col-1)+1 ];
+                    h3[2] -= 2*pix[4*((row + 0)* img.width + col-1)+2 ];
+
+                    h3[0] -= pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h3[1] -= pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h3[2] -= pix[4*((row + 1)* img.width + col-1)+2 ];
+
+
+                    //Fourth Sobel
+                    h4[0] = pix[4*((row - 0)* img.width + col+1)+0 ];
+                    h4[1] = pix[4*((row - 0)* img.width + col+1)+1 ];
+                    h4[2] = pix[4*((row - 0)* img.width + col+1)+2 ];
+                    //h1[3] = pix[4*((row - 1)* img.width + col-1)+3 ];
+
+                    h4[0] += 2*pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h4[1] += 2*pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h4[2] += 2*pix[4*((row + 1)* img.width + col+1)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col-0)+3 ];
+
+                    h4[0] += pix[4*((row + 1)* img.width + col+0)+0 ];
+                    h4[1] += pix[4*((row + 1)* img.width + col+0)+1 ];
+                    h1[2] += pix[4*((row + 1)* img.width + col+0)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col+1)+3 ];
+
+                    h4[0] -= pix[4*((row - 0)* img.width + col-1)+0 ];
+                    h4[1] -= pix[4*((row - 0)* img.width + col-1)+1 ];
+                    h4[2] -= pix[4*((row - 0)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-1)+3 ];
+
+                    h4[0] -= 2*pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h4[1] -= 2*pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h4[2] -= 2*pix[4*((row - 1)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-0)+3 ];
+
+                    h4[0] -= pix[4*((row - 1)* img.width + col+0)+0 ];
+                    h4[1] -= pix[4*((row - 1)* img.width + col+0)+1 ];
+                    h4[2] -= pix[4*((row - 1)* img.width + col+0)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col+1)+3 ];
+
+                    //Fifth Sobel
+                    h5[0] = pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h5[1] = pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h5[2] = pix[4*((row + 1)* img.width + col-1)+2 ];
+
+                    h5[0] += 2*pix[4*((row + 1)* img.width + col-0)+0 ];
+                    h5[1] += 2*pix[4*((row + 1)* img.width + col-0)+1 ];
+                    h5[2] += 2*pix[4*((row + 1)* img.width + col-0)+2 ];
+
+                    h5[0] += pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h5[1] += pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h5[2] += pix[4*((row + 1)* img.width + col+1)+2 ];
+
+                    h5[0] -= pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h5[1] -= pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h5[2] -= pix[4*((row - 1)* img.width + col-1)+2 ];
+
+                    h5[0] -= 2*pix[4*((row - 1)* img.width + col-0)+0 ];
+                    h5[1] -= 2*pix[4*((row - 1)* img.width + col-0)+1 ];
+                    h5[2] -= 2*pix[4*((row - 1)* img.width + col-0)+2 ];
+
+                    h5[0] -= pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h5[1] -= pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h5[2] -= pix[4*((row - 1)* img.width + col+1)+2 ];
+
+                    //Sixth Sobel
+                    h6[0] = pix[4*((row + 1)* img.width + col-0)+0 ];
+                    h6[1] = pix[4*((row + 1)* img.width + col-0)+1 ];
+                    h6[2] = pix[4*((row + 1)* img.width + col-0)+2 ];
+
+                    h6[0] += 2*pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h6[1] += 2*pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h6[2] += 2*pix[4*((row + 1)* img.width + col-1)+2 ];
+
+                    h6[0] += pix[4*((row - 0)* img.width + col-1)+0 ];
+                    h6[1] += pix[4*((row - 0)* img.width + col-1)+1 ];
+                    h6[2] += pix[4*((row - 0)* img.width + col-1)+2 ];
+
+                    h6[0] -= pix[4*((row - 1)* img.width + col-0)+0 ];
+                    h6[1] -= pix[4*((row - 1)* img.width + col-0)+1 ];
+                    h6[2] -= pix[4*((row - 1)* img.width + col-0)+2 ];
+
+                    h6[0] -= 2*pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h6[1] -= 2*pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h6[2] -= 2*pix[4*((row - 1)* img.width + col+1)+2 ];
+
+                    h6[0] -= pix[4*((row + 0)* img.width + col+1)+0 ];
+                    h6[1] -= pix[4*((row + 0)* img.width + col+1)+1 ];
+                    h6[2] -= pix[4*((row + 0)* img.width + col+1)+2 ];
+
+                    //Seventh Sobel
+                    h7[0] = pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h7[1] = pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h7[2] = pix[4*((row - 1)* img.width + col-1)+2 ];
+
+                    h7[0] += pix[4*((row - 0)* img.width + col-1)+0 ];
+                    h7[1] += pix[4*((row - 0)* img.width + col-1)+1 ];
+                    h7[2] += pix[4*((row - 0)* img.width + col-1)+2 ];
+
+                    h7[0] += pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h7[1] += pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h7[2] += pix[4*((row + 1)* img.width + col-1)+2 ];
+
+                    h7[0] -= pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h7[1] -= pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h7[2] -= pix[4*((row - 1)* img.width + col+1)+2 ];
+
+                    h7[0] -= pix[4*((row + 0)* img.width + col+1)+0 ];
+                    h7[1] -= pix[4*((row + 0)* img.width + col+1)+1 ];
+                    h7[2] -= pix[4*((row + 0)* img.width + col+1)+2 ];
+
+                    h7[0] -= pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h7[1] -= pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h7[2] -= pix[4*((row + 1)* img.width + col+1)+2 ];
+
+                    //Eigth Sobel
+                    h8[0] = pix[4*((row - 0)* img.width + col-1)+0 ];
+                    h8[1] = pix[4*((row - 0)* img.width + col-1)+1 ];
+                    h8[2] = pix[4*((row - 0)* img.width + col-1)+2 ];
+
+                    h8[0] += pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h8[1] += pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h8[2] += pix[4*((row - 1)* img.width + col-1)+2 ];
+
+                    h8[0] += pix[4*((row - 1)* img.width + col+0)+0 ];
+                    h8[1] += pix[4*((row - 1)* img.width + col+0)+1 ];
+                    h8[2] += pix[4*((row - 1)* img.width + col+0)+2 ];
+
+                    h8[0] -= pix[4*((row + 0)* img.width + col+1)+0 ];
+                    h8[1] -= pix[4*((row + 0)* img.width + col+1)+1 ];
+                    h8[2] -= pix[4*((row + 0)* img.width + col+1)+2 ];
+
+                    h8[0] -= pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h8[1] -= pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h8[2] -= pix[4*((row + 1)* img.width + col+1)+2 ];
+
+                    h8[0] -= pix[4*((row + 1)* img.width + col+0)+0 ];
+                    h8[1] -= pix[4*((row + 1)* img.width + col+0)+1 ];
+                    h8[2] -= pix[4*((row + 1)* img.width + col+0)+2 ];
+
+
+                    val = getMaxSobel(h1,h2,h3,h4,h5,h6,h7,h8);
+
+
+                    //val[0] = Math.sqrt(h1[0] * h1[0] + h2[0] * h2[0]);
+                    //val[1] = Math.sqrt(h1[1] * h1[1] + h2[1] * h2[1]);
+                    //val[2] = Math.sqrt(h1[2] * h1[2] + h2[2] * h2[2]);
+                    //val[3] = 255;
 
                     altpix[4*(row*rowSize + col) ] = val[0];
                     altpix[4*(row*rowSize + col)+1 ] =  val[1];
@@ -404,13 +611,570 @@
 
     <canvas id="canvas1" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
 
+    <button onclick="onOff0()">Show relevant JS code</button>
+    <script type="text/javascript">
+    function onOff0() {
+    var onOff = document.getElementById("item0").style.display;
+    if (onOff == "none") {
+        document.getElementById("item0").style.display="block";
+    } else{
+        document.getElementById("item0").style.display="none";
+    };
+    };
+    </script>
+
+    <p id="item0" style="display:none; margin-bottom:0px;">
+        Javascript Code:
+
+    function drawRotationNear(imgd) {
+        var zeroX = Math.floor(img.width / 2);
+        var zeroY = Math.floor(img.height / 2);
+        var zerocanx = Math.floor(gl.viewportWidth / 2);
+        var zerocany = Math.floor(gl.viewportHeight / 2);
+
+        altImg = gl.getImageData(0,0,gl.viewportWidth,gl.viewportHeight);
+        var altpix = altImg.data;
+
+        var pix = imgd.data;
+        var imgX, imgY, currY,currX;
+        //var theta = Math.PI / 1000;
+        var theta = document.getElementById("range").innerHTML;
+        theta = (theta - 90) * Math.PI / 180;
+        var sinT = Math.sin(theta);
+        var cosT = Math.cos(theta);
+        var rowSize = gl.viewportHeight;
+        var colSize = gl.viewportWidth;
+
+        console.log("sinT", sinT, "cosT", cosT);
+
+
+        var counter = 0;
+
+        for (var row = 0; row &lt; rowSize; row++) {
+            for (var col = 0; col &lt; colSize; col++) {
+
+                currX = row - zerocanx;
+                currY = col - zerocany;
+
+                if (sinT &lt; 0.0001 &amp;&amp; sinT > -0.0001) {
+                    //console.log("sinT == 0");
+                    imgX = currX / cosT;
+                    imgY = currY / cosT;
+                } else if (cosT &lt; 0.0001 &amp;&amp; cosT > -0.0001) {
+                    //console.log("cosT == 0");
+                    imgY = currX / sinT;
+                    imgX = (-1) * currY / sinT;
+                } else {
+
+                    imgY = ( (currY * cosT) + (currX) *sinT );
+                    imgX = (currX - imgY*sinT) /(cosT);
+                    //console.log("else",theta,imgX,imgY,sinT,cosT);
+                };
+
+                //console.log(zeroX, (zeroX - imgX),zeroY,(zeroY - imgY));
+
+
+                //Nearest neighbor interpolation
+                imgY = Math.round(imgY);
+                imgX = Math.round(imgX);
+
+                //console.log(zeroX, (zeroX - imgX),zeroY,(zeroY - imgY));
+
+
+                if( (zeroY - imgY) >= 0 &amp;&amp; (zeroY - imgY) &lt;= img.height &amp;&amp; (zeroX - imgX) >= 0 &amp;&amp; (zeroX -imgX) &lt;= img.width) {
+                    
+                    //console.log("I crashed here",row,rowSize,col);
+                    // if (counter % 100 == 0) {
+                    //     console.log("alt[], pix[], alt len, pix len",row*rowSize+4*col,(zeroY - imgY) * img.height + 4 * (zeroX - imgX), altpix, pix.length);
+                    // };
+                    // counter++;
+                    
+                    altpix[4*(row*rowSize + col) ] = pix[4*((zeroY - imgY) * img.height + (imgX - zeroX))];
+                    altpix[4*(row*rowSize + col)+1 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 1];
+
+                    altpix[4*(row*rowSize + col)+2 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 2];
+
+                    altpix[4*(row*rowSize + col)+3 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 3];
+
+                };
+
+                // if( row >= 0 &amp;&amp; row &lt;= img.width+800 &amp;&amp; col >= 0 &amp;&amp; col &lt;= img.height) {
+                    
+                //     //console.log("I crashed here",row,rowSize,col);
+                //     // if (counter % 100 == 0) {
+                //     //     console.log("alt[], pix[], alt len, pix len",row*rowSize+4*col,(zeroY - imgY) * img.height + 4 * (zeroX - imgX), altpix, pix.length);
+                //     // };
+                //     // counter++;
+                    
+                //     altpix[4*(row*rowSize + col) ] = pix[4*(row * img.width + col)];
+                //     altpix[4*(row*rowSize + col)+1 ] =  pix[4*(row* img.width + col)+1 ];
+
+                //     altpix[4*(row*rowSize + col)+2 ] =  pix[4*(row* img.width + col)+2 ];
+
+                //     altpix[4*(row*rowSize + col)+3 ] =  pix[4*(row* img.width + col)+3 ];
+
+                // };
+
+            };
+
+        };
+        
+        gl.putImageData(altImg,0,0);
+        //console.log(img);
+        //console.log(zerocanx, gl.viewportWidth, gl.viewportWidth / 2, Math.floor(gl.viewportWidth/2th));
+        //gl.fillStyle = "rgba(200, 0, 0, 0.5)";
+        //gl.fillRect(0, 0, 500, 500);
+    }
+
+    </p>
+
     <p>Linear Interpolated Image:</p>
 
     <canvas id="canvas2" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
 
+    <button onclick="onOff1()">Show relevant JS code</button>
+    <script type="text/javascript">
+    function onOff1() {
+    var onOff = document.getElementById("item1").style.display;
+    if (onOff == "none") {
+        document.getElementById("item1").style.display="block";
+    } else{
+        document.getElementById("item1").style.display="none";
+    };
+    };
+    </script>
+
+    <p id="item1" style="display:none;">
+    function drawRotationNear(imgd) {
+        var zeroX = Math.floor(img.width / 2);
+        var zeroY = Math.floor(img.height / 2);
+        var zerocanx = Math.floor(gl.viewportWidth / 2);
+        var zerocany = Math.floor(gl.viewportHeight / 2);
+
+        altImg = gl.getImageData(0,0,gl.viewportWidth,gl.viewportHeight);
+        var altpix = altImg.data;
+
+        var pix = imgd.data;
+        var imgX, imgY, currY,currX;
+        //var theta = Math.PI / 1000;
+        var theta = document.getElementById("range").innerHTML;
+        theta = (theta - 90) * Math.PI / 180;
+        var sinT = Math.sin(theta);
+        var cosT = Math.cos(theta);
+        var rowSize = gl.viewportHeight;
+        var colSize = gl.viewportWidth;
+
+        console.log("sinT", sinT, "cosT", cosT);
+
+
+        var counter = 0;
+
+        for (var row = 0; row &lt; rowSize; row++) {
+            for (var col = 0; col &lt; colSize; col++) {
+
+                currX = row - zerocanx;
+                currY = col - zerocany;
+
+                if (sinT &lt; 0.0001 &amp;&amp; sinT > -0.0001) {
+                    //console.log("sinT == 0");
+                    imgX = currX / cosT;
+                    imgY = currY / cosT;
+                } else if (cosT &lt; 0.0001 &amp;&amp; cosT > -0.0001) {
+                    //console.log("cosT == 0");
+                    imgY = currX / sinT;
+                    imgX = (-1) * currY / sinT;
+                } else {
+
+                    imgY = ( (currY * cosT) + (currX) *sinT );
+                    imgX = (currX - imgY*sinT) /(cosT);
+                    //console.log("else",theta,imgX,imgY,sinT,cosT);
+                };
+
+                //console.log(zeroX, (zeroX - imgX),zeroY,(zeroY - imgY));
+
+
+                //Nearest neighbor interpolation
+                imgY = Math.round(imgY);
+                imgX = Math.round(imgX);
+
+                //console.log(zeroX, (zeroX - imgX),zeroY,(zeroY - imgY));
+
+
+                if( (zeroY - imgY) >= 0 &amp;&amp; (zeroY - imgY) &lt;= img.height &amp;&amp; (zeroX - imgX) >= 0 &amp;&amp; (zeroX -imgX) &lt;= img.width) {
+                    
+                    altpix[4*(row*rowSize + col) ] = pix[4*((zeroY - imgY) * img.height + (imgX - zeroX))];
+                    altpix[4*(row*rowSize + col)+1 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 1];
+
+                    altpix[4*(row*rowSize + col)+2 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 2];
+
+                    altpix[4*(row*rowSize + col)+3 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 3];
+
+                };
+
+            };
+
+        };
+        
+        gl.putImageData(altImg,0,0);
+    }
+    </p>
+
+
+    <p>Comments on the differences between approaches: Since the linear interpolation interpolates the pixels in the rotated image, the resulting image has more blending along the edges than the nearest neighbor interpolation.</p>
+
+
     <p>Edge Enhancement Image (via Sobel Operator):</p>
 
     <canvas id="canvas3" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
+
+    <p>The output image is oriented with the brightest direction going up-left and decreasing magnitude as one goes clockwise.  The output image highlights different edges that appear with varying colors.</p>
+
+    <button onclick="onOff2()">Show relevant JS code</button>
+    <script type="text/javascript">
+    function onOff2() {
+    var onOff = document.getElementById("item2").style.display;
+    if (onOff == "none") {
+        document.getElementById("item2").style.display="block";
+    } else{
+        document.getElementById("item2").style.display="none";
+    };
+    };
+    </script>
+
+    <p id="item2" style="display:none;">
+        Javascript Code:
+
+            function getMaxSobel(h1,h2,h3,h4,h5,h6,h7,h8)
+    {
+        var val = [255,255,255,255];
+        var max = h8[0] + h8[1] +h8[2];
+        var temp = h1[0] + h1[1] + h1[2];
+        if (temp > max) {
+            max = temp;
+            val = [230,230,230,255];
+        }
+        temp = h2[0] + h2[1] + h2[2];
+        if (temp > max) {
+            max = temp;
+            val = [200,200,200,255];
+        }
+        temp = h3[0] + h3[1] + h3[2];
+        if (temp > max) {
+            max = temp;
+            val = [170,170,170,255];
+        }
+        temp = h4[0] + h4[1] + h4[2];
+        if (temp > max) {
+            max = temp;
+            val = [140,140,140,255];
+        }
+        temp = h5[0] + h5[1] + h5[2];
+        if (temp > max) {
+            max = temp;
+            val = [110,110,110,255];
+        }
+        temp = h6[0] + h6[1] + h6[2];
+        if (temp > max) {
+            max = temp;
+            val = [80,80,80,255];
+        }
+        temp = h7[0] + h7[1] + h7[2];
+        if (temp > max) {
+            max = temp;
+            val = [50,50,50,255];
+        }
+        return val;
+
+    }
+
+    function SobelOp(imgd)
+    {
+        var zeroX = Math.floor(img.width / 2);
+        var zeroY = Math.floor(img.height / 2);
+        var zerocanx = Math.floor(gl.viewportWidth / 2);
+        var zerocany = Math.floor(gl.viewportHeight / 2);
+
+        altImg = gl.getImageData(0,0,gl.viewportWidth,gl.viewportHeight);
+        var altpix = altImg.data;
+
+        var pix = imgd.data;
+        var currY,currX;
+
+        var rowSize = gl.viewportHeight;
+        var colSize = gl.viewportWidth;
+
+        var h1 = [], h2 = [], h3 = [], h4 = [], h5 = [], h6 = [], h7 = [], h8 = [], val = [];
+
+        for (var row = 1; row &lt; rowSize - 1; row++) {
+            for (var col = 1; col &lt; colSize - 1; col++) {
+
+
+                if( row >= 1 &amp;&amp; row &lt;= img.width - 1 &amp;&amp; col >= 1 &amp;&amp; col &lt;= img.height -1) {
+
+                    h1[0] = pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h1[1] = pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h1[2] = pix[4*((row - 1)* img.width + col-1)+2 ];
+                    //h1[3] = pix[4*((row - 1)* img.width + col-1)+3 ];
+
+                    h1[0] += 2*pix[4*((row - 1)* img.width + col-0)+0 ];
+                    h1[1] += 2*pix[4*((row - 1)* img.width + col-0)+1 ];
+                    h1[2] += 2*pix[4*((row - 1)* img.width + col-0)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col-0)+3 ];
+
+                    h1[0] += pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h1[1] += pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h1[2] += pix[4*((row - 1)* img.width + col+1)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col+1)+3 ];
+
+                    h1[0] -= pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h1[1] -= pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h1[2] -= pix[4*((row + 1)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-1)+3 ];
+
+                    h1[0] -= 2*pix[4*((row + 1)* img.width + col-0)+0 ];
+                    h1[1] -= 2*pix[4*((row + 1)* img.width + col-0)+1 ];
+                    h1[2] -= 2*pix[4*((row + 1)* img.width + col-0)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-0)+3 ];
+
+                    h1[0] -= pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h1[1] -= pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h1[2] -= pix[4*((row + 1)* img.width + col+1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col+1)+3 ];
+
+
+                    //Second Sobel Operator
+                    h2[0] = pix[4*((row - 1)* img.width + col-0)+0 ];
+                    h2[1] = pix[4*((row - 1)* img.width + col-0)+1 ];
+                    h2[2] = pix[4*((row - 1)* img.width + col-0)+2 ];
+                    //h1[3] = pix[4*((row - 1)* img.width + col-1)+3 ];
+
+                    h2[0] += 2*pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h2[1] += 2*pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h2[2] += 2*pix[4*((row - 1)* img.width + col+1)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col-0)+3 ];
+
+                    h2[0] += pix[4*((row - 0)* img.width + col+0)+0 ];
+                    h2[1] += pix[4*((row - 0)* img.width + col+0)+1 ];
+                    h2[2] += pix[4*((row - 0)* img.width + col+0)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col+1)+3 ];
+
+                    h2[0] -= pix[4*((row + 1)* img.width + col-0)+0 ];
+                    h2[1] -= pix[4*((row + 1)* img.width + col-0)+1 ];
+                    h2[2] -= pix[4*((row + 1)* img.width + col-0)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-1)+3 ];
+
+                    h2[0] -= 2*pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h2[1] -= 2*pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h2[2] -= 2*pix[4*((row + 1)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-0)+3 ];
+
+                    h2[0] -= pix[4*((row + 0)* img.width + col-1)+0 ];
+                    h2[1] -= pix[4*((row + 0)* img.width + col-1)+1 ];
+                    h2[2] -= pix[4*((row + 0)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col+1)+3 ];
+
+
+
+                    //Third Sobel Operator
+                    h3[0] = pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h3[1] = pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h3[2] = pix[4*((row - 1)* img.width + col+1)+2 ];
+
+                    h3[0] += 2*pix[4*((row - 0)* img.width + col+1)+0 ];
+                    h3[1] += 2*pix[4*((row - 0)* img.width + col+1)+1 ];
+                    h3[2] += 2*pix[4*((row - 0)* img.width + col+1)+2 ];
+
+                    h3[0] += pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h3[1] += pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h3[2] += pix[4*((row + 1)* img.width + col+1)+2 ];
+
+                    h3[0] -= pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h3[1] -= pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h3[2] -= pix[4*((row - 1)* img.width + col-1)+2 ];
+
+                    h3[0] -= 2*pix[4*((row + 0)* img.width + col-1)+0 ];
+                    h3[1] -= 2*pix[4*((row + 0)* img.width + col-1)+1 ];
+                    h3[2] -= 2*pix[4*((row + 0)* img.width + col-1)+2 ];
+
+                    h3[0] -= pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h3[1] -= pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h3[2] -= pix[4*((row + 1)* img.width + col-1)+2 ];
+
+
+                    //Fourth Sobel
+                    h4[0] = pix[4*((row - 0)* img.width + col+1)+0 ];
+                    h4[1] = pix[4*((row - 0)* img.width + col+1)+1 ];
+                    h4[2] = pix[4*((row - 0)* img.width + col+1)+2 ];
+                    //h1[3] = pix[4*((row - 1)* img.width + col-1)+3 ];
+
+                    h4[0] += 2*pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h4[1] += 2*pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h4[2] += 2*pix[4*((row + 1)* img.width + col+1)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col-0)+3 ];
+
+                    h4[0] += pix[4*((row + 1)* img.width + col+0)+0 ];
+                    h4[1] += pix[4*((row + 1)* img.width + col+0)+1 ];
+                    h1[2] += pix[4*((row + 1)* img.width + col+0)+2 ];
+                    //h1[3] += pix[4*((row - 1)* img.width + col+1)+3 ];
+
+                    h4[0] -= pix[4*((row - 0)* img.width + col-1)+0 ];
+                    h4[1] -= pix[4*((row - 0)* img.width + col-1)+1 ];
+                    h4[2] -= pix[4*((row - 0)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-1)+3 ];
+
+                    h4[0] -= 2*pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h4[1] -= 2*pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h4[2] -= 2*pix[4*((row - 1)* img.width + col-1)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col-0)+3 ];
+
+                    h4[0] -= pix[4*((row - 1)* img.width + col+0)+0 ];
+                    h4[1] -= pix[4*((row - 1)* img.width + col+0)+1 ];
+                    h4[2] -= pix[4*((row - 1)* img.width + col+0)+2 ];
+                    //h1[3] -= pix[4*((row + 1)* img.width + col+1)+3 ];
+
+                    //Fifth Sobel
+                    h5[0] = pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h5[1] = pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h5[2] = pix[4*((row + 1)* img.width + col-1)+2 ];
+
+                    h5[0] += 2*pix[4*((row + 1)* img.width + col-0)+0 ];
+                    h5[1] += 2*pix[4*((row + 1)* img.width + col-0)+1 ];
+                    h5[2] += 2*pix[4*((row + 1)* img.width + col-0)+2 ];
+
+                    h5[0] += pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h5[1] += pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h5[2] += pix[4*((row + 1)* img.width + col+1)+2 ];
+
+                    h5[0] -= pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h5[1] -= pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h5[2] -= pix[4*((row - 1)* img.width + col-1)+2 ];
+
+                    h5[0] -= 2*pix[4*((row - 1)* img.width + col-0)+0 ];
+                    h5[1] -= 2*pix[4*((row - 1)* img.width + col-0)+1 ];
+                    h5[2] -= 2*pix[4*((row - 1)* img.width + col-0)+2 ];
+
+                    h5[0] -= pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h5[1] -= pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h5[2] -= pix[4*((row - 1)* img.width + col+1)+2 ];
+
+                    //Sixth Sobel
+                    h6[0] = pix[4*((row + 1)* img.width + col-0)+0 ];
+                    h6[1] = pix[4*((row + 1)* img.width + col-0)+1 ];
+                    h6[2] = pix[4*((row + 1)* img.width + col-0)+2 ];
+
+                    h6[0] += 2*pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h6[1] += 2*pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h6[2] += 2*pix[4*((row + 1)* img.width + col-1)+2 ];
+
+                    h6[0] += pix[4*((row - 0)* img.width + col-1)+0 ];
+                    h6[1] += pix[4*((row - 0)* img.width + col-1)+1 ];
+                    h6[2] += pix[4*((row - 0)* img.width + col-1)+2 ];
+
+                    h6[0] -= pix[4*((row - 1)* img.width + col-0)+0 ];
+                    h6[1] -= pix[4*((row - 1)* img.width + col-0)+1 ];
+                    h6[2] -= pix[4*((row - 1)* img.width + col-0)+2 ];
+
+                    h6[0] -= 2*pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h6[1] -= 2*pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h6[2] -= 2*pix[4*((row - 1)* img.width + col+1)+2 ];
+
+                    h6[0] -= pix[4*((row + 0)* img.width + col+1)+0 ];
+                    h6[1] -= pix[4*((row + 0)* img.width + col+1)+1 ];
+                    h6[2] -= pix[4*((row + 0)* img.width + col+1)+2 ];
+
+                    //Seventh Sobel
+                    h7[0] = pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h7[1] = pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h7[2] = pix[4*((row - 1)* img.width + col-1)+2 ];
+
+                    h7[0] += pix[4*((row - 0)* img.width + col-1)+0 ];
+                    h7[1] += pix[4*((row - 0)* img.width + col-1)+1 ];
+                    h7[2] += pix[4*((row - 0)* img.width + col-1)+2 ];
+
+                    h7[0] += pix[4*((row + 1)* img.width + col-1)+0 ];
+                    h7[1] += pix[4*((row + 1)* img.width + col-1)+1 ];
+                    h7[2] += pix[4*((row + 1)* img.width + col-1)+2 ];
+
+                    h7[0] -= pix[4*((row - 1)* img.width + col+1)+0 ];
+                    h7[1] -= pix[4*((row - 1)* img.width + col+1)+1 ];
+                    h7[2] -= pix[4*((row - 1)* img.width + col+1)+2 ];
+
+                    h7[0] -= pix[4*((row + 0)* img.width + col+1)+0 ];
+                    h7[1] -= pix[4*((row + 0)* img.width + col+1)+1 ];
+                    h7[2] -= pix[4*((row + 0)* img.width + col+1)+2 ];
+
+                    h7[0] -= pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h7[1] -= pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h7[2] -= pix[4*((row + 1)* img.width + col+1)+2 ];
+
+                    //Eigth Sobel
+                    h8[0] = pix[4*((row - 0)* img.width + col-1)+0 ];
+                    h8[1] = pix[4*((row - 0)* img.width + col-1)+1 ];
+                    h8[2] = pix[4*((row - 0)* img.width + col-1)+2 ];
+
+                    h8[0] += pix[4*((row - 1)* img.width + col-1)+0 ];
+                    h8[1] += pix[4*((row - 1)* img.width + col-1)+1 ];
+                    h8[2] += pix[4*((row - 1)* img.width + col-1)+2 ];
+
+                    h8[0] += pix[4*((row - 1)* img.width + col+0)+0 ];
+                    h8[1] += pix[4*((row - 1)* img.width + col+0)+1 ];
+                    h8[2] += pix[4*((row - 1)* img.width + col+0)+2 ];
+
+                    h8[0] -= pix[4*((row + 0)* img.width + col+1)+0 ];
+                    h8[1] -= pix[4*((row + 0)* img.width + col+1)+1 ];
+                    h8[2] -= pix[4*((row + 0)* img.width + col+1)+2 ];
+
+                    h8[0] -= pix[4*((row + 1)* img.width + col+1)+0 ];
+                    h8[1] -= pix[4*((row + 1)* img.width + col+1)+1 ];
+                    h8[2] -= pix[4*((row + 1)* img.width + col+1)+2 ];
+
+                    h8[0] -= pix[4*((row + 1)* img.width + col+0)+0 ];
+                    h8[1] -= pix[4*((row + 1)* img.width + col+0)+1 ];
+                    h8[2] -= pix[4*((row + 1)* img.width + col+0)+2 ];
+
+
+                    val = getMaxSobel(h1,h2,h3,h4,h5,h6,h7,h8);
+
+
+                    //val[0] = Math.sqrt(h1[0] * h1[0] + h2[0] * h2[0]);
+                    //val[1] = Math.sqrt(h1[1] * h1[1] + h2[1] * h2[1]);
+                    //val[2] = Math.sqrt(h1[2] * h1[2] + h2[2] * h2[2]);
+                    //val[3] = 255;
+
+                    altpix[4*(row*rowSize + col) ] = val[0];
+                    altpix[4*(row*rowSize + col)+1 ] =  val[1];
+                    altpix[4*(row*rowSize + col)+2 ] =  val[2];
+                    altpix[4*(row*rowSize + col)+3 ] =  val[3];
+
+
+                };
+
+                // if( row >= 0 &amp;&amp; row &lt;= img.width+800 &amp;&amp; col >= 0 &amp;&amp; col &lt;= img.height) {
+                    
+                //     altpix[4*(row*rowSize + col) ] = pix[4*(row * img.width + col)];
+                //     altpix[4*(row*rowSize + col)+1 ] =  pix[4*(row* img.width + col)+1 ];
+
+                //     altpix[4*(row*rowSize + col)+2 ] =  pix[4*(row* img.width + col)+2 ];
+
+                //     altpix[4*(row*rowSize + col)+3 ] =  pix[4*(row* img.width + col)+3 ];
+                //     console.log(pix[4*(row* img.width + col)+3]);
+
+                // };
+
+            };
+
+        };
+        
+        gl.putImageData(altImg,zerocanx / 2, zerocany / 2);
+        //console.log(img);
+        //console.log(zerocanx, gl.viewportWidth, gl.viewportWidth / 2, Math.floor(gl.viewportWidth/2th));
+        //gl.fillStyle = "rgba(200, 0, 0, 0.5)";
+        //gl.fillRect(0, 0, 500, 500);
+    }
+
+    </p>
+
+    <p></p>
 
     <br/>
     <a href="http://xksteven.com/">&lt;&lt; Back to Lesson 1</a><br />

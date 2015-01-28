@@ -624,7 +624,7 @@
 
     <p id="item0" style="display:none; margin-bottom:0px;">
         Javascript Code:
-
+        <code>
     function drawRotationNear(imgd) {
         var zeroX = Math.floor(img.width / 2);
         var zeroY = Math.floor(img.height / 2);
@@ -636,7 +636,6 @@
 
         var pix = imgd.data;
         var imgX, imgY, currY,currX;
-        //var theta = Math.PI / 1000;
         var theta = document.getElementById("range").innerHTML;
         theta = (theta - 90) * Math.PI / 180;
         var sinT = Math.sin(theta);
@@ -682,12 +681,6 @@
 
                 if( (zeroY - imgY) >= 0 &amp;&amp; (zeroY - imgY) &lt;= img.height &amp;&amp; (zeroX - imgX) >= 0 &amp;&amp; (zeroX -imgX) &lt;= img.width) {
                     
-                    //console.log("I crashed here",row,rowSize,col);
-                    // if (counter % 100 == 0) {
-                    //     console.log("alt[], pix[], alt len, pix len",row*rowSize+4*col,(zeroY - imgY) * img.height + 4 * (zeroX - imgX), altpix, pix.length);
-                    // };
-                    // counter++;
-                    
                     altpix[4*(row*rowSize + col) ] = pix[4*((zeroY - imgY) * img.height + (imgX - zeroX))];
                     altpix[4*(row*rowSize + col)+1 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 1];
 
@@ -697,34 +690,13 @@
 
                 };
 
-                // if( row >= 0 &amp;&amp; row &lt;= img.width+800 &amp;&amp; col >= 0 &amp;&amp; col &lt;= img.height) {
-                    
-                //     //console.log("I crashed here",row,rowSize,col);
-                //     // if (counter % 100 == 0) {
-                //     //     console.log("alt[], pix[], alt len, pix len",row*rowSize+4*col,(zeroY - imgY) * img.height + 4 * (zeroX - imgX), altpix, pix.length);
-                //     // };
-                //     // counter++;
-                    
-                //     altpix[4*(row*rowSize + col) ] = pix[4*(row * img.width + col)];
-                //     altpix[4*(row*rowSize + col)+1 ] =  pix[4*(row* img.width + col)+1 ];
-
-                //     altpix[4*(row*rowSize + col)+2 ] =  pix[4*(row* img.width + col)+2 ];
-
-                //     altpix[4*(row*rowSize + col)+3 ] =  pix[4*(row* img.width + col)+3 ];
-
-                // };
-
             };
 
         };
         
         gl.putImageData(altImg,0,0);
-        //console.log(img);
-        //console.log(zerocanx, gl.viewportWidth, gl.viewportWidth / 2, Math.floor(gl.viewportWidth/2th));
-        //gl.fillStyle = "rgba(200, 0, 0, 0.5)";
-        //gl.fillRect(0, 0, 500, 500);
     }
-
+    </code>
     </p>
 
     <p>Linear Interpolated Image:</p>
@@ -744,6 +716,8 @@
     </script>
 
     <p id="item1" style="display:none;">
+    <code>
+    Javascript Code: 
     function drawRotationNear(imgd) {
         var zeroX = Math.floor(img.width / 2);
         var zeroY = Math.floor(img.height / 2);
@@ -816,6 +790,7 @@
         
         gl.putImageData(altImg,0,0);
     }
+    </code>
     </p>
 
 
@@ -841,6 +816,7 @@
     </script>
 
     <p id="item2" style="display:none;">
+    <code>
         Javascript Code:
 
             function getMaxSobel(h1,h2,h3,h4,h5,h6,h7,h8)
@@ -1148,7 +1124,7 @@
         gl.putImageData(altImg,zerocanx / 2, zerocany / 2);
 
     }
-
+    </code>
     </p>
 
     <p></p>

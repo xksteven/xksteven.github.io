@@ -1,0 +1,302 @@
+<html>
+
+<head>
+<title>Run Length Encoding and Region Labeling </title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript">
+    var ctx;
+    var img;
+    var altImg;
+
+    function initGL(canvas) {
+        try {
+            ctx = canvas.getContext("2d");
+            ctx.viewportWidth = canvas.width;
+            ctx.viewportHeight = canvas.height;
+            ctx.clearRect (0 , 0 , canvas.width, canvas.height);
+        } catch (e) {
+        }
+        if (!ctx) {
+            alert("Could not initialise canvas, sorry :-(");
+        }
+    }
+
+
+    function drawScene() {
+        ctx.drawImage(img,0,0,img.width,img.height);
+    }
+
+    function showValue(newValue)
+    {
+        document.getElementById("range").innerHTML=newValue;
+        reload();
+    }
+
+    function drawRotationNear(imgd) {
+        var zeroX = Math.floor(img.width / 2);
+        var zeroY = Math.floor(img.height / 2);
+        var zerocanx = Math.floor(ctx.viewportWidth / 2);
+        var zerocany = Math.floor(ctx.viewportHeight / 2);
+
+        altImg = ctx.getImageData(0,0,ctx.viewportWidth,ctx.viewportHeight);
+        var altpix = altImg.data;
+
+        var pix = imgd.data;
+        var imgX, imgY, currY,currX;
+        //var theta = Math.PI / 1000;
+        var theta = document.getElementById("range").innerHTML;
+        theta = (theta - 90) * Math.PI / 180;
+        var sinT = Math.sin(theta);
+        var cosT = Math.cos(theta);
+        var rowSize = ctx.viewportHeight;
+        var colSize = ctx.viewportWidth;
+
+        console.log("sinT", sinT, "cosT", cosT);
+
+
+        var counter = 0;
+
+        for (var row = 0; row < rowSize; row++) {
+            for (var col = 0; col < colSize; col++) {
+
+                currX = row - zerocanx;
+                currY = col - zerocany;
+
+                if (sinT < 0.0001 && sinT > -0.0001) {
+                    //console.log("sinT == 0");
+                    imgX = currX / cosT;
+                    imgY = currY / cosT;
+                } else if (cosT < 0.0001 && cosT > -0.0001) {
+                    //console.log("cosT == 0");
+                    imgY = currX / sinT;
+                    imgX = (-1) * currY / sinT;
+                } else {
+
+                    imgY = ( (currY * cosT) + (currX) *sinT );
+                    imgX = (currX - imgY*sinT) /(cosT);
+                    //console.log("else",theta,imgX,imgY,sinT,cosT);
+                };
+
+                //console.log(zeroX, (zeroX - imgX),zeroY,(zeroY - imgY));
+
+
+                //Nearest neighbor interpolation
+                imgY = Math.round(imgY);
+                imgX = Math.round(imgX);
+
+                //console.log(zeroX, (zeroX - imgX),zeroY,(zeroY - imgY));
+
+
+                if( (zeroY - imgY) >= 0 && (zeroY - imgY) <= img.height && (zeroX - imgX) >= 0 && (zeroX -imgX) <= img.width) {
+                    
+                    //console.log("I crashed here",row,rowSize,col);
+                    // if (counter % 100 == 0) {
+                    //     console.log("alt[], pix[], alt len, pix len",row*rowSize+4*col,(zeroY - imgY) * img.height + 4 * (zeroX - imgX), altpix, pix.length);
+                    // };
+                    // counter++;
+                    
+                    altpix[4*(row*rowSize + col) ] = pix[4*((zeroY - imgY) * img.height + (imgX - zeroX))];
+                    altpix[4*(row*rowSize + col)+1 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 1];
+
+                    altpix[4*(row*rowSize + col)+2 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 2];
+
+                    altpix[4*(row*rowSize + col)+3 ] =  pix[4*((zeroY - imgY) * img.height + (imgX - zeroX)) + 3];
+
+                };
+
+                // if( row >= 0 && row <= img.width+800 && col >= 0 && col <= img.height) {
+                    
+                //     //console.log("I crashed here",row,rowSize,col);
+                //     // if (counter % 100 == 0) {
+                //     //     console.log("alt[], pix[], alt len, pix len",row*rowSize+4*col,(zeroY - imgY) * img.height + 4 * (zeroX - imgX), altpix, pix.length);
+                //     // };
+                //     // counter++;
+                    
+                //     altpix[4*(row*rowSize + col) ] = pix[4*(row * img.width + col)];
+                //     altpix[4*(row*rowSize + col)+1 ] =  pix[4*(row* img.width + col)+1 ];
+
+                //     altpix[4*(row*rowSize + col)+2 ] =  pix[4*(row* img.width + col)+2 ];
+
+                //     altpix[4*(row*rowSize + col)+3 ] =  pix[4*(row* img.width + col)+3 ];
+
+                // };
+
+            };
+
+        };
+        
+        ctx.putImageData(altImg,0,0);
+        //console.log(img);
+        //console.log(zerocanx, ctx.viewportWidth, ctx.viewportWidth / 2, Math.floor(ctx.viewportWidth/2th));
+        //ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
+        //ctx.fillRect(0, 0, 500, 500);
+    }
+
+
+
+    function SobelOp(imgd)
+    {
+        var zeroX = Math.floor(img.width / 2);
+        var zeroY = Math.floor(img.height / 2);
+        var zerocanx = Math.floor(ctx.viewportWidth / 2);
+        var zerocany = Math.floor(ctx.viewportHeight / 2);
+
+        altImg = ctx.getImageData(0,0,ctx.viewportWidth,ctx.viewportHeight);
+        var altpix = altImg.data;
+
+        var pix = imgd.data;
+        var currY,currX;
+
+        var rowSize = ctx.viewportHeight;
+        var colSize = ctx.viewportWidth;
+
+        var h1 = [], h2 = [], h3 = [], h4 = [], h5 = [], h6 = [], h7 = [], h8 = [], val = [];
+
+
+
+        };
+        
+        ctx.putImageData(altImg,zerocanx / 2, zerocany / 2);
+        //console.log(img);
+        //console.log(zerocanx, ctx.viewportWidth, ctx.viewportWidth / 2, Math.floor(ctx.viewportWidth/2th));
+        //ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
+        //ctx.fillRect(0, 0, 500, 500);
+    }
+
+
+    function reload() {
+        var canvas0 = document.getElementById("canvas0");
+        var canvas1 = document.getElementById("canvas1");
+        var canvas2 = document.getElementById("canvas2");
+        var imgd;
+        ctx0 = canvas0.getContext("2d");
+        imgd = ctx0.getImageData(0,0,canvas0.width,canvas0.height);
+        initGL(canvas1);
+        drawRotationNear(imgd);
+    }
+
+    function webGLStart() {
+        var canvas0 = document.getElementById("canvas0");
+        var canvas1 = document.getElementById("canvas1");
+        var canvas2 = document.getElementById("canvas2");
+        var canvas3 = document.getElementById("canvas3");
+        img = new Image();
+        img.src = "figure1_problem_set_3.png";
+        initGL(canvas0);
+        var imgd;
+        img.onload = function() {
+            canvas0.width = img.width;
+            canvas0.height = img.height;
+            drawScene(img);
+            imgd = ctx.getImageData(0,0,canvas0.width,canvas0.height);
+            //initGL(canvas1);
+            //drawRotationNear(imgd);
+        }
+        img.src = "figure2_problem_set_3.png";
+        img.onload = function() {
+            initGL(canvas1);
+            canvas1.width = img.width;
+            canvas1.height = img.height;
+            drawScene(img);
+        }
+    }
+</script>
+
+
+</head>
+
+
+<body onload="webGLStart();">
+    <p>Image to Use: </p>
+
+    <canvas id="canvas0" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
+
+    <p>Select rotation:</p>
+    <input style="padding-left=100px" type="range" min="-180" max="180" value="0" step="1" onchange="showValue(this.value)" />
+    <span id="range">0</span>
+
+    <p></p>
+
+    <canvas id="canvas1" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
+
+    <button onclick="onOff0()">Show relevant JS code</button>
+    <script type="text/javascript">
+    function onOff0() {
+    var onOff = document.getElementById("item0").style.display;
+    if (onOff == "none") {
+        document.getElementById("item0").style.display="block";
+    } else{
+        document.getElementById("item0").style.display="none";
+    };
+    };
+    </script>
+
+        <pre id="item0" style="display:none;">
+        Javascript Code:
+        <code>
+
+    </code>
+    </pre>
+
+    <p>Linear Interpolated Image:</p>
+
+    <canvas id="canvas2" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
+
+    <button onclick="onOff1()">Show relevant JS code</button>
+    <script type="text/javascript">
+    function onOff1() {
+    var onOff = document.getElementById("item1").style.display;
+    if (onOff == "none") {
+        document.getElementById("item1").style.display="block";
+    } else{
+        document.getElementById("item1").style.display="none";
+    };
+    };
+    </script>
+
+    <pre id="item1" style="display:none;">
+    <code>
+    Javascript Code: 
+
+    </code>
+    </pre>
+
+
+    <p></p>
+
+
+    <p></p>
+
+    <canvas id="canvas3" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
+
+    <p></p>
+
+    <button onclick="onOff2()">Show relevant JS code</button>
+    <script type="text/javascript">
+    function onOff2() {
+    var onOff = document.getElementById("item2").style.display;
+    if (onOff == "none") {
+        document.getElementById("item2").style.display="block";
+    } else{
+        document.getElementById("item2").style.display="none";
+    };
+    };
+    </script>
+
+    <pre id="item2" style="display:none;">
+    <code>
+        Javascript Code:
+
+
+    }
+    </code>
+    </pre>
+
+    <p></p>
+
+    <br/>
+    <a href="http://xksteven.com/">&lt;&lt; Back to other examples</a><br />
+</body>
+
+</html>

@@ -323,13 +323,13 @@
         //Assign colors
         for (var i = 0; i < regionMap.length; i++) {
             if (regionMap[i] != i) {
-                colormap[i] = colormap[regionMap[i]];
+                colormap[i] = colors[regionMap[i]];
             } else{
                 colormap[i] = colors[i];
             };
         };
 
-
+    curregion = 0;
         //color regions
         for (var row = 0; row < img.height; row++) 
         {
@@ -337,7 +337,7 @@
             {
                 if(pix[4*((row)*img.width+(col))] > 1)
                 {
-                    curregion = regionMap.length;
+                    
                     //console.log("Hello World");
                     for (var i = 0; i < h.length; i++) 
                     {
@@ -357,7 +357,6 @@
                                 if (prevreg > tempregion) 
                                 {
                                     // console.log(curregion);
-                                    regionMap[prevreg] = tempregion;
                                     regions[4*((row)*img.width+(col))] = tempregion; 
                                 };
                             };
@@ -368,15 +367,14 @@
                     };
                     if (updateFlag) 
                     {
-                        regionMap[curregion] = curregion;
                         regions[4*((row)*img.width+(col))] = curregion; 
-
+                        curregion += 1;
                     };
-                    console.log(colormap[0],colormap[0][0],curregion);
-                    // pix[4*((row)*img.width+(col)) + 0] = colormap[regionMap[curregion]][0];
-                    // pix[4*((row)*img.width+(col)) + 1] = colormap[regionMap[curregion]][1];
-                    // pix[4*((row)*img.width+(col)) + 2] = colormap[regionMap[curregion]][2];
-                    // pix[4*((row)*img.width+(col)) + 3] = 255;
+                    console.log(colormap[0],colormap[0][0],curregion -1,colormap[regionMap[curregion-1]]);
+                    pix[4*((row)*img.width+(col)) + 0] = colormap[regionMap[curregion-1]][0];
+                    pix[4*((row)*img.width+(col)) + 1] = colormap[regionMap[curregion-1]][1];
+                    pix[4*((row)*img.width+(col)) + 2] = colormap[regionMap[curregion-1]][2];
+                    pix[4*((row)*img.width+(col)) + 3] = 255;
                     updateFlag = true;
 
                     //curregion += 1;

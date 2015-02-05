@@ -258,8 +258,9 @@
         var h = [[-1,1],[-1,0],[-1,-1],[0,-1]];
         var regionMap = [];
         var regions = [];
-        var prevreg = 0, actualregion = 0;
+        var prevreg = [undefined,undefined,undefined,undefined], tempregion = [];
         var updateFlag = true;
+        var j, currloc;
 
         //regionMap[0] = 0;
         console.log(regionMap.length, null, (null == 0),(regionMap[1] == undefined), regionMap[2]);
@@ -271,10 +272,9 @@
                 if(pix[4*((row)*img.width+(col))] > 1)
                 {
                     curregion = regionMap.length;
-                    //console.log("Hello World");
+                    // console.log(curregion);
                     for (var i = 0; i < h.length; i++) 
                     {
-                        //checkpix = pix[4*((row+h[i][0])*img.width+(col+h[i][1]))];
                         //check if surrounding pixels belong to
                         //an already labeled region
                         if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] < img.width || col+h[i][1] < img.height) 
@@ -283,16 +283,9 @@
                             if (regions[4*((row+h[i][0])*img.width+(col+h[i][1]))] != undefined) 
                             {
                                 updateFlag = false;
-                                tempregion = prevreg;
-                                prevreg = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
-                                regions[4*((row)*img.width+(col))] = prevreg; 
+                                prevreg[i] = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
                                 //console.log(prevreg,curregion);
-                                if (prevreg > tempregion) 
-                                {
-                                    // console.log(curregion);
-                                    regionMap[prevreg] = tempregion;
-                                    regions[4*((row)*img.width+(col))] = tempregion; 
-                                };
+ 
                             };
 
 
@@ -303,45 +296,68 @@
                     {
                         regionMap[curregion] = curregion;
                         regions[4*((row)*img.width+(col))] = curregion;                    
+                    } else {
+                        for (var i = 0; i < prevreg.length; i++)
+                        {
+                            if (prevreg[i] != undefined) {
+                                tempregion[tempregion.length] = prevreg[i];
+                            };
+                        };
+                        for (var i = 0; i < tempregion.length - 1; i++) 
+                        {
+                            j = i + 1;
+                            if (tempregion[i] == tempregion[j]) 
+                            {
+                                //do nothing
+                            } else if (tempregion[i] > tempregion[j]) 
+                            {
+                                regionMap[tempregion[i]] = tempregion[j];
+                            } else {
+                                regionMap[tempregion[j]] = tempregion[i];
+                            };
+                        };
+                        regions[4*((row)*img.width+(col))] = tempregion[0];
                     };
-                    updateFlag = true;
 
-                    //curregion += 1;
+                    updateFlag = true;
+                    prevreg = [undefined,undefined,undefined,undefined]; 
+                    tempregion = [];
                 };
             };
         };
 
-
+        console.log("for loop done",regionMap.length,curregion,regionMap[11]);
+        // console.log(curregion);
         for (var i = 0; i < regionMap.length; i++) {
-            console.log(regionMap[i]);
+            console.log(i,regionMap[i]);
         };
-        console.log(regionMap.length);
 
-        var colors = [[50,0,0],[50,50,0],[50,50,50],[100,50,0],[100,50,50],[200,100,50],[50,200,50],[50,50,200],[100,200,100],[255,0,0],[0,255,0],[0,0,255]];
+        var colors = [[255,0,0],[0,255,0],[0,0,255],[100,100,100],[0,50,50],[200,100,50],[50,200,50],[150,50,200],[100,200,100],[55,0,0],[100,255,0],[100,0,255],[255,255,255]];
         var colormap = [];
         colormap[0] = colors[0];
         //Assign colors
-        for (var i = 0; i < regionMap.length; i++) {
+        for (var i = 0; i <= regionMap.length; i++) {
             if (regionMap[i] != i) {
-                colormap[i] = colors[regionMap[i]];
+                colormap[i] = colormap[regionMap[i]];
             } else{
                 colormap[i] = colors[i];
             };
         };
 
-    curregion = 0;
-        //color regions
+        var regionMapTemp = [];
+        curregion = 0;
+        //find regions
         for (var row = 0; row < img.height; row++) 
         {
             for (var col = 0; col < img.width; col++) 
             {
                 if(pix[4*((row)*img.width+(col))] > 1)
                 {
-                    
-                    //console.log("Hello World");
+                    curregion = regionMapTemp.length;
+                    // console.log(curregion);
                     for (var i = 0; i < h.length; i++) 
                     {
-                        //checkpix = pix[4*((row+h[i][0])*img.width+(col+h[i][1]))];
+
                         //check if surrounding pixels belong to
                         //an already labeled region
                         if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] < img.width || col+h[i][1] < img.height) 
@@ -350,33 +366,51 @@
                             if (regions[4*((row+h[i][0])*img.width+(col+h[i][1]))] != undefined) 
                             {
                                 updateFlag = false;
-                                tempregion = prevreg;
-                                prevreg = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
-                                regions[4*((row)*img.width+(col))] = prevreg; 
-                                console.log(prevreg,curregion);
-                                if (prevreg > tempregion) 
-                                {
-                                    // console.log(curregion);
-                                    regions[4*((row)*img.width+(col))] = tempregion; 
-                                };
+                                prevreg[i] = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
+                                //console.log(prevreg,curregion);
                             };
-
-
                         };
 
                     };
                     if (updateFlag) 
                     {
-                        regions[4*((row)*img.width+(col))] = curregion; 
-                        curregion += 1;
+                        regionMapTemp[curregion] = curregion;
+                        //curregion++;
+                        regions[4*((row)*img.width+(col))] = curregion;                    
+                    } else {
+                        for (var i = 0; i < prevreg.length; i++)
+                        {
+                            if (prevreg[i] != undefined) {
+                                tempregion[tempregion.length] = prevreg[i];
+                            };
+                        };
+                        for (var i = 0; i < tempregion.length - 1; i++) 
+                        {
+                            j = i + 1;
+                            if (tempregion[i] == tempregion[j]) 
+                            {
+                                //do nothing
+                            } else if (tempregion[i] > tempregion[j]) 
+                            {
+                                regionMapTemp[tempregion[i]] = tempregion[j];
+                            } else {
+                                regionMapTemp[tempregion[j]] = tempregion[i];
+                            };
+                        };
+                        regions[4*((row)*img.width+(col))] = tempregion[0];
                     };
-                    console.log(colormap[0],colormap[0][0],curregion -1,colormap[regionMap[curregion-1]]);
-                    pix[4*((row)*img.width+(col)) + 0] = colormap[regionMap[curregion-1]][0];
-                    pix[4*((row)*img.width+(col)) + 1] = colormap[regionMap[curregion-1]][1];
-                    pix[4*((row)*img.width+(col)) + 2] = colormap[regionMap[curregion-1]][2];
-                    pix[4*((row)*img.width+(col)) + 3] = 255;
-                    updateFlag = true;
 
+                    updateFlag = true;
+                    prevreg = [undefined,undefined,undefined,undefined]; 
+                    tempregion = [];
+                    // console.log(colormap[0],colormap[0][0],curregion -1,colormap[regionMap[curregion-1]]);
+                    currloc = 4*((row)*img.width+(col));
+                    //console.log("curr",curregion,"rm len",regionMap.length,"rm t len",regionMapTemp.length);
+
+                    pix[4*((row)*img.width+(col)) + 0] = colormap[regionMap[regions[currloc]]][0];
+                    pix[4*((row)*img.width+(col)) + 1] = colormap[regionMap[regions[currloc]]][1];
+                    pix[4*((row)*img.width+(col)) + 2] = colormap[regionMap[regions[currloc]]][2];
+                    pix[4*((row)*img.width+(col)) + 3] = 255;
                     //curregion += 1;
                 };
             };
@@ -752,7 +786,7 @@
 
     <canvas id="canvas3" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
 
-    <p>Currently not working</p>
+    <p>This code labels the regions based on 4 connectivity. There are 11 entries in the equivalence table to map each region to another.</p>
 
     <canvas id="canvas4" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
 
@@ -772,6 +806,9 @@
         <code>
     function findRegions(img, imgd) 
     {
+        var zerocanx = Math.floor(ctx.viewportWidth / 2);
+        var zerocany = Math.floor(ctx.viewportHeight / 2);
+
         altImg = ctx.getImageData(0,0,ctx.viewportWidth,ctx.viewportHeight);
         var altpix = altImg.data;
 
@@ -782,9 +819,11 @@
         var h = [[-1,1],[-1,0],[-1,-1],[0,-1]];
         var regionMap = [];
         var regions = [];
-        var prevreg = 0, actualregion = 0;
+        var prevreg = [undefined,undefined,undefined,undefined], tempregion = [];
         var updateFlag = true;
+        var j, currloc;
 
+        //regionMap[0] = 0;
         console.log(regionMap.length, null, (null == 0),(regionMap[1] == undefined), regionMap[2]);
         //find regions
         for (var row = 0; row &lt; img.height; row++) 
@@ -794,9 +833,9 @@
                 if(pix[4*((row)*img.width+(col))] > 1)
                 {
                     curregion = regionMap.length;
+                    // console.log(curregion);
                     for (var i = 0; i &lt; h.length; i++) 
                     {
-                        //checkpix = pix[4*((row+h[i][0])*img.width+(col+h[i][1]))];
                         //check if surrounding pixels belong to
                         //an already labeled region
                         if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] &lt; img.width || col+h[i][1] &lt; img.height) 
@@ -805,16 +844,9 @@
                             if (regions[4*((row+h[i][0])*img.width+(col+h[i][1]))] != undefined) 
                             {
                                 updateFlag = false;
-                                tempregion = prevreg;
-                                prevreg = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
-                                regions[4*((row)*img.width+(col))] = prevreg; 
+                                prevreg[i] = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
                                 //console.log(prevreg,curregion);
-                                if (prevreg > tempregion) 
-                                {
-                                    // console.log(curregion);
-                                    regionMap[prevreg] = tempregion;
-                                    regions[4*((row)*img.width+(col))] = tempregion; 
-                                };
+ 
                             };
 
 
@@ -825,25 +857,47 @@
                     {
                         regionMap[curregion] = curregion;
                         regions[4*((row)*img.width+(col))] = curregion;                    
+                    } else {
+                        for (var i = 0; i &lt; prevreg.length; i++)
+                        {
+                            if (prevreg[i] != undefined) {
+                                tempregion[tempregion.length] = prevreg[i];
+                            };
+                        };
+                        for (var i = 0; i &lt; tempregion.length - 1; i++) 
+                        {
+                            j = i + 1;
+                            if (tempregion[i] == tempregion[j]) 
+                            {
+                                //do nothing
+                            } else if (tempregion[i] > tempregion[j]) 
+                            {
+                                regionMap[tempregion[i]] = tempregion[j];
+                            } else {
+                                regionMap[tempregion[j]] = tempregion[i];
+                            };
+                        };
+                        regions[4*((row)*img.width+(col))] = tempregion[0];
                     };
-                    updateFlag = true;
 
-                    //curregion += 1;
+                    updateFlag = true;
+                    prevreg = [undefined,undefined,undefined,undefined]; 
+                    tempregion = [];
                 };
             };
         };
 
-
+        console.log("for loop done",regionMap.length,curregion,regionMap[11]);
+        // console.log(curregion);
         for (var i = 0; i &lt; regionMap.length; i++) {
-            console.log(regionMap[i]);
+            console.log(i,regionMap[i]);
         };
-        console.log(regionMap.length);
 
-        var colors = [[50,0,0],[50,50,0],[50,50,50],[100,50,0],[100,50,50],[200,100,50],[50,200,50],[50,50,200],[100,200,100],[255,0,0],[0,255,0],[0,0,255]];
+        var colors = [[255,0,0],[0,255,0],[0,0,255],[100,100,100],[0,50,50],[200,100,50],[50,200,50],[150,50,200],[100,200,100],[55,0,0],[100,255,0],[100,0,255],[255,255,255]];
         var colormap = [];
         colormap[0] = colors[0];
         //Assign colors
-        for (var i = 0; i &lt; regionMap.length; i++) {
+        for (var i = 0; i &lt;= regionMap.length; i++) {
             if (regionMap[i] != i) {
                 colormap[i] = colormap[regionMap[i]];
             } else{
@@ -851,19 +905,20 @@
             };
         };
 
-
-        //color regions
+        var regionMapTemp = [];
+        curregion = 0;
+        //find regions
         for (var row = 0; row &lt; img.height; row++) 
         {
             for (var col = 0; col &lt; img.width; col++) 
             {
                 if(pix[4*((row)*img.width+(col))] > 1)
                 {
-                    curregion = regionMap.length;
-                    //console.log("Hello World");
+                    curregion = regionMapTemp.length;
+                    // console.log(curregion);
                     for (var i = 0; i &lt; h.length; i++) 
                     {
-                        //checkpix = pix[4*((row+h[i][0])*img.width+(col+h[i][1]))];
+
                         //check if surrounding pixels belong to
                         //an already labeled region
                         if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] &lt; img.width || col+h[i][1] &lt; img.height) 
@@ -872,35 +927,51 @@
                             if (regions[4*((row+h[i][0])*img.width+(col+h[i][1]))] != undefined) 
                             {
                                 updateFlag = false;
-                                tempregion = prevreg;
-                                prevreg = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
-                                regions[4*((row)*img.width+(col))] = prevreg; 
-                                console.log(prevreg,curregion);
-                                if (prevreg > tempregion) 
-                                {
-                                    // console.log(curregion);
-                                    regionMap[prevreg] = tempregion;
-                                    regions[4*((row)*img.width+(col))] = tempregion; 
-                                };
+                                prevreg[i] = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
+                                //console.log(prevreg,curregion);
                             };
-
-
                         };
 
                     };
                     if (updateFlag) 
                     {
-                        regionMap[curregion] = curregion;
-                        regions[4*((row)*img.width+(col))] = curregion; 
-
+                        regionMapTemp[curregion] = curregion;
+                        //curregion++;
+                        regions[4*((row)*img.width+(col))] = curregion;                    
+                    } else {
+                        for (var i = 0; i &lt; prevreg.length; i++)
+                        {
+                            if (prevreg[i] != undefined) {
+                                tempregion[tempregion.length] = prevreg[i];
+                            };
+                        };
+                        for (var i = 0; i &lt; tempregion.length - 1; i++) 
+                        {
+                            j = i + 1;
+                            if (tempregion[i] == tempregion[j]) 
+                            {
+                                //do nothing
+                            } else if (tempregion[i] > tempregion[j]) 
+                            {
+                                regionMapTemp[tempregion[i]] = tempregion[j];
+                            } else {
+                                regionMapTemp[tempregion[j]] = tempregion[i];
+                            };
+                        };
+                        regions[4*((row)*img.width+(col))] = tempregion[0];
                     };
-                    console.log(colormap[0],colormap[0][0],curregion);
-                    // pix[4*((row)*img.width+(col)) + 0] = colormap[regionMap[curregion]][0];
-                    // pix[4*((row)*img.width+(col)) + 1] = colormap[regionMap[curregion]][1];
-                    // pix[4*((row)*img.width+(col)) + 2] = colormap[regionMap[curregion]][2];
-                    // pix[4*((row)*img.width+(col)) + 3] = 255;
-                    updateFlag = true;
 
+                    updateFlag = true;
+                    prevreg = [undefined,undefined,undefined,undefined]; 
+                    tempregion = [];
+                    // console.log(colormap[0],colormap[0][0],curregion -1,colormap[regionMap[curregion-1]]);
+                    currloc = 4*((row)*img.width+(col));
+                    //console.log("curr",curregion,"rm len",regionMap.length,"rm t len",regionMapTemp.length);
+
+                    pix[4*((row)*img.width+(col)) + 0] = colormap[regionMap[regions[currloc]]][0];
+                    pix[4*((row)*img.width+(col)) + 1] = colormap[regionMap[regions[currloc]]][1];
+                    pix[4*((row)*img.width+(col)) + 2] = colormap[regionMap[regions[currloc]]][2];
+                    pix[4*((row)*img.width+(col)) + 3] = 255;
                     //curregion += 1;
                 };
             };

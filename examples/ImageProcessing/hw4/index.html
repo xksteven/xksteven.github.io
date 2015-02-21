@@ -410,7 +410,7 @@
             };
         };
 
-        console.log(OpSize, counter);
+        document.getElementById("Area").innerHTML = counter;
     };
 
     function Erode() {
@@ -487,18 +487,7 @@
         var canvas2 = document.getElementById("canvas2");
         ctx = canvas2.getContext("2d");
         imgd = ctx.getImageData(0,0,img.width,img.height);
-        OpSize = 1;
         findArea(img, imgd);
-        for (var i = 3; i < 42; i = i +2) {
-            OpSize = i;
-            canvas2 = document.getElementById("canvas2");
-            ctx = canvas2.getContext("2d");
-            imgd = ctx.getImageData(0,0,img.width,img.height);
-            ErodebyN(img,imgd,OpSize);
-            imgd = ctx.getImageData(0,0,img.width,img.height);
-            DilatebyN(img,imgd,OpSize);
-            findArea(img, imgd)
-        };
     };
 
     function webGLStart() {
@@ -561,7 +550,9 @@
     <button onclick="Open()">Open</button>
     <button onclick="FindRegions2()">Find Regions</button>
     <button onclick="Reset2()">Back to Original</button>
-    <button onclick="findAreas()">findAreas</button>
+    <button onclick="findAreas()">Find Area</button> 
+    <p>Area = </p>
+    <span id="Area">0</span>
 
     <canvas id="canvas2" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
 

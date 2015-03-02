@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<title>Haar Wavelet</title>
+<title>Hough Transform and Haar Wavelet</title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 
 <script type="text/javascript">
@@ -31,303 +31,189 @@
         ctx.drawImage(img,0,0,img.width,img.height);
     };
 
-    function findRegions(img, imgd) 
+    function buildLookUpTable(radiusMin, radiusMax) 
     {
-        var zerocanx = Math.floor(ctx.viewportWidth / 2);
-        var zerocany = Math.floor(ctx.viewportHeight / 2);
+        var i = 0;
+        var incDen = 4 * radiusMin;
+        var radiusInc = 1;
+        var lut = [[[]],[[]]];
 
-        altImg = ctx.getImageData(0,0,ctx.viewportWidth,ctx.viewportHeight);
-        var altpix = altImg.data;
-
-        var pix = imgd.data;
-        var rowSize = ctx.viewportWidth;
-        var colSize = ctx.viewportHeight;
-        var curregion = 0, tempregion = 0;
-        var h = [[-1,1],[-1,0],[-1,-1],[0,-1]];
-        var regionMap = [];
-        var regions = [];
-        var prevreg = [undefined,undefined,undefined,undefined], tempregion = [];
-        var updateFlag = true;
-        var j, currloc, minval,counter;
-
-        //regionMap[0] = 0;
-        console.log(regionMap.length, null, (null == 0),(regionMap[1] == undefined), regionMap[2]);
-        //find regions
-        for (var row = 0; row < img.height; row++) 
+        for (var i = 0; i < radiusMax; i++) 
         {
-            for (var col = 0; col < img.width; col++) 
+            lut[0][i] = [];
+            lut[1][i] = []; 
+        };
+
+        // for (var tempRadius = radiusMin; tempRadius <= radiusMax; tempRadius++) 
+        // {
+        //     i = 0;
+        //     for (var inc = 0; inc < incDen; inc+=0.1) 
+        //     {
+        //         var angle = (2*Math.PI * inc) / incDen;
+        //         var indexR = (tempRadius - radiusMin)/radiusInc;
+        //         var rcos = Math.round(tempRadius * Math.cos(angle));
+        //         var rsin = Math.round(tempRadius * Math.sin(angle));
+        //         if (i == 0 || ( (rcos != lut[0][indexR][i]) && (rsin != lut[1][indexR][i])) ) 
+        //         {
+        //             lut[0][indexR][i] = rcos;
+        //             lut[1][indexR][i] = rsin;
+        //             i++;
+        //         };
+        //     };
+
+        // };
+
+        for (var tempRadius = radiusMin; tempRadius <= radiusMax; tempRadius++) 
+        {
+            i = 0;
+            for (var row = 0; row < tempRadius; row++) 
             {
-                if(pix[4*((row)*img.width+(col))] > 1)
+                for (var col = 0; col < tempRadius; col++) 
                 {
-                    curregion = regionMap.length;
-                    // console.log(curregion);
-                    for (var i = 0; i < h.length; i++) 
+                    var dist = Math.sqrt(row*row + col*col);
+                    var indexR = tempRadius - radiusMin; 
+                    if ((dist <= (tempRadius + 0.5)) && (dist >= (tempRadius - 0.5) ) ) 
                     {
-                        //check if surrounding pixels belong to
-                        //an already labeled region
-                        if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] < img.width || col+h[i][1] < img.height) 
-                        {
-                            //console.log(regions[4*((row+h[i][0])*img.width+(col+h[i][1]))]);
-                            if (regions[4*((row+h[i][0])*img.width+(col+h[i][1]))] != undefined) 
-                            {
-                                updateFlag = false;
-                                prevreg[i] = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
-                                //console.log(prevreg,curregion);
- 
-                            };
-
-
-                        };
-
+                        lut[0][indexR][i] = col;
+                        lut[1][indexR][i] = row;
+                        i++;
                     };
-                    if (updateFlag) 
-                    {
-                        regionMap[curregion] = curregion;
-                        regions[4*((row)*img.width+(col))] = curregion;                    
-                    } else {
-                        for (var i = 0; i < prevreg.length; i++)
-                        {
-                            if (prevreg[i] != undefined) {
-                                tempregion[tempregion.length] = prevreg[i];
-                            };
-                        };
-                        minval = Infinity;
-                        for (var i = 0; i < tempregion.length; i++) {
-                            if (tempregion[i] < minval) {
-                                minval = tempregion[i];
-                            }
-                        };
-                        for (var i = 0; i < tempregion.length; i++) 
-                        {
-                            if (tempregion[i] > minval) 
-                            {
-                                regionMap[tempregion[i]] = minval;
-                                tempregion[i] = minval;
-                            };
-                        };
-                        regions[4*((row)*img.width+(col))] = tempregion[0];
-                    };
-
-                    updateFlag = true;
-                    prevreg = [undefined,undefined,undefined,undefined]; 
-                    tempregion = [];
                 };
             };
-        };
+        };        
 
-        console.log("for loop done",regionMap.length,curregion,regionMap[11]);
-        // console.log(curregion);
-        for (var i = 0; i < regionMap.length; i++) {
-            console.log(i,regionMap[i]);
-        };
-
-        var colors = [[255,0,0],[2,255,0],[2,0,255],[100,100,100],[2,50,50],[200,100,50],[50,200,50],[150,50,200],[100,200,100],[55,0,0],[100,255,0],[100,0,255],[255,255,255],[50,50,50],[10,150,250],[200,10,150],[200,150,10],[2,255,0],[2,0,255],[100,100,100],[2,50,50],[200,100,50],[50,200,50],[150,50,200],[100,200,100],[55,0,0],[100,255,0],[100,0,255],[255,255,255],[50,50,50],[10,150,250],[200,10,150],[200,150,10],[2,255,0]];
-        var colormap = [];
-        colormap[0] = colors[0];
-        counter = 0;
-        //Assign colors
-        for (var i = 0; i <= regionMap.length; i++) {
-            if (regionMap[i] != i) {
-                colormap[i] = colormap[regionMap[i]];
-            } else{
-                colormap[i] = colors[counter];
-                counter++;
-            };
-        };
-
-        var regionMapTemp = [];
-        curregion = 0;
-        //find regions
-        for (var row = 0; row < img.height; row++) 
-        {
-            for (var col = 0; col < img.width; col++) 
-            {
-                if(pix[4*((row)*img.width+(col))] > 1)
-                {
-                    curregion = regionMapTemp.length;
-                    // console.log(curregion);
-                    for (var i = 0; i < h.length; i++) 
-                    {
-
-                        //check if surrounding pixels belong to
-                        //an already labeled region
-                        if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] < img.width || col+h[i][1] < img.height) 
-                        {
-                            //console.log(regions[4*((row+h[i][0])*img.width+(col+h[i][1]))]);
-                            if (regions[4*((row+h[i][0])*img.width+(col+h[i][1]))] != undefined) 
-                            {
-                                updateFlag = false;
-                                prevreg[i] = regions[4*((row+h[i][0])*img.width+(col+h[i][1]))];
-                                //console.log(prevreg,curregion);
-                            };
-                        };
-
-                    };
-                    if (updateFlag) 
-                    {
-                        regionMapTemp[curregion] = curregion;
-                        //curregion++;
-                        regions[4*((row)*img.width+(col))] = curregion;                    
-                    } else {
-                        for (var i = 0; i < prevreg.length; i++)
-                        {
-                            if (prevreg[i] != undefined) {
-                                tempregion[tempregion.length] = prevreg[i];
-                            };
-                        };
-                        minval = Infinity;
-                        for (var i = 0; i < tempregion.length; i++) {
-                            if (tempregion[i] < minval) {
-                                minval = tempregion[i];
-                            }
-                        };
-                        for (var i = 0; i < tempregion.length; i++) 
-                        {
-                            if (tempregion[i] == minval) 
-                            {
-                                //do nothing
-                            } else if (tempregion[i] > minval) 
-                            {
-                                regionMap[tempregion[i]] = minval;
-                                tempregion[i] = minval;
-                            };
-                        };
-                        regions[4*((row)*img.width+(col))] = tempregion[0];
-                    };
-
-                    updateFlag = true;
-                    prevreg = [undefined,undefined,undefined,undefined]; 
-                    tempregion = [];
-                    // console.log(colormap[0],colormap[0][0],curregion -1,colormap[regionMap[curregion-1]]);
-                    currloc = 4*((row)*img.width+(col));
-                    //console.log("curr",curregion,"rm len",regionMap.length,"rm t len",regionMapTemp.length);
-
-                    pix[4*((row)*img.width+(col)) + 0] = colormap[regionMap[regions[currloc]]][0];
-                    pix[4*((row)*img.width+(col)) + 1] = colormap[regionMap[regions[currloc]]][1];
-                    pix[4*((row)*img.width+(col)) + 2] = colormap[regionMap[regions[currloc]]][2];
-                    pix[4*((row)*img.width+(col)) + 3] = 255;
-                    //curregion += 1;
-                };
-            };
-        };
-
-        //Copy pix data to canvas
-        for (var row = 0; row < img.height; row++) {
-            for (var col = 0; col < img.width; col++) {
-                altpix[4*(row*rowSize + col) ] = pix[4*(row * img.width + col)];
-                altpix[4*(row*rowSize + col)+1 ] =  pix[4*(row * img.width + col) + 1];
-
-                altpix[4*(row*rowSize + col)+2 ] =  pix[4*(row * img.width + col) + 2];
-
-                altpix[4*(row*rowSize + col)+3 ] =  pix[4*(row * img.width + col) + 3];
-            };
-        };
-
-
-
-        ctx.putImageData(altImg,0,0);
+        return lut;
     };
 
-
-    function DilatebyN(img, imgd, N) 
+    function houghTransform(img, imgd, thresh) 
     {
 
         altImg = ctx.getImageData(0,0,ctx.viewportWidth,ctx.viewportHeight);
         var altpix = altImg.data;
-
         var pix = imgd.data;
         var rowSize = ctx.viewportWidth;
         var colSize = ctx.viewportHeight;
-        var updateFlag = true;
 
-        var temp;
-        var h = [];
-        var halfn = Math.floor(N/2);
-        var n = (-1)*halfn;
-        var counter = 0;
+        for (var row = 1; row < img.height - 1; row++) 
+        {
+            for (var col = 1; col < img.width - 1; col++) 
+            {
+                altpix[4*(row*rowSize + col) ] = 0;
+                altpix[4*(row*rowSize + col)+1 ] = 0;
 
-        for (var i = 0; i < N; i++) {
-            for (var j = 0; j < N; j++) {
-                if ( (n+i)*(n+i) + (n+j)*(n+j) <= N*N)  
-                {
-                    temp = [n + i,n+j];
-                    h[counter] = (temp);
-                    counter++;
-                };
+                altpix[4*(row*rowSize + col)+2 ] = 0;
 
-                // square operator
-                // temp = [n + i,n+j];
-                // h[i*N+j] = (temp);
-
+                altpix[4*(row*rowSize + col)+3 ] = 255;
             };
         };
 
+        var height = img.height;
+        var width = img.width;
+        var radiusMin = 1;
+        var radiusMax = 50;
 
-        counter = 0;
+        var lut = buildLookUpTable(radiusMin, radiusMax);
 
-        //Dilate it
-        for (var row = 0; row < img.height; row++) 
+        var houghValues =  [[[]]];
+
+        for (var i = 0; i <= img.width; i++) 
         {
-            for (var col = 0; col < img.width; col++) 
+            houghValues[i] = [];
+            for (var j = 0; j <= height; j++) 
+            {
+                houghValues[i][j] = [];
+                for (var k = 0; k < radiusMax + 1; k++) 
+                {
+                    houghValues[i][j][k] = 0;
+                };
+            };
+        };
+
+        //Hough Transform
+        for (var row = 1; row < img.height - 1; row++) 
+        {
+            for (var col = 1; col < img.width - 1; col++) 
             {
 
-                for (var i = 0; i < h.length; i++) 
+                for (var tempRadius = radiusMin; tempRadius <= radiusMax; tempRadius++) 
                 {
-                    //check if surrounding pixels belong to
-                    //an already labeled region
-                    if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] < img.width || col+h[i][1] < img.height) 
+
+                    if (pix[4*((row)*img.width+(col))] > 1) 
                     {
-                        if (pix[4*((row+h[i][0])*img.width+(col+h[i][1]))] > 1) 
+                        var indexR = (tempRadius - radiusMin);
+                        for (var i = 0; i < lut[0][indexR].length; i++) 
                         {
-                            altpix[4*(row*rowSize + col) ] = 255;
-                            altpix[4*(row*rowSize + col)+1 ] = 255;
+                            var a = col + lut[1][indexR][i];
+                            var b = row + lut[0][indexR][i];
+                            if((b >= 0) && (b < height) && (a >= 0) && (a < width)) 
+                            {
+                                houghValues[a][b][indexR-1] = houghValues[a][b][indexR-1] + 1;
+                                altpix[4*(b*rowSize + a) ] += 1;
+                                altpix[4*(b*rowSize + a)+1 ] += 0;
 
-                            altpix[4*(row*rowSize + col)+2 ] = 255;
+                                altpix[4*(b*rowSize + a)+2 ] += 1;
 
-                            altpix[4*(row*rowSize + col)+3 ] = 255;
-                            updateFlag = false;
-                            break;
+                                altpix[4*(b*rowSize + a)+3 ] = 255;
+                            }
                         };
-
                     };
-
                 };
-                if (updateFlag) 
-                {
-                    altpix[4*(row*rowSize + col) ] = 0;
-                    altpix[4*(row*rowSize + col)+1 ] = 0;
-
-                    altpix[4*(row*rowSize + col)+2 ] = 0;
-
-                    altpix[4*(row*rowSize + col)+3 ] = 255;
-                };
-                updateFlag = true;
-
             };
         };
 
-        ctx.putImageData(altImg,0,0);
-    };
+        //find the max radius
+        var maxCounter = 0;
+        var maxRs = [];
 
-    function findArea(img, imgd) {
-        var pix = imgd.data;
-        var counter = 0;
-
-        //find Area
-        for (var row = 0; row < img.height; row++) 
+        for (var k = 0; k < radiusMax + 1; k++ ) 
         {
-            for (var col = 0; col < img.width; col++) 
+            for (var j = 0; j < img.height; j++) 
             {
-
-                if (pix[4*((row)*img.width+(col))] > 1) 
+                for (var i = 0; i < img.width; i++) 
                 {
-                    counter++;
+                    if (houghValues[i][j][k] > maxCounter) 
+                    {
+                        maxCounter = houghValues[i][j][k];
+                    };
                 };
-
             };
         };
 
-        document.getElementById("Area").innerHTML = counter;
+        for (var k = 0; k < radiusMax + 1; k++ ) 
+        {
+            for (var j = 0; j < img.height; j++) 
+            {
+                for (var i = 0; i < img.width; i++) 
+                {
+                    if (houghValues[i][j][k] >= maxCounter-thresh) 
+                    {
+                        for (var row = -k; row < k; row++) 
+                        {
+                            for (var col = -k; col < k; col++) 
+                            {
+                                var dist = Math.sqrt(row*row + col*col);
+                                var b = j + row;
+                                var a = i + col;
+                                if ((dist <= (k + 1)) && (dist >= (k - 1) ) ) 
+                                {
+                                altpix[4*(b*rowSize + a) ] += 0;
+                                altpix[4*(b*rowSize + a)+1 ] = 255;
+
+                                altpix[4*(b*rowSize + a)+2 ] += 0;
+
+                                altpix[4*(b*rowSize + a)+3 ] = 255;
+                                };
+                            };
+                        };
+                    };
+                };
+            };
+        };
+
+
+        console.log(maxCounter);
+
+        ctx.putImageData(altImg,0,height + 5);
     };
 
 
@@ -345,6 +231,10 @@
     function showValue(newValue)
     {
         document.getElementById("range").innerHTML = newValue;
+        var canvas0 = document.getElementById("canvas0");
+        var ctx0 = canvas0.getContext("2d");
+        imgd = ctx0.getImageData(0,0,canvas0.width,canvas0.height);
+        houghTransform(img, imgd, newValue);
     }
 
 
@@ -354,7 +244,7 @@
         var canvas2 = document.getElementById("canvas2");
         var canvas3 = document.getElementById("canvas3");
         img = new Image();
-        img.src = "img_lena.png";
+        img.src = "img_hough_circle.png";
         var imgd;
         img.onload = function() {
             initGL(canvas0);
@@ -364,12 +254,20 @@
             imgd = ctx.getImageData(0,0,canvas0.width,canvas0.height);
             initGL(canvas1);
             ctx.putImageData(imgd,0,0);
-            initGL(canvas2);
-            ctx.putImageData(imgd,0,0);
+            var thresh = 6;
+            houghTransform(img, imgd, thresh);
             // ErodebyN(img,imgd,17);
-
         };
-
+        var img2 = new Image();
+        img2.src = "img_lena.png";
+        img2.onload = function() {
+            initGL(canvas2);
+            canvas2.width = img2.width;
+            canvas2.height = img2.height;
+            drawScene(img2);
+            imgd = ctx.getImageData(0,0,canvas2.width,canvas2.height);
+            initGL(canvas3);
+        };
     };
 </script>
 
@@ -382,26 +280,12 @@
 
     <canvas id="canvas0" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
 
-    <p></p>
+    <p>Threshold for finding circles, with the hough transform in purple and green circles represting circles found at that threshold.</p>
 
-    <button onclick="FindRegions1()">Find Regions</button>
+    <input style="padding-left=100px" type="range" min="1" max="50" value="6" step="1" onchange="showValue(this.value)" />
+    <span id="range">6</span>
     <button onclick="Reset()">Back to Original</button>
     <canvas id="canvas1" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
-
-    <p>Select Size of n x n circular operator to use to erode, dilate, or open (open = erode then dialte) the image</p>
-    <input style="padding-left=100px" type="range" min="1" max="99" value="3" step="2" onchange="showValue(this.value)" />
-    <span id="range">3</span>
-    <p></p>
-    <button onclick="Erode()">Erode</button>
-    <button onclick="Dilate()">Dilate</button>
-    <button onclick="Open()">Open</button>
-    <button onclick="FindRegions2()">Find Regions</button>
-    <button onclick="Reset2()">Back to Original</button>
-    <button onclick="findAreas()">Find Area</button> 
-    <p>Area = </p>
-    <span id="Area">0</span>
-
-    <canvas id="canvas2" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
 
     <button onclick="onOff0()">Show relevant JS code</button>
     <script type="text/javascript">
@@ -417,173 +301,179 @@
     <pre id="item0" style="display:none;">
         Javascript Code:
         <code>
-            function ErodebyN(img, imgd, N) 
+        function buildLookUpTable(radiusMin, radiusMax) 
+    {
+        var i = 0;
+        var incDen = 4 * radiusMin;
+        var radiusInc = 1;
+        var lut = [[[]],[[]]];
+
+        for (var i = 0; i &lt; radiusMax; i++) 
+        {
+            lut[0][i] = [];
+            lut[1][i] = []; 
+        };
+
+        for (var tempRadius = radiusMin; tempRadius &lt;= radiusMax; tempRadius++) 
+        {
+            i = 0;
+            for (var row = 0; row &lt; tempRadius; row++) 
             {
-
-                altImg = ctx.getImageData(0,0,ctx.viewportWidth,ctx.viewportHeight);
-                var altpix = altImg.data;
-
-                var pix = imgd.data;
-                var rowSize = ctx.viewportWidth;
-                var colSize = ctx.viewportHeight;
-                var curregion = 0, tempregion = 0;
-                var counter = 0;
-
-                var temp;
-                var h = [];
-                var halfn = Math.floor(N/2);
-                var n = (-1)*halfn;
-
-                for (var i = 0; i &lt; N; i++) {
-                    for (var j = 0; j &lt; N; j++) {
-                        if ( (n+i)*(n+i) + (n+j)*(n+j) &lt;= N*N)  
-                        {
-                            temp = [n + i,n+j];
-                            h[counter] = (temp);
-                            counter++;
-                        };
-
-                        // //row
-                        // h[i*N+j][0] = n + i;
-                        // //col
-                        // h[i*N+j][1] = n + j;
-                    };
-                };
-                counter = 0;
-
-                //Erode it
-                for (var row = 0; row &lt; img.height; row++) 
+                for (var col = 0; col &lt; tempRadius; col++) 
                 {
-                    for (var col = 0; col &lt; img.width; col++) 
+                    var dist = Math.sqrt(row*row + col*col);
+                    var indexR = tempRadius - radiusMin; 
+                    if ((dist &lt;= (tempRadius + 0.5)) &amp;&amp; (dist >= (tempRadius - 0.5) ) ) 
                     {
-                        if(pix[4*((row)*img.width+(col))] > 1)
-                        {
-
-                            for (var i = 0; i &lt; h.length; i++) 
-                            {
-                                //check if surrounding pixels belong to
-                                //an already labeled region
-                                if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] &lt; img.width || col+h[i][1] &lt; img.height) 
-                                {
-                                    if (pix[4*((row+h[i][0])*img.width+(col+h[i][1]))] > 1) 
-                                    {
-                                        counter++;
-                                    } else {break;};
-
-
-                                } else{break;};
-
-                            };
-
-                        };
-                        //console.log(counter,N*N);
-                        if (counter == N*N) {
-                            altpix[4*(row*rowSize + col) ] = 255;
-                            altpix[4*(row*rowSize + col)+1 ] = 255;
-
-                            altpix[4*(row*rowSize + col)+2 ] = 255;
-
-                            altpix[4*(row*rowSize + col)+3 ] = 255;
-                        } else
-                        {
-                            altpix[4*(row*rowSize + col) ] = 0;
-                            altpix[4*(row*rowSize + col)+1 ] = 0;
-
-                            altpix[4*(row*rowSize + col)+2 ] = 0;
-
-                            altpix[4*(row*rowSize + col)+3 ] = 255;
-                        };
-                        counter = 0;
-
+                        lut[0][indexR][i] = col;
+                        lut[1][indexR][i] = row;
+                        i++;
                     };
                 };
-
-                ctx.putImageData(altImg,0,0);
             };
+        };        
 
-            function DilatebyN(img, imgd, N) 
+        return lut;
+    };
+
+    function houghTransform(img, imgd, thresh) 
+    {
+
+        altImg = ctx.getImageData(0,0,ctx.viewportWidth,ctx.viewportHeight);
+        var altpix = altImg.data;
+        var pix = imgd.data;
+        var rowSize = ctx.viewportWidth;
+        var colSize = ctx.viewportHeight;
+
+        for (var row = 1; row &lt; img.height - 1; row++) 
+        {
+            for (var col = 1; col &lt; img.width - 1; col++) 
+            {
+                altpix[4*(row*rowSize + col) ] = 0;
+                altpix[4*(row*rowSize + col)+1 ] = 0;
+
+                altpix[4*(row*rowSize + col)+2 ] = 0;
+
+                altpix[4*(row*rowSize + col)+3 ] = 255;
+            };
+        };
+
+        var height = img.height;
+        var width = img.width;
+        var radiusMin = 1;
+        var radiusMax = 50;
+
+        var lut = buildLookUpTable(radiusMin, radiusMax);
+
+        var houghValues =  [[[]]];
+
+        for (var i = 0; i &lt;= img.width; i++) 
+        {
+            houghValues[i] = [];
+            for (var j = 0; j &lt;= height; j++) 
+            {
+                houghValues[i][j] = [];
+                for (var k = 0; k < radiusMax + 1; k++) 
+                {
+                    houghValues[i][j][k] = 0;
+                };
+            };
+        };
+
+        //Hough Transform
+        for (var row = 1; row &lt; img.height - 1; row++) 
+        {
+            for (var col = 1; col &lt; img.width - 1; col++) 
             {
 
-                altImg = ctx.getImageData(0,0,ctx.viewportWidth,ctx.viewportHeight);
-                var altpix = altImg.data;
+                for (var tempRadius = radiusMin; tempRadius &lt;= radiusMax; tempRadius++) 
+                {
 
-                var pix = imgd.data;
-                var rowSize = ctx.viewportWidth;
-                var colSize = ctx.viewportHeight;
-                var updateFlag = true;
-
-                var temp;
-                var h = [];
-                var halfn = Math.floor(N/2);
-                var n = (-1)*halfn;
-                var counter = 0;
-
-                for (var i = 0; i &lt; N; i++) {
-                    for (var j = 0; j &lt; N; j++) {
-                        if ( (n+i)*(n+i) + (n+j)*(n+j) &lt;= N*N)  
+                    if (pix[4*((row)*img.width+(col))] > 1) 
+                    {
+                        var indexR = (tempRadius - radiusMin);
+                        for (var i = 0; i &lt; lut[0][indexR].length; i++) 
                         {
-                            temp = [n + i,n+j];
-                            h[counter] = (temp);
-                            counter++;
+                            var a = col + lut[1][indexR][i];
+                            var b = row + lut[0][indexR][i];
+                            if((b >= 0) &amp;&amp; (b &lt; height) &amp;&amp; (a >= 0) &amp;&amp; (a &lt; width)) 
+                            {
+                                houghValues[a][b][indexR-1] = houghValues[a][b][indexR-1] + 1;
+                                altpix[4*(b*rowSize + a) ] += 1;
+                                altpix[4*(b*rowSize + a)+1 ] += 0;
+
+                                altpix[4*(b*rowSize + a)+2 ] += 1;
+
+                                altpix[4*(b*rowSize + a)+3 ] = 255;
+                            }
                         };
-
-                        // square operator
-                        // temp = [n + i,n+j];
-                        // h[i*N+j] = (temp);
-
                     };
                 };
+            };
+        };
 
+        //find the max radius
+        var maxCounter = 0;
+        var maxRs = [];
 
-                counter = 0;
-
-                //Dilate it
-                for (var row = 0; row &lt; img.height; row++) 
+        for (var k = 0; k &lt; radiusMax + 1; k++ ) 
+        {
+            for (var j = 0; j &lt; img.height; j++) 
+            {
+                for (var i = 0; i &lt; img.width; i++) 
                 {
-                    for (var col = 0; col &lt; img.width; col++) 
+                    if (houghValues[i][j][k] > maxCounter) 
                     {
+                        maxCounter = houghValues[i][j][k];
+                    };
+                };
+            };
+        };
 
-                        for (var i = 0; i &lt; h.length; i++) 
+        for (var k = 0; k &lt; radiusMax + 1; k++ ) 
+        {
+            for (var j = 0; j &lt; img.height; j++) 
+            {
+                for (var i = 0; i &lt; img.width; i++) 
+                {
+                    if (houghValues[i][j][k] >= maxCounter-thresh) 
+                    {
+                        for (var row = -k; row &lt; k; row++) 
                         {
-                            //check if surrounding pixels belong to
-                            //an already labeled region
-                            if (row+h[i][0] >= 0 ||  col+h[i][1] >= 0 || row+h[i][0] &lt; img.width || col+h[i][1] &lt; img.height) 
+                            for (var col = -k; col &lt; k; col++) 
                             {
-                                if (pix[4*((row+h[i][0])*img.width+(col+h[i][1]))] > 1) 
+                                var dist = Math.sqrt(row*row + col*col);
+                                var b = j + row;
+                                var a = i + col;
+                                if ((dist &lt;= (k + 1)) &amp;&amp; (dist >= (k - 1) ) ) 
                                 {
-                                    altpix[4*(row*rowSize + col) ] = 255;
-                                    altpix[4*(row*rowSize + col)+1 ] = 255;
+                                altpix[4*(b*rowSize + a) ] += 0;
+                                altpix[4*(b*rowSize + a)+1 ] = 255;
 
-                                    altpix[4*(row*rowSize + col)+2 ] = 255;
+                                altpix[4*(b*rowSize + a)+2 ] += 0;
 
-                                    altpix[4*(row*rowSize + col)+3 ] = 255;
-                                    updateFlag = false;
-                                    break;
+                                altpix[4*(b*rowSize + a)+3 ] = 255;
                                 };
-
                             };
-
                         };
-                        if (updateFlag) 
-                        {
-                            altpix[4*(row*rowSize + col) ] = 0;
-                            altpix[4*(row*rowSize + col)+1 ] = 0;
-
-                            altpix[4*(row*rowSize + col)+2 ] = 0;
-
-                            altpix[4*(row*rowSize + col)+3 ] = 255;
-                        };
-                        updateFlag = true;
-
                     };
                 };
-
-                ctx.putImageData(altImg,0,0);
             };
+        };
+
+
+        console.log(maxCounter);
+
+        ctx.putImageData(altImg,0,height + 5);
+    };
         </code>
     </pre>
 
-    <p> Plot of graph of Area versus Operator Size.  The first point equals the original area.</p>
+    <p></p>
+    <canvas id="canvas2" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
+
+    <p></p>
+
     <canvas id="canvas3" style="border: 1px solid #000000; margin-left: auto; margin-right: auto; display: block;" width="500" height="500"></canvas>
 
     <br/>

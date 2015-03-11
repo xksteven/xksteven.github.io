@@ -262,7 +262,7 @@
             Haar[row] = [];
             for (var col = 0; col < img.width; col++) {
                 Haar[row][col] = [];
-                for (var i = 0; i < 3; i++) {
+                for (var i = 0; i < 4; i++) {
                      Haar[row][col][i] = pix[4*(row*img.width + col + i)];
                 };
             };
@@ -324,7 +324,7 @@
 
                 altpix[4*(row*rowSize + col)+2 ] =  Haar[row][col][2];
 
-                altpix[4*(row*rowSize + col)+3 ] =  255;
+                altpix[4*(row*rowSize + col)+3 ] =  Haar[row][col][3];
             };
         };
         ctx.putImageData(altImg,0,0);

@@ -236,7 +236,6 @@
         for (var i = 0; i < HaarMatrix.length; i++) {
             HaarMatrix[i] = tempHaar[i];
         };
-
     };
 
     function HaarTransform(img, imgd, MaxStepHaar) 
@@ -324,10 +323,11 @@
 
                 altpix[4*(row*rowSize + col)+2 ] =  Haar[row][col][2];
 
-                altpix[4*(row*rowSize + col)+3 ] =  Haar[row][col][3];
+                altpix[4*(row*rowSize + col)+3 ] =  255;
             };
         };
-        ctx.putImageData(altImg,0,0);
+        ctx.putImageData(imgd,0,0);
+        ctx.putImageData(altImg,0,height + 5);
     };
 
 

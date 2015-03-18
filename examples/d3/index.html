@@ -258,7 +258,9 @@ function threshold(thresh) {
 }
 
 var focused = null;
-d3.select("body").on("keydown", function () { d3.select(focused);  });
+d3.select("body").on("keydown", function () { d3.select(focused); 
+ releasenode(focused);
+});
 
 //Restart the visualisation after any node and link changes
 

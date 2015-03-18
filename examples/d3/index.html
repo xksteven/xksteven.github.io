@@ -86,15 +86,19 @@ var node_drag = d3.behavior.drag()
     }
 
     function dragend(d, i) {
-      if (d.fixed == false) {connectedNodes(d);};
+
+      // if (d.fixed == false) {connectedNodes(d);};
+
         d.fixed = true; // of course set the node to fixed so the force doesn't include the node in its auto positioning stuff
         tick();
         force.resume();
     }
 
     function releasenode(d) {
-        d.fixed = false; 
-        connectedNodes(d);
+        d.fixed = false;
+
+        // connectedNodes(d);
+
         //force.resume();
     }
     //end of code for new drag and fix
@@ -158,7 +162,8 @@ edgepaths = svg.selectAll(".edgepath")
       //.call(force.drag)
       // .on('dblclick', releasenode)
       // .on('dblclick', connectedNodes)
-      .on("click", function () { focused = this; })
+      .on('dblclick',releasenode)
+      .on('click', function () { focused = this.__data__; })
       .call(node_drag);
 
   // node.append("title")
@@ -258,8 +263,10 @@ function threshold(thresh) {
 }
 
 var focused = null;
-d3.select("body").on("keydown", function () { d3.select(focused); 
- releasenode(focused);
+d3.select("body").on("keydown", function () { 
+  d3.select(focused);
+  // console.log(focused); 
+  connectedNodes(focused);
 });
 
 //Restart the visualisation after any node and link changes
@@ -276,25 +283,28 @@ function restart() {
 
 //This function looks up whether a pair are neighbours  
 function neighboring(a, b) {
-  // console.log(a);
+  // console.log(b);
+  // **********************
+  // THIS is always returning zero for some reason
   return linkedByIndex[a.index + "," + b.index];
 }
 function connectedNodes(mynode) 
 {
     if (toggle == 0) {
         //Reduce the opacity of all but the neighbouring nodes
-        d = d3.select(this).node.__data__;
+        // d = d3.select(this).node.__data__;
         d = mynode;
-        console.log(d3.select(this).node());
-        console.log(mynode);
+        // console.log(d3.select(this).node());
+        // console.log("my node = ", mynode);
+
         node.style("opacity", function (o) {
-            return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+            console.log("d = ", d, "o = ", o);
+            return d==o || neighboring(d, o) || neighboring(o, d) ? 1 : 0.1;
         });
         
         link.style("opacity", function (o) {
-            return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+            return d.index==o.source.index || d.index==o.target.index ? 1 : 0.1;
         });
-        
         //Reduce the op
         toggle = 1;
     } else 
@@ -304,6 +314,7 @@ function connectedNodes(mynode)
         link.style("opacity", 1);
         toggle = 0;
     }
+    restart();
 }
 
 </script>

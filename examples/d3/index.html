@@ -298,7 +298,7 @@ function connectedNodes(mynode)
         // console.log("my node = ", mynode);
 
         node.style("opacity", function (o) {
-            console.log("d = ", d, "o = ", o);
+            // console.log("d = ", d, "o = ", o);
             return d==o || neighboring(d, o) || neighboring(o, d) ? 1 : 0.1;
         });
         

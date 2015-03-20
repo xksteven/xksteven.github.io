@@ -252,17 +252,9 @@ function threshold(thresh) {
   restart();
 }
 
-var focused = null;
-d3.select("body").on("keydown", function () { 
-  if(focused == null) {return}; 
-  d3.select(focused); 
-  connectedNodes(focused);
-});
-
 //Restart the visualisation after any node and link changes
 
 function restart() {
-  
   link = link.data(graphic.links);
   link.exit().remove();
   link.enter().insert("line", ".node").attr("class", "link");
@@ -270,6 +262,13 @@ function restart() {
   node.enter().insert("circle", ".cursor").attr("class", "node").attr("r", 5).call(force.drag);
   force.start();
 }
+
+var focused = null;
+d3.select("body").on("keydown", function () { 
+  if(focused == null) {return}; 
+  d3.select(focused); 
+  connectedNodes(focused);
+});
 
 //This function looks up whether a pair are neighbours  
 function neighboring(a, b) {

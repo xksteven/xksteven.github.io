@@ -260,7 +260,7 @@ function threshold(thresh) {
 }
 
 var focused = null;
-d3.select("svg").on("keydown", function () {
+d3.select("body").on("keydown", function () {
   if(focused == null) {return}; 
   d3.select(focused);
   // console.log(focused); 

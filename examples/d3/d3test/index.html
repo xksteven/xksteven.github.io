@@ -42,7 +42,7 @@ h3 {
 <body>
 
 <form>
-    <h3> Link threshold 0 <input type="range" id="thersholdSlider" name="points" value = 0 min="0" max="20" step="1" onchange="threshold(this.value)"> 20 Current Val: <var id="CurrVal">0</var></h3> 
+    <h3> Link threshold 0 <input type="range" id="thersholdSlider" name="points" value = 0 min="0" max="2" step="0.05" onchange="threshold(this.value)"> 2 Current Val: <var id="CurrVal">0</var></h3> 
 </form>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
@@ -107,38 +107,42 @@ var node_drag = d3.behavior.drag()
   var graphRec;
   var link, node, edgepaths, edgelabels;
 
-var graphic = d3.json("graph.json", function(error, graph) {
+var graphic = d3.json("json.json", function(error, graph) {
   graphic = graph;
-  graphRec=JSON.parse(JSON.stringify(graph));
+  graphRec = JSON.parse(JSON.stringify(graph));
 
   // This handles when edges are not indexed by enumerated value
-    // var edges = [];
-    // console.log(graph.links);
-    // graph.links.forEach(function(e) 
-    // { 
-    //   var sourceNode = graph.nodes.filter(function(n) { return n.name === e.source; })[0];
-    //   var targetNode = graph.nodes.filter(function(n) { return n.name === e.target; })[0];
-        
-    //   edges.push({source: sourceNode, target: targetNode, value: e.value});
-    // });
-    // sol src: http://stackoverflow.com/questions/23986466/d3-force-layout-linking-nodes-by-name-instead-of-index
-    // End edge/link handling
+  var edges = [];
+  graph.links.forEach(function(e) 
+  { 
+    var sourceNode = graph.nodes.filter(function(n) { return n.name === e.source; })[0];
+    var targetNode = graph.nodes.filter(function(n) { return n.name === e.target; })[0];
+      
+    edges.push({source: sourceNode, target: targetNode, value: e.value});
+  });
+  // sol src: http://stackoverflow.com/questions/23986466/d3-force-layout-linking-nodes-by-name-instead-of-index
+  // End edge/link handling
+
+  //This breaks it but don't know why
+  // var edges2 = edges;
+  // graphic.links = edges2;
+  graphRec.links = edges;
 
   force
       .nodes(graph.nodes)
-      .links(graph.links)
+      .links(edges)
       .start();
 
   link = svg.selectAll(".link")
-      .data(graph.links)
+      .data(edges)
     .enter().append("line")
-      .attr("class", "link")
-      .style("stroke-width", function(d) { 
-        return Math.sqrt(d.value); 
-      });
+      .attr("class", "link");
+      // .style("stroke-width", function(d) { 
+      //   return Math.sqrt(d.value); 
+      // });
 
 edgepaths = svg.selectAll(".edgepath")
-        .data(graph.links)
+        .data(edges)
         .enter()
         .append('path')
         .attr({'d': function(d) {return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y},
@@ -151,7 +155,7 @@ edgepaths = svg.selectAll(".edgepath")
         .style("pointer-events", "none");
 
   edgelabels = svg.selectAll(".edgelabel")
-      .data(graph.links)
+      .data(edges)
       .enter()
       .append('text')
       .style("opacity",0)
@@ -167,7 +171,7 @@ edgepaths = svg.selectAll(".edgepath")
       .append('textPath')
       .attr('xlink:href',function(d,i) {return '#edgepath'+i})
       .style("pointer-events", "none")
-      .data(graph.links)
+      .data(edges)
       .text(function(d) { 
         return ('Prob ' + d.value); 
       }); //function(d,i){return 'label '+i});
@@ -243,6 +247,9 @@ node.append("circle")
   };
 
 function threshold(thresh) {
+  // console.log(graphic,graphic.links);
+  console.log("graphic =",graphic.links);
+  console.log("graphRec =", graphRec);
   graphic.links.splice(0, graphic.links.length);
 
   for (var i = 0; i < graphRec.links.length; i++) {
@@ -253,16 +260,18 @@ function threshold(thresh) {
 }
 
 var focused = null;
-d3.select("body").on("keydown", function () { 
+d3.select("body").on("keydown", function () {
   if(focused == null) {return}; 
-  d3.select(focused); 
+  d3.select(focused);
+  // console.log(focused); 
   connectedNodes(focused);
 });
 
 //Restart the visualisation after any node and link changes
 
 function restart() {
-  
+  // console.log(link);
+  // console.log(link.data(graphic.links));
   link = link.data(graphic.links);
   link.exit().remove();
   link.enter().insert("line", ".node").attr("class", "link");
@@ -288,7 +297,9 @@ function connectedNodes(mynode)
             return d == o || neighboring(d, o) || neighboring(o, d) ? 1 : 0.1;
         });
         
+        // console.log(link);
         link.style("opacity", function (o) {
+          console.log(d,o);
             return d.index==o.source.index || d.index==o.target.index ? 1 : 0.1;
         });
         edgelabels.style("opacity", function (o) {

@@ -141,6 +141,7 @@ edgepaths = svg.selectAll(".edgepath")
       .data(graph.links)
       .enter()
       .append('text')
+      .style("opacity",0)
       .style("pointer-events", "none")
       .attr({'class':'edgelabel',
              'id':function(d,i){return 'edgelabel'+i},
@@ -149,10 +150,14 @@ edgepaths = svg.selectAll(".edgepath")
              'font-size':10,
              'fill':'#aaa'});
 
-  edgelabels.append('textPath')
+  edgelabels
+      .append('textPath')
       .attr('xlink:href',function(d,i) {return '#edgepath'+i})
       .style("pointer-events", "none")
-      .text(function(d,i){return 'label '+i});
+      .data(graph.links)
+      .text(function(d) { 
+        return ('Prob ' + d.value); 
+      }); //function(d,i){return 'label '+i});
 
 
   node = svg.selectAll(".node")
@@ -193,34 +198,6 @@ node.append("circle")
   //End of setup for turning on selected node
 
   force.on("tick", tick);
-  // function tick() {
-  //   link.attr("x1", function(d) { return d.source.x; })
-  //       .attr("y1", function(d) { return d.source.y; })
-  //       .attr("x2", function(d) { return d.target.x; })
-  //       .attr("y2", function(d) { return d.target.y; });
-
-  //   // node.attr("cx", function(d) { return d.x; })
-  //       // .attr("cy", function(d) { return d.y; });
-
-  //   node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-  //   edgepaths.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
-  //                                          //console.log(d)
-  //                                          return path}); 
-
-  //   edgelabels.attr('transform',function(d,i){
-  //           if (d.target.x<d.source.x){
-  //               bbox = this.getBBox();
-  //               rx = bbox.x+bbox.width/2;
-  //               ry = bbox.y+bbox.height/2;
-  //               return 'rotate(180 '+rx+' '+ry+')';
-  //               }
-  //           else {
-  //               return 'rotate(0)';
-  //               }
-  //             });
-  // };
-
 });
 
 
@@ -283,9 +260,6 @@ function restart() {
 
 //This function looks up whether a pair are neighbours  
 function neighboring(a, b) {
-  // console.log(b);
-  // **********************
-  // THIS is always returning zero for some reason
   return linkedByIndex[a.index + "," + b.index];
 }
 function connectedNodes(mynode) 
@@ -295,14 +269,16 @@ function connectedNodes(mynode)
         // d = d3.select(this).node.__data__;
         d = mynode;
         // console.log(d3.select(this).node());
-        // console.log("my node = ", mynode);
 
         node.style("opacity", function (o) {
             // console.log("d = ", d, "o = ", o);
-            return d==o || neighboring(d, o) || neighboring(o, d) ? 1 : 0.1;
+            return d == o || neighboring(d, o) || neighboring(o, d) ? 1 : 0.1;
         });
         
         link.style("opacity", function (o) {
+            return d.index==o.source.index || d.index==o.target.index ? 1 : 0.1;
+        });
+        edgelabels.style("opacity", function (o) {
             return d.index==o.source.index || d.index==o.target.index ? 1 : 0.1;
         });
         //Reduce the op
@@ -312,6 +288,7 @@ function connectedNodes(mynode)
         //Put them back to opacity=1
         node.style("opacity", 1);
         link.style("opacity", 1);
+        edgelabels.style("opacity", 0);
         toggle = 0;
     }
     restart();

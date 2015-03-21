@@ -61,6 +61,8 @@ var width = 960,
     height = 500;
 
 var color = d3.scale.category20();
+//circle radius
+var r = 8;
 
 //for highlighting which nodes and edges
 var toggle = 0;
@@ -91,7 +93,9 @@ var node_drag = d3.behavior.drag()
         d.px += d3.event.dx;
         d.py += d3.event.dy;
         d.x += d3.event.dx;
-        d.y += d3.event.dy; 
+        d.x = Math.max(r, Math.min(width - r, d.x))
+        d.y += d3.event.dy;
+        d.y = Math.max(r, Math.min(height - r, d.y))
         tick();
     }
 
@@ -236,7 +240,7 @@ var graphic = d3.json("new-json-output.json", function(error, graph) {
   //     .text(function(d) { return d.name; });
 
 node.append("circle")
-    .attr("r", 8)
+    .attr("r", r)
     .style("fill", function (d) { return color(d.group); })
 
   node.append("text")
@@ -273,6 +277,8 @@ node.append("circle")
           end = leftHand ? d.target : d.source,
           dx = end.x - start.x,
           dy = end.y - start.y,
+          dx = Math.max(r, Math.min(width - r, dx)),
+          dy = Math.max(r, Math.min(height - r, dy)),
           dr = Math.sqrt(dx * dx + dy * dy),
           sweep = leftHand ? 0 : 1;
       return ("M" + start.x + "," + start.y + "A" + dr + "," + dr + " 0 0," + sweep + " " + end.x + "," + end.y);
@@ -287,8 +293,11 @@ node.append("circle")
     // node.attr("cx", function(d) { return d.x; })
         // .attr("cy", function(d) { return d.y; });
 
-    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+    node.attr("transform", function(d) { 
+      return "translate(" + Math.max(r, Math.min(width - r, d.x)) + "," + Math.max(r, Math.min(height - r, d.y)) + ")"; 
+    });
 
+    //First iteration of edge labels but it was placed too far
     // edgepaths.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
     //                                        //console.log(d)
     //                                        return path}); 
@@ -310,12 +319,37 @@ node.append("circle")
     //     .attr("y", function(d) { return (d.source.y + d.target.y) / 2; }); 
 
     // Third iteration
-    edgelabels.attr("d", function(d) {
-      return arcPath(d.source.x < d.target.x, d);
+    // edgelabels.attr("d", function(d) {
+    //   return arcPath(d.source.x < d.target.x, d);
+    // });
+
+    // edgepaths.attr("d", function(d) {
+    //   return arcPath(false, d);
+    // });
+
+    // Fourth iteration taking into account the bounding box of canvas
+    edgelabels.attr("d",function(d) {
+      var start = d.source,
+          end = d.target,
+          dx = end.x - start.x,
+          dy = end.y - start.y,
+          dx = Math.max(r, Math.min(width - r, dx)),
+          dy = Math.max(r, Math.min(height - r, dy)),
+          dr = Math.sqrt(dx * dx + dy * dy),
+          sweep = 1;
+      return ("M" + start.x + "," + start.y + "A" + dr + "," + dr + " 0 0," + sweep + " " + end.x + "," + end.y);
     });
 
-    edgepaths.attr("d", function(d) {
-      return arcPath(false, d);
+    edgepaths.attr("d",function(d) {
+      var start = d.source,
+          end = d.target,
+          dx = end.x - start.x,
+          dy = end.y - start.y,
+          dx = Math.max(r, Math.min(width - r, dx)),
+          dy = Math.max(r, Math.min(height - r, dy)),
+          dr = Math.sqrt(dx * dx + dy * dy),
+          sweep = 1;
+      return ("M" + start.x + "," + start.y + "A" + dr + "," + dr + " 0 0," + sweep + " " + end.x + "," + end.y);
     });
 
   };

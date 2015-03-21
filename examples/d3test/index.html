@@ -7,13 +7,22 @@
   stroke-width: 1.5px;
 }*/
 
-
 .node text {
   pointer-events: none;
   font: 10px sans-serif;
 }
+/*.node text.shadow {
+  stroke: #fff;
+  stroke-opacity: .8;
+}*/
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
 
 .link {
+  fill:none;
   stroke: #999;
   stroke-opacity: .6;
 }
@@ -38,7 +47,8 @@ h3 {
   ga('create', 'UA-60607608-1', 'auto');
   ga('send', 'pageview');
 
-</script></head>
+</script>
+</head>
 <body>
     <h3>On any keypress after clicking a node it will highlight its neighbors with probabilities shown on the edges. Drag and drop a node to fix in place, double click to release.</h3>
 <form>
@@ -105,9 +115,9 @@ var node_drag = d3.behavior.drag()
 
   // graph = JSON.parse("miserables.json");
   var graphRec;
-  var link, node, edgepaths, edgelabels;
+  var link, node, edgepaths, edgelabels, path_label;
 
-var graphic = d3.json("json.json", function(error, graph) {
+var graphic = d3.json("new-json-output.json", function(error, graph) {
   graphic = graph;
   graphRec = JSON.parse(JSON.stringify(graph));
 
@@ -130,51 +140,87 @@ var graphic = d3.json("json.json", function(error, graph) {
 
   force
       .nodes(graph.nodes)
-      .links(graph.links)
+      .links(graphic.links)
       .start();
 
   link = svg.selectAll(".link")
-      .data(graph.links)
-    .enter().append("line")
+      .data(graphic.links)
+    .enter().append("g")
       .attr("class", "link");
       // .style("stroke-width", function(d) { 
-      //   return Math.sqrt(d.value); 
+      //   return Math.sqrt(d.value*10); 
       // });
 
-edgepaths = svg.selectAll(".edgepath")
-        .data(graph.links)
-        .enter()
-        .append('path')
-        .attr({'d': function(d) {return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y},
-               'class':'edgepath',
-               'fill-opacity':0,
-               'stroke-opacity':0,
-               'fill':'blue',
-               'stroke':'red',
-               'id':function(d,i) {return 'edgepath'+i}})
-        .style("pointer-events", "none");
+// edgepaths = svg.selectAll(".edgepath")
+//         .data(graph.links)
+//         .enter()
+//         .append('path')
+//         .attr({'d': function(d) {return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y},
+//                'class':'edgepath',
+//                'fill-opacity':0,
+//                'stroke-opacity':0,
+//                'fill':'blue',
+//                'stroke':'red',
+//                'id':function(d,i) {return 'edgepath'+i}})
+//         .style("pointer-events", "none");
 
-  edgelabels = svg.selectAll(".edgelabel")
-      .data(graph.links)
-      .enter()
-      .append('text')
+  // edgelabels = svg.selectAll(".edgelabel")
+  //     .data(graph.links)
+  //     .enter()
+  //     .append('text')
+  //     .style("opacity",0)
+  //     .style("pointer-events", "none")
+  //     .attr({'class':'edgelabel',
+  //            'id':function(d,i){return 'edgelabel'+i},
+  //            'dx':80,
+  //            'dy':0,
+  //            'font-size':10,
+  //            'fill':'#aaa'});
+
+  // edgelabels
+  //     .append('textPath')
+  //     .attr('xlink:href',function(d,i) {return '#edgepath'+i})
+  //     .style("pointer-events", "none")
+  //     .data(graph.links)
+  //     .text(function(d) { 
+  //       return ('Prob ' + d.value); 
+  //     }); //function(d,i){return 'label '+i});
+
+
+  //Second iteration that just displays prob horizontally  across middle
+  // edgelabels = svg.selectAll('text')
+  //   .data(graph.links)
+  // .enter().append('text')
+  //   .attr("x", function(d) { return (d.source.y + d.target.y) / 2; }) 
+  //   .attr("y", function(d) { return (d.source.x + d.target.x) / 2; }) 
+  //   .attr("text-anchor", "middle")
+  //   .style("opacity",0)
+  //   .text(function(d) { 
+  //       return ('Prob ' + Math.round(d.value * 100) / 100); 
+  //     }); 
+
+//Third iteration
+//  
+    edgepaths = link.append("path");
+
+    edgelabels = link.append("path")
+        .attr("id", function(d) { return d.source.index + "_" + d.target.index; })
+        .attr("class", "textpath");
+
+ path_label = svg.selectAll(".path_label")
+    .data(graphic.links)
+  .enter().append("text")
+    .attr("class", "path_label")
+    .append("textPath")
+      .attr("startOffset", "50%")
+      .attr("text-anchor", "middle")
+      .attr("xlink:href", function(d) { return "#" + d.source.index + "_" + d.target.index; })
+      .style("fill", "#000")
       .style("opacity",0)
-      .style("pointer-events", "none")
-      .attr({'class':'edgelabel',
-             'id':function(d,i){return 'edgelabel'+i},
-             'dx':80,
-             'dy':0,
-             'font-size':10,
-             'fill':'#aaa'});
-
-  edgelabels
-      .append('textPath')
-      .attr('xlink:href',function(d,i) {return '#edgepath'+i})
-      .style("pointer-events", "none")
-      .data(graph.links)
-      .text(function(d) { 
-        return ('Prob ' + d.value); 
-      }); //function(d,i){return 'label '+i});
+      .style("font-family", "Arial")
+      .text(function(d) { return ('MI ' + Math.round(d.value * 100) / 100); });
+//*/
+//*
 
 
   node = svg.selectAll(".node")
@@ -182,8 +228,6 @@ edgepaths = svg.selectAll(".edgepath")
     .enter().append("g")
       .attr("class", "node")
       //.call(force.drag)
-      // .on('dblclick', releasenode)
-      // .on('dblclick', connectedNodes)
       .on('dblclick',releasenode)
       .on('click', function () { focused = this.__data__; })
       .call(node_drag);
@@ -195,9 +239,16 @@ node.append("circle")
     .attr("r", 8)
     .style("fill", function (d) { return color(d.group); })
 
+  // node.append("text")
+  //     .attr("dx", 12)
+  //     .attr("dy", ".35em")
+  //     .attr("class","shadow")
+  //     .text(function(d) { return d.name });
+
   node.append("text")
       .attr("dx", 12)
       .attr("dy", ".35em")
+      // .attr("class","shadow")
       .text(function(d) { return d.name });
 
   //Setting up array for turning on selected node
@@ -215,35 +266,59 @@ node.append("circle")
   //End of setup for turning on selected node
 
   force.on("tick", tick);
+
 });
 
+  function arcPath(leftHand, d) {
+      var start = leftHand ? d.source : d.target,
+          end = leftHand ? d.target : d.source,
+          dx = end.x - start.x,
+          dy = end.y - start.y,
+          dr = Math.sqrt(dx * dx + dy * dy),
+          sweep = leftHand ? 0 : 1;
+      return ("M" + start.x + "," + start.y + "A" + dr + "," + dr + " 0 0," + sweep + " " + end.x + "," + end.y);
+  }
 
   function tick() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+    // link.attr("x1", function(d) { return d.source.x; })
+    //     .attr("y1", function(d) { return d.source.y; })
+    //     .attr("x2", function(d) { return d.target.x; })
+    //     .attr("y2", function(d) { return d.target.y; });
 
     // node.attr("cx", function(d) { return d.x; })
         // .attr("cy", function(d) { return d.y; });
 
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-    edgepaths.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
-                                           //console.log(d)
-                                           return path}); 
+    // edgepaths.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
+    //                                        //console.log(d)
+    //                                        return path}); 
 
-    edgelabels.attr('transform',function(d,i){
-            if (d.target.x<d.source.x){
-                bbox = this.getBBox();
-                rx = bbox.x+bbox.width/2;
-                ry = bbox.y+bbox.height/2;
-                return 'rotate(180 '+rx+' '+ry+')';
-                }
-            else {
-                return 'rotate(0)';
-                }
-              });
+    // edgelabels.attr('transform',function(d,i){
+    //         if (d.target.x<d.source.x){
+    //             bbox = this.getBBox();
+    //             rx = bbox.x+bbox.width/2;
+    //             ry = bbox.y+bbox.height/2;
+    //             return 'rotate(180 '+rx+' '+ry+')';
+    //             }
+    //         else {
+    //             return 'rotate(0)';
+    //             }
+    //           });
+
+    // The second iteration of edgelabels in the middle
+    // edgelabels.attr("x", function(d) { return (d.source.x + d.target.x) / 2; }) 
+    //     .attr("y", function(d) { return (d.source.y + d.target.y) / 2; }); 
+
+    // Third iteration
+    edgelabels.attr("d", function(d) {
+      return arcPath(d.source.x < d.target.x, d);
+    });
+
+    edgepaths.attr("d", function(d) {
+      return arcPath(false, d);
+    });
+
   };
 
 function threshold(thresh) {
@@ -269,12 +344,26 @@ function restart() {
 }
 
 var focused = null;
-d3.select("body").on("keydown", function () {
-  if(focused == null) {return}; 
-  d3.select(focused);
-  // console.log(focused); 
-  connectedNodes(focused);
-});
+// only respond once per keydown
+var lastKeyDown = -1;
+
+function keydown() {
+  d3.event.preventDefault();
+
+  if(lastKeyDown !== -1) return;
+  lastKeyDown = d3.event.keyCode;
+
+  // space
+  if(d3.event.keyCode === 32) { 
+    if(focused == null) {return}; 
+    d3.select(focused); 
+    connectedNodes(focused);
+  }
+};
+
+function keyup() {
+  lastKeyDown = -1;
+}
 
 //This function looks up whether a pair are neighbours  
 function neighboring(a, b) {
@@ -298,8 +387,8 @@ function connectedNodes(mynode)
           // console.log(d,o);
             return d.index==o.source.index || d.index==o.target.index ? 1 : 0.1;
         });
-        edgelabels.style("opacity", function (o) {
-            return d.index==o.source.index || d.index==o.target.index ? 1 : 0.1;
+        path_label.style("opacity", function (o) {
+            return d.index==o.source.index || d.index==o.target.index ? 1 : 0.05;
         });
         //Reduce the op
         toggle = 1;
@@ -308,10 +397,14 @@ function connectedNodes(mynode)
         //Put them back to opacity=1
         node.style("opacity", 1);
         link.style("opacity", 1);
-        edgelabels.style("opacity", 0);
+        path_label.style("opacity", 0);
         toggle = 0;
     }
     // restart();
 }
+
+d3.select("body")
+  .on('keydown', keydown)
+  .on('keyup', keyup);
 
 </script>

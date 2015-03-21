@@ -37,10 +37,10 @@ h3 {
 
   ga('create', 'UA-60607608-1', 'auto');
   ga('send', 'pageview');
-
-</script></head>
+</script>
+</head>
 <body>
-
+    <h3>On pressing spacebar after clicking a node it will highlight its neighbors with probabilities shown on the edges. Drag and drop a node to fix in place, double click to release.</h3>
 <form>
     <h3> Link threshold 0 <input type="range" id="thersholdSlider" name="points" value = 0 min="0" max="20" step="1" onchange="threshold(this.value)"> 20 Current Val: <var id="CurrVal">0</var></h3> 
 </form>
@@ -264,11 +264,26 @@ function restart() {
 }
 
 var focused = null;
-d3.select("body").on("keydown", function () { 
-  if(focused == null) {return}; 
-  d3.select(focused); 
-  connectedNodes(focused);
-});
+// only respond once per keydown
+var lastKeyDown = -1;
+
+function keydown() {
+  d3.event.preventDefault();
+
+  if(lastKeyDown !== -1) return;
+  lastKeyDown = d3.event.keyCode;
+
+  // space
+  if(d3.event.keyCode === 32) { 
+    if(focused == null) {return}; 
+    d3.select(focused); 
+    connectedNodes(focused);
+  }
+};
+
+function keyup() {
+  lastKeyDown = -1;
+}
 
 //This function looks up whether a pair are neighbours  
 function neighboring(a, b) {
@@ -305,5 +320,9 @@ function connectedNodes(mynode)
     }
     // restart();
 }
+
+d3.select(window)
+  .on('keydown', keydown)
+  .on('keyup', keyup);
 
 </script>

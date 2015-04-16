@@ -70,7 +70,7 @@ var linkedByIndex = {};
 
 //Force directed
 var force = self.force = d3.layout.force()
-    .charge(-400)
+    .charge(-600)
     .linkDistance(80)
     .size([width, height]);
 
@@ -150,10 +150,10 @@ var graphic = d3.json("new-json-output.json", function(error, graph) {
   link = svg.selectAll(".link")
       .data(graphic.links)
     .enter().append("g")
-      .attr("class", "link");
-      // .style("stroke-width", function(d) { 
-      //   return Math.sqrt(d.value*10); 
-      // });
+      .attr("class", "link")
+      .style("stroke-width", function(d) { 
+        return Math.sqrt(d.value*10); 
+      });
 
 // edgepaths = svg.selectAll(".edgepath")
 //         .data(graph.links)
@@ -205,24 +205,24 @@ var graphic = d3.json("new-json-output.json", function(error, graph) {
 
 //Third iteration
 //  
-    edgepaths = link.append("path");
+    // edgepaths = link.append("path");
 
     edgelabels = link.append("path")
         .attr("id", function(d) { return d.source.index + "_" + d.target.index; })
         .attr("class", "textpath");
 
- path_label = svg.selectAll(".path_label")
-    .data(graphic.links)
-  .enter().append("text")
-    .attr("class", "path_label")
-    .append("textPath")
-      .attr("startOffset", "50%")
-      .attr("text-anchor", "middle")
-      .attr("xlink:href", function(d) { return "#" + d.source.index + "_" + d.target.index; })
-      .style("fill", "#000")
-      .style("opacity",0)
-      .style("font-family", "Arial")
-      .text(function(d) { return ('MI ' + Math.round(d.value * 100) / 100); });
+    path_label = svg.selectAll(".path_label")
+        .data(graphic.links)
+      .enter().append("text")
+        .attr("class", "path_label")
+        .append("textPath")
+          .attr("startOffset", "50%")
+          .attr("text-anchor", "middle")
+          .attr("xlink:href", function(d) { return "#" + d.source.index + "_" + d.target.index; })
+          .style("fill", "#000")
+          .style("opacity",0)
+          .style("font-family", "Arial")
+          .text(function(d) { return ('MI ' + Math.round(d.value * 100) / 100); });
 //*/
 //*
 
@@ -328,29 +328,33 @@ node.append("circle")
     // });
 
     // Fourth iteration taking into account the bounding box of canvas
-    edgelabels.attr("d",function(d) {
-      var start = d.source,
-          end = d.target,
-          dx = end.x - start.x,
-          dy = end.y - start.y,
-          dx = Math.max(r, Math.min(width - r, dx)),
-          dy = Math.max(r, Math.min(height - r, dy)),
-          dr = Math.sqrt(dx * dx + dy * dy),
-          sweep = 1;
-      return ("M" + start.x + "," + start.y + "A" + dr + "," + dr + " 0 0," + sweep + " " + end.x + "," + end.y);
-    });
+    // edgelabels.attr("d",function(d) {
+    //   var start = d.source,
+    //       end = d.target,
+    //       dx = end.x - start.x,
+    //       dy = end.y - start.y,
+    //       dx = Math.max(r, Math.min(width - r, dx)),
+    //       dy = Math.max(r, Math.min(height - r, dy)),
+    //       dr = Math.sqrt(dx * dx + dy * dy),
+    //       sweep = 1;
+    //   return ("M" + start.x + "," + start.y + "A" + dr + "," + dr + " 0 0," + sweep + " " + end.x + "," + end.y);
+    // });
 
-    edgepaths.attr("d",function(d) {
-      var start = d.source,
-          end = d.target,
-          dx = end.x - start.x,
-          dy = end.y - start.y,
-          dx = Math.max(r, Math.min(width - r, dx)),
-          dy = Math.max(r, Math.min(height - r, dy)),
-          dr = Math.sqrt(dx * dx + dy * dy),
-          sweep = 1;
-      return ("M" + start.x + "," + start.y + "A" + dr + "," + dr + " 0 0," + sweep + " " + end.x + "," + end.y);
-    });
+    // edgepaths.attr("d",function(d) {
+    //   var start = d.source,
+    //       end = d.target,
+    //       dx = end.x - start.x,
+    //       dy = end.y - start.y,
+    //       dx = Math.max(r, Math.min(width - r, dx)),
+    //       dy = Math.max(r, Math.min(height - r, dy)),
+    //       dr = Math.sqrt(dx * dx + dy * dy),
+    //       sweep = 1;
+    //   return ("M" + start.x + "," + start.y + "A" + dr + "," + dr + " 0 0," + sweep + " " + end.x + "," + end.y);
+    // });
+
+    // Fifth iteration taking into account the bounding box of canvas
+    edgelabels.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
+                                           return path});
 
   };
 

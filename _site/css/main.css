@@ -225,7 +225,7 @@ a:visited { color: #205caa; }
 .post-content ul,
 .post-content ol { padding-left: 20px; }
 
-.post pre,
+/*.post pre,
 .post code {
   border: 1px solid #d5d5e9;
   background-color: #eef;
@@ -235,18 +235,18 @@ a:visited { color: #205caa; }
   border-radius: 3px;
   font-size: 15px;
   overflow:scroll;
-}
+}*/
 
-.post code { padding: 1px 5px; }
+/*.post code { padding: 1px 5px; }*/
 
 .post ul,
 .post ol { margin-left: 1.35em; }
 
-.post pre code {
+/*.post pre code {
   border: 0;
   padding-right: 0;
   padding-left: 0;
-}
+}*/
 
 /* terminal */
 .post pre.terminal {

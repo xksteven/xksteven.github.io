@@ -3,10 +3,10 @@
   <channel>
     <title>Steven&#39;s Blog</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
-    <link>localhost:4000/</link>
-    <atom:link href="localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 21 Dec 2015 02:32:49 -0600</pubDate>
-    <lastBuildDate>Mon, 21 Dec 2015 02:32:49 -0600</lastBuildDate>
+    <link>http://xksteven.com/</link>
+    <atom:link href="http://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 21 Dec 2015 02:47:29 -0600</pubDate>
+    <lastBuildDate>Mon, 21 Dec 2015 02:47:29 -0600</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -26,8 +26,8 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 </description>
         <pubDate>Sun, 20 Dec 2015 16:18:57 -0600</pubDate>
-        <link>localhost:4000/jekyll/update/2015/12/20/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">localhost:4000/jekyll/update/2015/12/20/welcome-to-jekyll/</guid>
+        <link>http://xksteven.com/jekyll/update/2015/12/20/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://xksteven.com/jekyll/update/2015/12/20/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>

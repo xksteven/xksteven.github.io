@@ -5,7 +5,7 @@ description: "A UChicago student's journey through machine learning and computer
 baseurl: "xksteven.com"
 # Used for testing
 #url: "localhost:4000"
-url: "http://xksteven.com"
+#url: "http://xksteven.com"
 #twitter_username: jekyllrb
 github_username:  xksteven
 

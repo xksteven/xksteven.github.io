@@ -3,10 +3,10 @@
   <channel>
     <title>Steven&#39;s Blog</title>
     <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
-    <link>localhost:4000/</link>
-    <atom:link href="localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 25 Dec 2015 18:54:14 -0600</pubDate>
-    <lastBuildDate>Fri, 25 Dec 2015 18:54:14 -0600</lastBuildDate>
+    <link>https://xksteven.com/</link>
+    <atom:link href="https://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 25 Dec 2015 19:17:48 -0600</pubDate>
+    <lastBuildDate>Fri, 25 Dec 2015 19:17:48 -0600</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -15,24 +15,24 @@
 
 &lt;p&gt;Here is an example of rotating an image using linear interpolation and via nearest neighbor.  In the same link is an example of using the Sobel Operator to enhance edges.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/examples/ImageProcessing/hw2/&quot;&gt;example1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/examples/ImageProcessing/ex1/&quot;&gt;example1&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Here I show examples of edge tracing via 4 and 8 connectivity.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/examples/ImageProcessing/hw3/&quot;&gt;example2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/examples/ImageProcessing/ex2/&quot;&gt;example2&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This shows examples of erode, dilate, and find the area of binary image. Erosion can be described as all the points in set A that any shift of set B is contained within A. Here’s a description from wikipedia. &lt;a href=&quot;https://en.wikipedia.org/wiki/Erosion_(morphology)&quot;&gt;erosion&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/examples/ImageProcessing/hw4/&quot;&gt;example3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/examples/ImageProcessing/ex3/&quot;&gt;example3&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This last example shows an example of calulating the Hough Transform to find circles and calculating the Haar wavelet.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/examples/ImageProcessing/hw5/&quot;&gt;example4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/examples/ImageProcessing/ex4/&quot;&gt;example4&lt;/a&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 25 Dec 2015 16:18:57 -0600</pubDate>
-        <link>localhost:4000/image_processing/update/2015/12/25/image-processing/</link>
-        <guid isPermaLink="true">localhost:4000/image_processing/update/2015/12/25/image-processing/</guid>
+        <link>https://xksteven.com/image_processing/update/2015/12/25/image-processing/</link>
+        <guid isPermaLink="true">https://xksteven.com/image_processing/update/2015/12/25/image-processing/</guid>
         
         
         <category>image_processing</category>
@@ -46,8 +46,8 @@
         <description>&lt;p&gt;Welcome to my blog.  It will highlight my work and random learnings I do each month.&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 16:18:57 -0600</pubDate>
-        <link>localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
+        <link>https://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">https://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
         
         
         <category>welcome</category>

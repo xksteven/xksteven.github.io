@@ -215,6 +215,7 @@ pip-log.txt
 .mr.developer.cfg
 
 #Jekyll
-_drafts
+_drafts/
+_site/*
 .sass-cache/
 .jekyll-metadata

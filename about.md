@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a doctoral student at UChicago student studying machine learning.
+I am a doctoral student at UChicago studying machine learning.
 
 Here's my resume [xksteven.com/resources/CV.pdf](http:xksteven.com/resources/CV.pdf)
 

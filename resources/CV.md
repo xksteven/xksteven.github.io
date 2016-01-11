@@ -37,8 +37,8 @@ permalink: /resources/CV/
 
 **Company Name** *Position* __start to present__  
 	What I did in said company.
-	**Technical Environment**  -->
-
+	**Technical Environment** 
+ -->
 
 ------
 
@@ -47,6 +47,7 @@ permalink: /resources/CV/
 * **OpenGL Renderer**  
 	[myRenderer](http://www.github.com/xksteven/myOpenGl)  
 	I created a simple OpenGL renderer to render some height maps and draw some objects.  Applies simple lighting and texturing.
+
 
 ------
 

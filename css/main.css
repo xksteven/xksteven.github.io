@@ -197,6 +197,11 @@ a:visited { color: #205caa; }
   margin: 40px 0 20px;
 }
 
+.post-content h1 {
+  font-size: 42px;
+  letter-spacing: -1.75px;
+}
+
 .post-content h2 {
   font-size: 32px;
   letter-spacing: -1.25px;
@@ -394,6 +399,7 @@ a:visited { color: #205caa; }
   }
 
   .post-header h1 { font-size: 36px; }
+  .post-content h1 { font-size: 36px; }
   .post-content h2 { font-size: 28px; }
   .post-content h3 { font-size: 22px; }
   .post-content h4 { font-size: 18px; }

@@ -3,7 +3,9 @@ title: Steven's Blog
 email: xksteven at uchicago.com
 description: "A UChicago student's journey through machine learning and computer science."
 baseurl: ""
-url: "https://xksteven.com"
+# Used for testing
+url: "localhost:4000"
+
 #twitter_username: jekyllrb
 github_username:  xksteven
 

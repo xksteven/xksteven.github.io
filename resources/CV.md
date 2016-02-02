@@ -48,6 +48,26 @@ permalink: /resources/CV/
 	[myRenderer](http://www.github.com/xksteven/myOpenGl)  
 	I created a simple OpenGL renderer to render some height maps and draw some objects.  Applies simple lighting and texturing.
 
+------
+
+### Courses
+
+1. Machine Learning
+2. Robot Planning/AI
+3. Computer Vision
+4. Algorithms
+5. Databases
+
+------
+
+### Research
+
+* **Computer Science**   
+	My current research in computer science is in the field of computer vision.  I am working on the problem of visual question answering where the problem setting is given both an image and a question produce a correct answer.
+
+* **Biochemistry**   
+	I worked with Dr. Richard Myers at the University of Miami trying to create a generic genetic therapy via transducible gene editing proteins.
+
 
 ------
 

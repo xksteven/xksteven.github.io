@@ -12,10 +12,58 @@ permalink: /resources/CV/
 	<div class="four columns">
 		<p class="my-headingp"><a href="http://www.xksteven.com" >xksteven.com</a></p>
 		<p class="my-headingp"><a href="mailto:xksteven@uchicago.com"> xksteven at uchicago.com</a></p>
-		<p class="my-headingp">(954) 805-3651</p>
+		<p class="my-headinglastp">(954) 805-3651</p>
 		
 	</div>
 </div>
+
+
+------
+
+### Research Interests
+
+My current research in computer science is in the field of computer vision.  I am working on the problem of visual question answering where the problem setting is given both an image and a question produce a correct answer.  Most of the research currently involves the use of machine learning and deep learning methods.  
+
+
+------
+
+### Education
+
+**Doctor of Philosophy (Computer Science)** __2014 to ongoing__  
+	University of Chicago, Chicago, Illinois
+
+**Bachelor of Science (Biochemistry and Computer Science)** __2010 to 2014__  
+	University of Miami, Miami, Florida
+
+
+------
+
+### Courses
+
+1. Machine Learning
+2. Robot Planning/AI
+3. Computer Vision
+4. Algorithms
+5. Databases
+
+
+------
+
+### Teaching
+
+1. TA for [Intro. to Computer Science](https://www.classes.cs.uchicago.edu/archive/2016/winter/15200-1/) (Winter 2016)
+2. TA for [Computational Biology](http://uchicago.bio) (Fall 2015)
+
+
+------
+
+### Research
+
+* **Computer Science**   
+	I am working with Dr. Greg Shakhnarovich at TTIC in the areas of machine learning and computer vision.
+
+* **Biochemistry**   
+	I worked with Dr. Richard Myers at the University of Miami trying to create a generic genetic therapy via transducible gene editing proteins.
 
 
 ------
@@ -28,8 +76,9 @@ permalink: /resources/CV/
 1. Javascript / NodeJS
 1. Git / SVN
 1. PostgreSQL / MySQL
+1. OpenGL
 
-<!-- 
+<!--
 ------
 
 
@@ -40,6 +89,7 @@ permalink: /resources/CV/
 	**Technical Environment** 
  -->
 
+
 ------
 
 ### Projects
@@ -48,33 +98,6 @@ permalink: /resources/CV/
 	[myRenderer](http://www.github.com/xksteven/myOpenGl)  
 	I created a simple OpenGL renderer to render some height maps and draw some objects.  Applies simple lighting and texturing.
 
-------
-
-### Courses
-
-1. Machine Learning
-2. Robot Planning/AI
-3. Computer Vision
-4. Algorithms
-5. Databases
-
-------
-
-### Research
-
-* **Computer Science**   
-	My current research in computer science is in the field of computer vision.  I am working on the problem of visual question answering where the problem setting is given both an image and a question produce a correct answer.
-
-* **Biochemistry**   
-	I worked with Dr. Richard Myers at the University of Miami trying to create a generic genetic therapy via transducible gene editing proteins.
 
 
-------
 
-### Education
-
-**Doctor of Philosophy (Computer Science)** __2014 to ongoing__  
-	University of Chicago, Chicago, Illinois
-
-**Bachelor of Science (Biochemistry and Computer Science)** __2010 to 2014__  
-	University of Miami, Miami, Florida

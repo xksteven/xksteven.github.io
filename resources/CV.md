@@ -59,10 +59,10 @@ My current research in computer science is in the field of computer vision.  I a
 
 ### Research Experience
 
-* **Computer Science**  __current__ 
+* **Computer Science**  __current__  
 	I am working with Dr. Greg Shakhnarovich at TTIC in the areas of machine learning and computer vision on the problem of visual question answering. I have worked with Torch to create various neural network models.
 
-* **Biochemistry**   __2011 to 2014__
+* **Biochemistry**   __2011 to 2014__  
 	I worked with Dr. Richard Myers at the University of Miami trying to create a generic genetic therapy via transducible gene editing proteins.  I ran western blots, gel electrophoresis, transductions, PCR, and electroporation
 
 

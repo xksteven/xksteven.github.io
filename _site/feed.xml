@@ -3,11 +3,11 @@
   <channel>
     <title>Steven&#39;s Blog</title>
     <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
-    <link>http://xksteven.com/</link>
-    <atom:link href="http://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 03 Feb 2016 17:58:40 -0600</pubDate>
-    <lastBuildDate>Wed, 03 Feb 2016 17:58:40 -0600</lastBuildDate>
-    <generator>Jekyll v2.2.0</generator>
+    <link>localhost:4000/</link>
+    <atom:link href="localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 24 Feb 2016 03:38:27 -0600</pubDate>
+    <lastBuildDate>Wed, 24 Feb 2016 03:38:27 -0600</lastBuildDate>
+    <generator>Jekyll v3.1.1</generator>
     
       <item>
         <title>Image Processing</title>
@@ -31,8 +31,8 @@
 
 </description>
         <pubDate>Fri, 25 Dec 2015 16:18:57 -0600</pubDate>
-        <link>http://xksteven.com/image_processing/update/2015/12/25/image-processing/</link>
-        <guid isPermaLink="true">http://xksteven.com/image_processing/update/2015/12/25/image-processing/</guid>
+        <link>localhost:4000/image_processing/update/2015/12/25/image-processing/</link>
+        <guid isPermaLink="true">localhost:4000/image_processing/update/2015/12/25/image-processing/</guid>
         
         
         <category>image_processing</category>
@@ -46,8 +46,8 @@
         <description>&lt;p&gt;Welcome to my blog.  It will highlight my work and random learnings I do each month.&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 16:18:57 -0600</pubDate>
-        <link>http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
+        <link>localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
         
         
         <category>welcome</category>

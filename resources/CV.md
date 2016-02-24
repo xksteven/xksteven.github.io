@@ -59,7 +59,7 @@ My current research in computer science is in the field of computer vision.  I a
 
 ### Research Experience
 
-* **Computer Science**  __current__  
+* **Computer Science**  __2014 to current__  
 	I am working with Dr. Greg Shakhnarovich at TTIC in the areas of machine learning and computer vision on the problem of visual question answering. I have worked with Torch to create various neural network models.
 
 * **Biochemistry**   __2011 to 2014__  
@@ -98,8 +98,8 @@ My current research in computer science is in the field of computer vision.  I a
 	[myRenderer](http://www.github.com/xksteven/myOpenGl)  
 	I created a simple OpenGL renderer to render some height maps and draw some objects.  Applies simple lighting and texturing.
 
-* **BattleShip game over internet**
-	[BattleShip](https://github.com/xksteven/Networks)
+* **BattleShip game over internet**  
+	[BattleShip](https://github.com/xksteven/Networks)  
 	I created a simple Battleship game in C that has a client, server interface. 
 
 

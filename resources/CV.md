@@ -11,7 +11,7 @@ permalink: /resources/CV/
 	</div>
 	<div class="four columns">
 		<p class="my-headingp"><a href="http://www.xksteven.com" >xksteven.com</a></p>
-		<p class="my-headingp"><a href="mailto:xksteven@uchicago.com"> xksteven at uchicago.com</a></p>
+		<p class="my-headingp"><a href="mailto:xksteven@uchicago.edu"> xksteven at uchicago.edu</a></p>
 		<p class="my-headinglastp">(954) 805-3651</p>
 		
 	</div>
@@ -22,7 +22,7 @@ permalink: /resources/CV/
 
 ### Research Interests
 
-My current research in computer science is in the field of computer vision.  I am working on the problem of visual question answering where the problem setting is given both an image and a question produce a correct answer.  Most of the research currently involves the use of machine learning and deep learning methods.  
+My current research in computer science is in the field of computer vision.  I am working on the problem of visual question answering where the task can be described as given both an image and a question to produce a correct answer.  Most of my research currently involves the use of machine learning and deep learning methods.  
 
 
 ------
@@ -57,13 +57,13 @@ My current research in computer science is in the field of computer vision.  I a
 
 ------
 
-### Research
+### Research Experience
 
-* **Computer Science**   
-	I am working with Dr. Greg Shakhnarovich at TTIC in the areas of machine learning and computer vision.
+* **Computer Science**  __current__ 
+	I am working with Dr. Greg Shakhnarovich at TTIC in the areas of machine learning and computer vision on the problem of visual question answering. I have worked with Torch to create various neural network models.
 
-* **Biochemistry**   
-	I worked with Dr. Richard Myers at the University of Miami trying to create a generic genetic therapy via transducible gene editing proteins.
+* **Biochemistry**   __2011 to 2014__
+	I worked with Dr. Richard Myers at the University of Miami trying to create a generic genetic therapy via transducible gene editing proteins.  I ran western blots, gel electrophoresis, transductions, PCR, and electroporation
 
 
 ------
@@ -75,7 +75,7 @@ My current research in computer science is in the field of computer vision.  I a
 <!-- 1. Android / iOS -->
 1. Javascript / NodeJS
 1. Git / SVN
-1. PostgreSQL / MySQL
+1. MySQL
 1. OpenGL
 
 <!--
@@ -98,6 +98,8 @@ My current research in computer science is in the field of computer vision.  I a
 	[myRenderer](http://www.github.com/xksteven/myOpenGl)  
 	I created a simple OpenGL renderer to render some height maps and draw some objects.  Applies simple lighting and texturing.
 
-
+* **BattleShip game over internet**
+	[BattleShip](https://github.com/xksteven/Networks)
+	I created a simple Battleship game in C that has a client, server interface. 
 
 

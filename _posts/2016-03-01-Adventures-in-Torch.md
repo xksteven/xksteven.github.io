@@ -55,7 +55,7 @@ model:backward(inputs, df_do);
 
 
 
-The torch docs on github are quite good for most modules in my opinion.  It only becomes a little bit confusing once you ever need to use nn.Concat vs nn.ConcatTable vs nn.Parallel as the descriptions of what they actually do could be improved in my opinion.
+The torch docs on github are quite good for most modules in my opinion. You can check it out [Torch Docs][thDocs].  It only becomes a little bit confusing once you ever need to use nn.Concat vs nn.ConcatTable vs nn.Parallel as the descriptions of what they actually do could be improved in my opinion.
 
 Torch itself is quite beautiful and in my opinion the main thing holding it back is Lua.  Many times the error will not actually tell you where the program crashed and I'm looking for a debugger that could maybe alleviate this situation.  The other thing to nitpick is that of one based indexing.  It messes up the beauty of using the modulo function when one needs to wrap around values and then index into a table by always needing to add one. 
 
@@ -65,3 +65,4 @@ In a followup post I'm going to work on creating a new layer in Torch.
 
 
 [Lua]: https://learnxinyminutes.com/docs/lua/
+[thDocs]: https://github.com/torch/nn/blob/master/doc/index.md

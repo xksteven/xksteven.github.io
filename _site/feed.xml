@@ -3,17 +3,15 @@
   <channel>
     <title>Steven&#39;s Blog</title>
     <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
-    <link>http://xksteven.com/</link>
-    <atom:link href="http://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 02 Mar 2016 11:07:18 -0600</pubDate>
-    <lastBuildDate>Wed, 02 Mar 2016 11:07:18 -0600</lastBuildDate>
+    <link>localhost:4000/</link>
+    <atom:link href="localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 02 Mar 2016 11:15:54 -0600</pubDate>
+    <lastBuildDate>Wed, 02 Mar 2016 11:15:54 -0600</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
         <title>Adventures in Torch</title>
-        <description>&lt;h2 id=&quot;adventures-with-a-torch&quot;&gt;Adventures with a Torch&lt;/h2&gt;
-
-&lt;p&gt;For starters some of the basics about Torch.  Torch is a machine learning (more appropriately a neural network) library written in Lua. Lua’s syntax is somewhat similar to python (without the forced tabs), while it only contains one abstract container type that of a table. Lua tables are hashmaps and can be thought of to function in a similar way to javascripts prototypes.  For more on Lua one can check out this link &lt;a href=&quot;https://learnxinyminutes.com/docs/lua/&quot;&gt;Learn_Lua&lt;/a&gt;.&lt;/p&gt;
+        <description>&lt;p&gt;For starters some of the basics about Torch.  Torch is a machine learning (more appropriately a neural network) library written in Lua. Lua’s syntax is somewhat similar to python (without the forced tabs), while it only contains one abstract container type that of a table. Lua tables are hashmaps and can be thought of to function in a similar way to javascripts prototypes.  For more on Lua one can check out this link &lt;a href=&quot;https://learnxinyminutes.com/docs/lua/&quot;&gt;Learn_Lua&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Some examples of what you can quickly do in Torch:&lt;/p&gt;
 
@@ -25,11 +23,13 @@
 &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sigmoid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;A bit more about lua/torch.  All variables all global unless specified with local. The “:” operator passes in the variable as the first argument to the function. So model:add() will pass model as the first argument to add followed by the the next parameter which could be the nn.sigmoid function for example.  It’s similar to python in that the first parameter passed in when creating an objects is the “self” parameter.&lt;/p&gt;
+
 &lt;p&gt;So this “simple” model will run a convolution that takes in an image (not necessarily an image but makes it easier to visualize) of  inputdimension 3 (think RGB), outputs dimension 1,  filter size is 3 x 3, step size is 1 in both horizontal and vetical and lastly is the zero padding of 1 on all sides of the image.  Those are all the specified parameters for the convolution.&lt;/p&gt;
 
 &lt;p&gt;The next layer will take as input the convolution run it through a relu followed by dropout, then a linear layer before finally squashing all of the results into a sigmoid function.  For the linear layer I assumed the size of the image is 256*256 and the output that we want is 20 classes (think PASCAL VOC).&lt;/p&gt;
 
-&lt;p&gt;Actually using the model is quite nice and easy.&lt;/p&gt;
+&lt;p&gt;Actually using the model is quite nice and easy once it’s set up.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lua&quot; data-lang=&quot;lua&quot;&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -52,9 +52,9 @@
 &lt;p&gt;In a followup post I’m going to work on creating a new layer in Torch.&lt;/p&gt;
 
 </description>
-        <pubDate>Sat, 20 Feb 2016 06:00:00 -0600</pubDate>
-        <link>http://xksteven.com/torch/update/2016/02/20/Adventures-in-Torch/</link>
-        <guid isPermaLink="true">http://xksteven.com/torch/update/2016/02/20/Adventures-in-Torch/</guid>
+        <pubDate>Tue, 01 Mar 2016 06:00:00 -0600</pubDate>
+        <link>localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</link>
+        <guid isPermaLink="true">localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</guid>
         
         
         <category>torch</category>
@@ -85,8 +85,8 @@
 
 </description>
         <pubDate>Fri, 25 Dec 2015 16:18:57 -0600</pubDate>
-        <link>http://xksteven.com/image_processing/update/2015/12/25/image-processing/</link>
-        <guid isPermaLink="true">http://xksteven.com/image_processing/update/2015/12/25/image-processing/</guid>
+        <link>localhost:4000/image_processing/update/2015/12/25/image-processing/</link>
+        <guid isPermaLink="true">localhost:4000/image_processing/update/2015/12/25/image-processing/</guid>
         
         
         <category>image_processing</category>
@@ -100,8 +100,8 @@
         <description>&lt;p&gt;Welcome to my blog.  It will highlight my work and random learnings I do each month.&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 16:18:57 -0600</pubDate>
-        <link>http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
+        <link>localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
         
         
         <category>welcome</category>

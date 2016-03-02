@@ -5,9 +5,9 @@
     <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
     <link>localhost:4000/</link>
     <atom:link href="localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 24 Feb 2016 03:38:27 -0600</pubDate>
-    <lastBuildDate>Wed, 24 Feb 2016 03:38:27 -0600</lastBuildDate>
-    <generator>Jekyll v3.1.1</generator>
+    <pubDate>Wed, 24 Feb 2016 18:06:59 -0600</pubDate>
+    <lastBuildDate>Wed, 24 Feb 2016 18:06:59 -0600</lastBuildDate>
+    <generator>Jekyll v2.2.0</generator>
     
       <item>
         <title>Image Processing</title>

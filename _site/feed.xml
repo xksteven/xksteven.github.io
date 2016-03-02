@@ -3,10 +3,10 @@
   <channel>
     <title>Steven&#39;s Blog</title>
     <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
-    <link>localhost:4000/</link>
-    <atom:link href="localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 02 Mar 2016 11:15:54 -0600</pubDate>
-    <lastBuildDate>Wed, 02 Mar 2016 11:15:54 -0600</lastBuildDate>
+    <link>http://xksteven.com/</link>
+    <atom:link href="http://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 02 Mar 2016 11:20:35 -0600</pubDate>
+    <lastBuildDate>Wed, 02 Mar 2016 11:20:35 -0600</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -45,7 +45,7 @@
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lua&quot; data-lang=&quot;lua&quot;&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The torch docs on github are quite good for most modules in my opinion.  It only becomes a little bit confusing once you ever need to use nn.Concat vs nn.ConcatTable vs nn.Parallel as the descriptions of what they actually do could be improved in my opinion.&lt;/p&gt;
+&lt;p&gt;The torch docs on github are quite good for most modules in my opinion. You can check it out &lt;a href=&quot;https://github.com/torch/nn/blob/master/doc/index.md&quot;&gt;Torch Docs&lt;/a&gt;.  It only becomes a little bit confusing once you ever need to use nn.Concat vs nn.ConcatTable vs nn.Parallel as the descriptions of what they actually do could be improved in my opinion.&lt;/p&gt;
 
 &lt;p&gt;Torch itself is quite beautiful and in my opinion the main thing holding it back is Lua.  Many times the error will not actually tell you where the program crashed and I’m looking for a debugger that could maybe alleviate this situation.  The other thing to nitpick is that of one based indexing.  It messes up the beauty of using the modulo function when one needs to wrap around values and then index into a table by always needing to add one.&lt;/p&gt;
 
@@ -53,8 +53,8 @@
 
 </description>
         <pubDate>Tue, 01 Mar 2016 06:00:00 -0600</pubDate>
-        <link>localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</link>
-        <guid isPermaLink="true">localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</guid>
+        <link>http://xksteven.com/torch/update/2016/03/01/Adventures-in-Torch/</link>
+        <guid isPermaLink="true">http://xksteven.com/torch/update/2016/03/01/Adventures-in-Torch/</guid>
         
         
         <category>torch</category>
@@ -85,8 +85,8 @@
 
 </description>
         <pubDate>Fri, 25 Dec 2015 16:18:57 -0600</pubDate>
-        <link>localhost:4000/image_processing/update/2015/12/25/image-processing/</link>
-        <guid isPermaLink="true">localhost:4000/image_processing/update/2015/12/25/image-processing/</guid>
+        <link>http://xksteven.com/image_processing/update/2015/12/25/image-processing/</link>
+        <guid isPermaLink="true">http://xksteven.com/image_processing/update/2015/12/25/image-processing/</guid>
         
         
         <category>image_processing</category>
@@ -100,8 +100,8 @@
         <description>&lt;p&gt;Welcome to my blog.  It will highlight my work and random learnings I do each month.&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 16:18:57 -0600</pubDate>
-        <link>localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
+        <link>http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
         
         
         <category>welcome</category>

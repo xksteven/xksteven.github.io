@@ -102,7 +102,7 @@ We will make a basic css file and work through its notation as well as expand a 
 
 {% highlight CSS %}
 p {color:blue}
-
+ 
 {% endhighlight %}
 
 

@@ -5,9 +5,149 @@
     <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
     <link>http://xksteven.com/</link>
     <atom:link href="http://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 02 Mar 2016 11:20:35 -0600</pubDate>
-    <lastBuildDate>Wed, 02 Mar 2016 11:20:35 -0600</lastBuildDate>
+    <pubDate>Wed, 30 Mar 2016 15:22:54 -0500</pubDate>
+    <lastBuildDate>Wed, 30 Mar 2016 15:22:54 -0500</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>Web Development Tutorial</title>
+        <description>&lt;p&gt;Hello I’m Steven.  At the time of writing this I’m a second year PhD student and the TA for information visualization.  This tutorial should hopefully get someone who knows a bit of programming to being able to use and modify visualizations in D3. D3 is a nice tool for making visualizations and displaying them in the browser, and even though it can do more than that in this series we shall focus on the visualization aspects of it.  So let’s get started.&lt;/p&gt;
+
+&lt;h3 id=&quot;sections&quot;&gt;Sections:&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;#getting-started&quot;&gt;Getting Started&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;#next-steps-with-css&quot;&gt;Next Steps&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;#just-javascript&quot;&gt;Just Javascript&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;#d3-doing-debugging-done&quot;&gt;D3&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;#debugging&quot;&gt;Debugging&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;#extra-resources&quot;&gt;Extra Resources&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;p&gt;In this section we will build a simple website which will be needed to test out the code later.  First thing’s first we need to pick an editor to write and work with.  Notepad is okay, vim is good (best for working over a server), and my personal preference is &lt;a href=&quot;https://www.sublimetext.com/3&quot;&gt;sublime&lt;/a&gt;.  In sublime you can download packages to make building a website easier like emmet and even a package for assisting in code completion for D3.js.&lt;/p&gt;
+
+&lt;p&gt;This first example is to get you to see something a bit more complicated than necessary and then we will strip away the unnecessary details&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;My First Awesome Webpage&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+	
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you downloaded emmet in sublime you can quickly type all of this by typing “html:5” (without quotes) and pressing Ctrl + e (command on apple).&lt;/p&gt;
+
+&lt;p&gt;A quick intro HTML is short for hypertext markup language, fancy terms but basically meaning it isn’t a programming language which means it can’t do much on its own. You can think about html as specifying the content of a web page by enclosing the content like words, paragraphs, images etc. in the page by some descriptor in the these &amp;lt;&amp;gt;. The things enclosed in &amp;lt;&amp;gt; are called &lt;strong&gt;tags&lt;/strong&gt; for example head, body, title are all tags. The objects enclosed between &amp;lt;&amp;gt; and &amp;lt;/&amp;gt; are called &lt;strong&gt;elements&lt;/strong&gt; for example “My First Awesome Webpage” is an element.  This format serves to let the browser know how the elements should be processed to be displayed on the browser.&lt;/p&gt;
+
+&lt;p&gt;So html is read in blocks.  &amp;lt;&amp;gt;  this is an opening bracket. &amp;lt;/&amp;gt; this is a closing bracket and they usually come in pairs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This part here specifies that we are writing a webpage specifically in html format.  This part is essential and must always be there for a webapge to be properly displayed so always include it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This tag does two things: first it starts the html document by specifying the “html” in the brackets. Secondly in the same tag it tells the browser what language all (or the majority) of our text on the webpage will be in with “lang=”en””. In this case en is short for english.  Here you can see an example of how multiple things can specified in one tag.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+	...
+&amp;lt;/head&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This part opens something on webpages called the head as designated by &amp;lt;head&amp;gt; and then closes it like so &amp;lt;/head&amp;gt;.  The head short for heading basically gives an overview of the webpage for your web browser.  In the example above it sets the title of the webpage to be “My First Awesome Webpage”.&lt;/p&gt;
+
+&lt;p&gt;Here we have where the majority of the content in a webpage will go.  You can think of the &amp;lt;body&amp;gt; like the body of essay where it contains all of the actual content and majority of what’s actually on the page goes in here.&lt;/p&gt;
+
+&lt;p&gt;Finally there’s the closing &amp;lt;/html&amp;gt;.  This tells the browser that it is the end of the document because it closes the opening DOCTYPE html.&lt;/p&gt;
+
+&lt;p&gt;Well that was a bit tedious now lets get rid of what we don’t need and keep the bare minimum.  Open your favorite editor and let’s make a website. Copy the code below and paste it into a file called “index.html” (without quotes).&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Hello World&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now that we have this how can we actually view and test our code?&lt;/p&gt;
+
+&lt;p&gt;There are many ways to do this and I’ll go with the one I’ve found to be the easiest.  Install python or python3 if you don’t already have it installed.  Use this &lt;a href=&quot;https://wiki.python.org/moin/BeginnersGuide/Download&quot;&gt;Install Python&lt;/a&gt; for help in installing python.  I personally recommend installing python3 instead of python 2 as python2.7 is legacy and will be deprecated and not maintained anymore in the near future.&lt;/p&gt;
+
+&lt;p&gt;Next open up a terminal (or some place where you can execute python code).    Next run this command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python -m http.server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Some notes:&lt;br /&gt;
+if you installed or have installed python2.7 replace “http.server” with “SimpleHTTPServer”.&lt;br /&gt;
+you might need to replace “python” with with “python3”&lt;br /&gt;
+Make sure the index.html is saved in the same directory that your terminal directory is currently in (typically your home or user directory).  If index.html is saved somewhere else move it to your home directory or whatever directory you are in, in your current terminal session.&lt;/p&gt;
+
+&lt;p&gt;Finally open up your browser and type in this link into your web browser&lt;/p&gt;
+
+&lt;p&gt;http://localhost:8000/&lt;/p&gt;
+
+&lt;p&gt;You should be able to see Hello World in your web browser&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps-with-css&quot;&gt;Next Steps With CSS&lt;/h2&gt;
+
+&lt;p&gt;Since the purpose of this tutorial is to quickly get someone up and running with a website that can run D3 we shall only talk briefly about CSS here. CSS stands for Cascading Style Sheets.  This is what specifies the styles, positionings, colors, etc. of the elements in a web site.&lt;/p&gt;
+
+&lt;p&gt;Why do we need CSS if we are going to be working with D3 primarily? Well the truth is we don’t need a dedicated CSS page but a lot of what D3 uses to change the colors of it’s graphs and figures relies on CSS in the background. So a lot of the notation you’ll encounter is exactly the same (or very similar) as CSS for that reason we will cover CSS.&lt;/p&gt;
+
+&lt;h4 id=&quot;style-it-up&quot;&gt;Style it up&lt;/h4&gt;
+
+&lt;p&gt;We will make a basic css file and work through its notation as well as expand a bit on our previous html example.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;For more on CSS notation see this or go to extra resources at the end of the page&lt;br /&gt;
+&lt;a href=&quot;https://learnxinyminutes.com/docs/css/&quot;&gt;CSS notation&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;just-javascript&quot;&gt;Just Javascript&lt;/h2&gt;
+
+&lt;p&gt;In this section I will go over some of the basics of javascript language itself and how it interacts with html and CSS.&lt;/p&gt;
+
+&lt;p&gt;For a slightly more in depth look at javascript you can look at &lt;a href=&quot;https://learnxinyminutes.com/docs/javascript/&quot;&gt;javascript&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;d3-doing-debugging-done&quot;&gt;D3: Doing Debugging Done&lt;/h2&gt;
+
+&lt;h2 id=&quot;debugging&quot;&gt;Debugging&lt;/h2&gt;
+
+&lt;p&gt;To do:&lt;/p&gt;
+
+&lt;p&gt;mention but for the most part ignore CSS&lt;/p&gt;
+
+&lt;p&gt;talk about JS
+learnxinyminutes.com/docs/javascript&lt;/p&gt;
+
+&lt;p&gt;D3&lt;/p&gt;
+
+&lt;h2 id=&quot;extra-resources&quot;&gt;Extra Resources&lt;/h2&gt;
+
+&lt;p&gt;W3schools and mozilla developers network (MDN) are good resources for much of the above material.&lt;br /&gt;
+&lt;a href=&quot;http://www.w3schools.com/html/default.asp&quot;&gt;HTML&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Guide/HTML&quot;&gt;HTML dev guide&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Reference&quot;&gt;CSS Reference&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://learnxinyminutes.com/docs/javascript/&quot;&gt;Javascript Quick Reference&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript&quot;&gt;Javascript In Depth&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 30 Mar 2016 18:00:31 -0500</pubDate>
+        <link>http://xksteven.com/webdev/update/d3/2016/03/30/Intro-to-Web-Development/</link>
+        <guid isPermaLink="true">http://xksteven.com/webdev/update/d3/2016/03/30/Intro-to-Web-Development/</guid>
+        
+        
+        <category>webdev</category>
+        
+        <category>update</category>
+        
+        <category>d3</category>
+        
+      </item>
     
       <item>
         <title>Adventures in Torch</title>

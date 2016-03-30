@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Web Development Tutorial"
+title:  "Intro to Web Development"
 date:   2016-03-30 23:00:31
 categories: webdev update d3
 ---

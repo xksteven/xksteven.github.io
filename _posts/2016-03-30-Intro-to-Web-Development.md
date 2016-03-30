@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Intro to Web Development"
-date:   2016-03-30 23:00:31
-categories: webdev update d3
+date:   2016-03-30 11:00:31
+categories: webdev d3
 ---
 
 Hello I'm Steven.  At the time of writing this I'm a second year PhD student and the TA for information visualization.  This tutorial should hopefully get someone who knows a bit of programming to being able to use and modify visualizations in D3. D3 is a nice tool for making visualizations and displaying them in the browser, and even though it can do more than that in this series we shall focus on the visualization aspects of it.  So let's get started.  

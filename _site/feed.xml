@@ -3,14 +3,14 @@
   <channel>
     <title>Steven&#39;s Blog</title>
     <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
-    <link>http://xksteven.com/</link>
-    <atom:link href="http://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 30 Mar 2016 15:26:00 -0500</pubDate>
-    <lastBuildDate>Wed, 30 Mar 2016 15:26:00 -0500</lastBuildDate>
+    <link>localhost:4000/</link>
+    <atom:link href="localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 30 Mar 2016 16:18:16 -0500</pubDate>
+    <lastBuildDate>Wed, 30 Mar 2016 16:18:16 -0500</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
-        <title>Web Development Tutorial</title>
+        <title>Intro to Web Development</title>
         <description>&lt;p&gt;Hello I’m Steven.  At the time of writing this I’m a second year PhD student and the TA for information visualization.  This tutorial should hopefully get someone who knows a bit of programming to being able to use and modify visualizations in D3. D3 is a nice tool for making visualizations and displaying them in the browser, and even though it can do more than that in this series we shall focus on the visualization aspects of it.  So let’s get started.&lt;/p&gt;
 
 &lt;h3 id=&quot;sections&quot;&gt;Sections:&lt;/h3&gt;
@@ -136,14 +136,12 @@ learnxinyminutes.com/docs/javascript&lt;/p&gt;
 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript&quot;&gt;Javascript In Depth&lt;/a&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>Wed, 30 Mar 2016 18:00:31 -0500</pubDate>
-        <link>http://xksteven.com/webdev/update/d3/2016/03/30/Intro-to-Web-Development/</link>
-        <guid isPermaLink="true">http://xksteven.com/webdev/update/d3/2016/03/30/Intro-to-Web-Development/</guid>
+        <pubDate>Wed, 30 Mar 2016 06:00:31 -0500</pubDate>
+        <link>localhost:4000/webdev/d3/2016/03/30/Intro-to-Web-Development/</link>
+        <guid isPermaLink="true">localhost:4000/webdev/d3/2016/03/30/Intro-to-Web-Development/</guid>
         
         
         <category>webdev</category>
-        
-        <category>update</category>
         
         <category>d3</category>
         
@@ -193,8 +191,8 @@ learnxinyminutes.com/docs/javascript&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 01 Mar 2016 06:00:00 -0600</pubDate>
-        <link>http://xksteven.com/torch/update/2016/03/01/Adventures-in-Torch/</link>
-        <guid isPermaLink="true">http://xksteven.com/torch/update/2016/03/01/Adventures-in-Torch/</guid>
+        <link>localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</link>
+        <guid isPermaLink="true">localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</guid>
         
         
         <category>torch</category>
@@ -225,8 +223,8 @@ learnxinyminutes.com/docs/javascript&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 25 Dec 2015 16:18:57 -0600</pubDate>
-        <link>http://xksteven.com/image_processing/update/2015/12/25/image-processing/</link>
-        <guid isPermaLink="true">http://xksteven.com/image_processing/update/2015/12/25/image-processing/</guid>
+        <link>localhost:4000/image_processing/update/2015/12/25/image-processing/</link>
+        <guid isPermaLink="true">localhost:4000/image_processing/update/2015/12/25/image-processing/</guid>
         
         
         <category>image_processing</category>
@@ -240,8 +238,8 @@ learnxinyminutes.com/docs/javascript&lt;/p&gt;
         <description>&lt;p&gt;Welcome to my blog.  It will highlight my work and random learnings I do each month.&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 16:18:57 -0600</pubDate>
-        <link>http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
+        <link>localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">localhost:4000/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
         
         
         <category>welcome</category>

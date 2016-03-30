@@ -7,7 +7,7 @@ categories: webdev d3
 
 Hello I'm Steven.  At the time of writing this I'm a second year PhD student and the TA for information visualization.  This tutorial should hopefully get someone who knows a bit of programming to being able to use and modify visualizations in D3. D3 is a nice tool for making visualizations and displaying them in the browser, and even though it can do more than that in this series we shall focus on the visualization aspects of it.  So let's get started.  
 
-###Sections:  
+### Sections:  
 [Getting Started](#getting-started)  
 [Next Steps](#next-steps-with-css)  
 [Just Javascript](#just-javascript)  
@@ -15,7 +15,7 @@ Hello I'm Steven.  At the time of writing this I'm a second year PhD student and
 [Debugging](#debugging)  
 [Extra Resources](#extra-resources)
 
-##Getting Started
+## Getting Started
 
 In this section we will build a simple website which will be needed to test out the code later.  First thing's first we need to pick an editor to write and work with.  Notepad is okay, vim is good (best for working over a server), and my personal preference is [sublime](https://www.sublimetext.com/3).  In sublime you can download packages to make building a website easier like emmet and even a package for assisting in code completion for D3.js.  
 
@@ -89,13 +89,13 @@ http://localhost:8000/
 You should be able to see Hello World in your web browser
 
 
-##Next Steps With CSS
+## Next Steps With CSS
 
 Since the purpose of this tutorial is to quickly get someone up and running with a website that can run D3 we shall only talk briefly about CSS here. CSS stands for Cascading Style Sheets.  This is what specifies the styles, positionings, colors, etc. of the elements in a web site.
 
 Why do we need CSS if we are going to be working with D3 primarily? Well the truth is we don't need a dedicated CSS page but a lot of what D3 uses to change the colors of it's graphs and figures relies on CSS in the background. So a lot of the notation you'll encounter is exactly the same (or very similar) as CSS for that reason we will cover CSS.
 
-####Style it up
+#### Style it up
 
 We will make a basic css file and work through its notation as well as expand a bit on our previous html example.
 
@@ -110,7 +110,7 @@ For more on CSS notation see this or go to extra resources at the end of the pag
 [CSS notation](https://learnxinyminutes.com/docs/css/)
 
 
-##Just Javascript
+## Just Javascript
 
 In this section I will go over some of the basics of javascript language itself and how it interacts with html and CSS.
 
@@ -118,28 +118,17 @@ For a slightly more in depth look at javascript you can look at [javascript][jav
 
 
 
-##D3: Doing Debugging Done
+## D3: Doing Debugging Done
 
 
 
-##Debugging
-
-
-
-
-To do:
-
-mention but for the most part ignore CSS
-
-talk about JS
-learnxinyminutes.com/docs/javascript
-
-D3
+## Debugging
 
 
 
 
-##Extra Resources
+
+## Extra Resources
 
 W3schools and mozilla developers network (MDN) are good resources for much of the above material.  
 [HTML](http://www.w3schools.com/html/default.asp)  

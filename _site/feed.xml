@@ -5,8 +5,8 @@
     <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
     <link>localhost:4000/</link>
     <atom:link href="localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 30 Mar 2016 16:18:16 -0500</pubDate>
-    <lastBuildDate>Wed, 30 Mar 2016 16:18:16 -0500</lastBuildDate>
+    <pubDate>Wed, 30 Mar 2016 16:21:07 -0500</pubDate>
+    <lastBuildDate>Wed, 30 Mar 2016 16:21:07 -0500</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -116,15 +116,6 @@ Make sure the index.html is saved in the same directory that your terminal direc
 &lt;h2 id=&quot;d3-doing-debugging-done&quot;&gt;D3: Doing Debugging Done&lt;/h2&gt;
 
 &lt;h2 id=&quot;debugging&quot;&gt;Debugging&lt;/h2&gt;
-
-&lt;p&gt;To do:&lt;/p&gt;
-
-&lt;p&gt;mention but for the most part ignore CSS&lt;/p&gt;
-
-&lt;p&gt;talk about JS
-learnxinyminutes.com/docs/javascript&lt;/p&gt;
-
-&lt;p&gt;D3&lt;/p&gt;
 
 &lt;h2 id=&quot;extra-resources&quot;&gt;Extra Resources&lt;/h2&gt;
 

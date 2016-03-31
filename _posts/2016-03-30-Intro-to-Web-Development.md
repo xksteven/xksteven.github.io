@@ -33,7 +33,7 @@ This first example is to get you to see something a bit more complicated than ne
 </html>
 {% endhighlight %}
 
-If you downloaded emmet in sublime you can quickly type all of this by typing "html:5" (without quotes) and pressing Ctrl + e (command on apple). 
+If you downloaded emmet in sublime you can quickly type all of this by typing "html:5" (without quotes) and pressing Ctrl + e. 
 
 A quick intro HTML is short for hypertext markup language, fancy terms but basically meaning it isn't a programming language which means it can't do much on its own. You can think about html as specifying the content of a web page by enclosing the content like words, paragraphs, images etc. in the page by some descriptor in the these <>. The things enclosed in <> are called **tags** for example head, body, title are all tags. The objects enclosed between <> and </> are called **elements** for example "My First Awesome Webpage" is an element.  This format serves to let the browser know how the elements should be processed to be displayed on the browser.
 

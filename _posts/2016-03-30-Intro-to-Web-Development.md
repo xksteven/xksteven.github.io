@@ -51,7 +51,7 @@ This tag does two things: first it starts the html document by specifying the "h
 		...
 	</head>
 
-This part opens something on webpages called the head as designated by <head> and then closes it like so </head>.  The head short for heading basically gives an overview of the webpage for your web browser.  In the example above it sets the title of the webpage to be "My First Awesome Webpage".
+This part opens something on webpages called the head as designated by <head> and then closes it like so </head>.  The head basically gives an overview of the webpage for your web browser.  In the example above it sets the title of the webpage to be "My First Awesome Webpage".
 
 Here we have where the majority of the content in a webpage will go.  You can think of the <body> like the body of essay where it contains all of the actual content and majority of what's actually on the page goes in here.
 

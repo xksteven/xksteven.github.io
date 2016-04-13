@@ -342,7 +342,7 @@ I'll go over [this one](http://thinkingonthinking.com/Getting-Started-With-D3/)
 <!DOCTYPE html>
 <head>
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script type="text/javascript" onload="todo()">
+	<script type="text/javascript" >
 		function todo() {
 
 		var vis = d3.select("#graph")
@@ -372,7 +372,7 @@ I'll go over [this one](http://thinkingonthinking.com/Getting-Started-With-D3/)
 	</script>
 </head>
 
-<body>
+<body onload="todo()">
 	<div id="graph">
 	</div>
 	<p onclick="myFunction()">Hello World</p>

@@ -78,16 +78,16 @@ My current research in computer science is in the field of computer vision.  I a
 1. MySQL
 1. OpenGL
 
-<!--
+
 ------
 
 
 ### Experience
 
-**Company Name** *Position* __start to present__  
-	What I did in said company.
-	**Technical Environment** 
- -->
+**Here Maps** *Research Intern* __Summer 2016__  
+	I developed a model that creates road probability maps that can be used to detect differences between real and artificial maps.
+	**python, tensorflow** 
+
 
 
 ------

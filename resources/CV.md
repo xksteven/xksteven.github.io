@@ -85,7 +85,7 @@ My current research in computer science is in the field of computer vision.  I a
 ### Experience
 
 **Here Maps** *Research Intern* __Summer 2016__  
-	I developed a model that creates road probability maps that can be used to detect differences between real and artificial maps.
+	I developed a model that creates road probability maps that can be used to detect differences between artificial maps and the real roads.
 	**python, tensorflow** 
 
 

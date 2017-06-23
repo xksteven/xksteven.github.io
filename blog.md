@@ -1,11 +1,12 @@
 ---
 layout: default
+title: Blog
+permalink: /blog/
 ---
 
 <div class="home">
 
-  <h4> <a href="{{ "/blog/" | prepend: site.baseurl }}">Blog</a></h4>
-  <!-- <h1>Posts</h1>
+  <h1>Posts</h1>
 
   <ul class="posts">
     {% for post in site.posts %}
@@ -16,6 +17,6 @@ layout: default
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>

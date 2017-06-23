@@ -1,13 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Steven&#39;s Blog</title>
-    <description>A UChicago student&#39;s journey through machine learning and computer science.</description>
-    <link>http://xksteven.com/</link>
-    <atom:link href="http://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 26 Jan 2017 21:35:34 -0600</pubDate>
-    <lastBuildDate>Thu, 26 Jan 2017 21:35:34 -0600</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <title>Steven's Web Thoughts</title>
+    <description>A UChicago student's journey through machine learning and computer science.</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 23 Jun 2017 17:29:40 -0500</pubDate>
+    <lastBuildDate>Fri, 23 Jun 2017 17:29:40 -0500</lastBuildDate>
+    <generator>Jekyll v3.5.0</generator>
+    
+      <item>
+        <title>Adventures in PyTorch</title>
+        <description>&lt;p&gt;This page is being updated and as such is in an incomplete state at the moment.&lt;/p&gt;
+
+&lt;p&gt;Brief Intro:
+I went from using Torch, to Tensorflow, and now Pytorch.  For some time I used lasagne while I coded in Tensorflow as lasagne tended to give me improved performance compared to Tensorflow.&lt;/p&gt;
+
+&lt;h4 id=&quot;why-pytorch&quot;&gt;Why Pytorch&lt;/h4&gt;
+
+&lt;p&gt;There are several reasons why one should choose to learn pytorch.  Here are my main reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Debugging is much simpler in a dynamic computation framework&lt;/li&gt;
+  &lt;li&gt;They are providing really good tools for the community (such as torchvision)&lt;/li&gt;
+  &lt;li&gt;Dynamic are much better than static for development&lt;/li&gt;
+  &lt;li&gt;Builtin GPU support&lt;/li&gt;
+  &lt;li&gt;It’s faster by default&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I’ll expand a bit more on the points below.&lt;/p&gt;
+
+&lt;p&gt;For my work I need to be able to iterate quickly to create models and also change them quickly to be able to run multiple experiments.  Being able to quickly debug is essential as it really helps in the process of quick iteration.  By having dynamic graphs I can see where in the graph my error has occurred perhaps some of the tensors shapes are not aligned or I have a bad input type at some point in the graph.&lt;br /&gt;
+Sometimes these errors can be caught at compile time with other frameworks but there others that happen at runtime and with compiled models the errors I’ve encountered are almost unintelligible.&lt;/p&gt;
+
+&lt;p&gt;Sometimes using the tool is not just about the tool itself.  It’s about the community surrounding the tool that allows it to become prolific.  With torch it took a while to understand some of the inner workings as the documentation was quite poor unless you built the model or worked on it already.  Pytorch’s documentation is a bit better but that could also be because I already went through a lot of the muck of torch that I now better understand some of the inner workings.&lt;br /&gt;
+Other niceties that I’ve found with pytorch is that individuals actually share their pre-trained models whereas I have found it much less common in tensorflow for some reason. Lastly facebook is creating a github repo that collects many of the standard datasets and organizes them in once place.  In this way with one pip install you can have access to all of the standard datasets and also preprocessing becomes much easier instead of writing your own for every dataset you encounter.&lt;/p&gt;
+
+&lt;p&gt;Having the capability to alter your graph at runtime or via a conditional statement is a really big deal in terms of the expressiveness of the model.  This hasn’t really been taken advantage of because the ideas for how to properly update a changing model itself do not exist yet that I know of.  It still gives much greater freedom to design and redisign your model at any model unlike static computation graphs.&lt;/p&gt;
+
+&lt;p&gt;The built in GPU support is a nice convenient feature that many modern tools currently have that is able to speed up processing time by over an order of magnitude in some circumstances.&lt;/p&gt;
+
+&lt;p&gt;This last point is a bit odd for me as I feel like in theory the static graphs should be faster.  My belief in this is that by knowing that the graph is static one could apply more optimizations that one could not do with a dynamic graph.  In practice though Pytorch seems to be one of the fastest if not the fastest computation graph library that is available.  This could be attributed to a few things.  The main of which is that the compilers for the static graphs aren’t very smart at the moment so the extra benefits and savings that could be happening aren’t.  The other is that there might be some mistakes the other languages are performing since they usually rely on Nvidia to handle the gpu computation with their propreitary code anyways there might not be much performance improvements that could be gained with a static graph.&lt;/p&gt;
+
+&lt;h4 id=&quot;whats-still-lacking&quot;&gt;What’s still lacking&lt;/h4&gt;
+
+&lt;p&gt;Granted it is still in early beta as of July 2017 so it can be forgiven for some of the missing features.  However if you need to use these already it is not a good time to start otherwise you’ll encounter a few headaches along the way.&lt;/p&gt;
+
+&lt;p&gt;One thing that still needs work is indexing.
+You can only use fancy indexing along a tensors first dimension&lt;/p&gt;
+
+&lt;p&gt;Second is for recurrent models.
+The ability to use masking is missing for the loss and is confusing for the inputs.  Ideally it would be best to provide an api that could encode the sequences correctly. Currently one has to sort the inputs from longest along the first dimension and pad the remaining dimensions with zero and then convert it to packed_padded_sequence.  Finally the loss does not handle feeding in a mask so one has to resort to weird hacks that may break in the future.&lt;/p&gt;
+
+&lt;p&gt;Accessing submodules needs some attention as well if you want to use a pretrained model and get the output of a certain layer takes some work.&lt;/p&gt;
+
+&lt;p&gt;There are more and this page will be updated with more information soon.&lt;/p&gt;
+
+&lt;!-- Table testing
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+
+
+Some examples of what you can quickly do in Torch:
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'nn'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpatialConvolution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReLU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dropout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sigmoid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+ --&gt;
+</description>
+        <pubDate>Fri, 23 Jun 2017 07:00:00 -0500</pubDate>
+        <link>http://localhost:4000/pytorch/update/2017/06/23/Adventures-in-PyTorch/</link>
+        <guid isPermaLink="true">http://localhost:4000/pytorch/update/2017/06/23/Adventures-in-PyTorch/</guid>
+        
+        
+        <category>pytorch</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Intro to Web Development</title>
@@ -371,8 +451,8 @@ this is a comment and an alternative way to load d3--&amp;gt;&lt;/span&gt;
 
 </description>
         <pubDate>Wed, 30 Mar 2016 06:00:31 -0500</pubDate>
-        <link>http://xksteven.com/webdev/d3/2016/03/30/Intro-to-Web-Development/</link>
-        <guid isPermaLink="true">http://xksteven.com/webdev/d3/2016/03/30/Intro-to-Web-Development/</guid>
+        <link>http://localhost:4000/webdev/d3/2016/03/30/Intro-to-Web-Development/</link>
+        <guid isPermaLink="true">http://localhost:4000/webdev/d3/2016/03/30/Intro-to-Web-Development/</guid>
         
         
         <category>webdev</category>
@@ -387,7 +467,7 @@ this is a comment and an alternative way to load d3--&amp;gt;&lt;/span&gt;
 
 &lt;p&gt;Some examples of what you can quickly do in Torch:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lua&quot; data-lang=&quot;lua&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;nn&#39;&lt;/span&gt; 
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lua&quot; data-lang=&quot;lua&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'nn'&lt;/span&gt; 
 &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpatialConvolution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; 
 &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReLU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
@@ -425,8 +505,8 @@ this is a comment and an alternative way to load d3--&amp;gt;&lt;/span&gt;
 
 </description>
         <pubDate>Tue, 01 Mar 2016 06:00:00 -0600</pubDate>
-        <link>http://xksteven.com/torch/update/2016/03/01/Adventures-in-Torch/</link>
-        <guid isPermaLink="true">http://xksteven.com/torch/update/2016/03/01/Adventures-in-Torch/</guid>
+        <link>http://localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</link>
+        <guid isPermaLink="true">http://localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</guid>
         
         
         <category>torch</category>
@@ -457,8 +537,8 @@ this is a comment and an alternative way to load d3--&amp;gt;&lt;/span&gt;
 
 </description>
         <pubDate>Fri, 25 Dec 2015 16:18:57 -0600</pubDate>
-        <link>http://xksteven.com/image_processing/update/2015/12/25/image-processing/</link>
-        <guid isPermaLink="true">http://xksteven.com/image_processing/update/2015/12/25/image-processing/</guid>
+        <link>http://localhost:4000/image_processing/update/2015/12/25/image-processing/</link>
+        <guid isPermaLink="true">http://localhost:4000/image_processing/update/2015/12/25/image-processing/</guid>
         
         
         <category>image_processing</category>
@@ -468,12 +548,104 @@ this is a comment and an alternative way to load d3--&amp;gt;&lt;/span&gt;
       </item>
     
       <item>
+        <title>Creating my Webpage with Jekyll</title>
+        <description>&lt;p&gt;In case anyone is curious as to how I made my webpage I’ll detail the process below.  It’s hosted for free on github and you can look at the &lt;a href=&quot;https://github.com/xksteven/xksteven.github.io&quot;&gt;source code&lt;/a&gt; if you want to borrow any parts of my css or layout configurations.&lt;/p&gt;
+
+&lt;p&gt;Note that most of the instructions work for both OSX and GNU/Linux machines because I use a Linux machine myself.  There’s a bit more work that will be required on windows but it still is doable.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-is-jekyll&quot;&gt;What is Jekyll?&lt;/h4&gt;
+
+&lt;p&gt;Jekyll is a tool that helps making websites easier by creating some infrastructure that will perform some linking and creation magic so you don’t have to.  That’s what Jekyll is to me.&lt;/p&gt;
+
+&lt;p&gt;In the words of the Jekyll developers:
+Jekyll is a simple, blog-aware, static site generator. It takes a template directory containing raw text files in various formats, runs it through a converter (like Markdown) and our Liquid renderer, and spits out a complete, ready-to-publish static website suitable for serving with your favorite web server. Jekyll also happens to be the engine behind GitHub Pages, which means you can use Jekyll to host your project’s page, blog, or website from GitHub’s servers for free.&lt;/p&gt;
+
+&lt;p&gt;Here, &lt;a href=&quot;https://jekyllrb.com/docs/home/&quot;&gt;Jekyll Home Page&lt;/a&gt; is their webpage for all the official guides and documentation.&lt;/p&gt;
+
+&lt;h4 id=&quot;whats-required&quot;&gt;What’s required&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ruby&lt;/li&gt;
+  &lt;li&gt;RubyGems&lt;/li&gt;
+  &lt;li&gt;Github account (free)&lt;/li&gt;
+  &lt;li&gt;git&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h4&gt;
+
+&lt;p&gt;Make a new github repo with the repo name username.github.io (replace username with your github username).  Clone the directory somewhere on your machine.&lt;/p&gt;
+
+&lt;p&gt;Install Jekyll with &lt;code class=&quot;highlighter-rouge&quot;&gt;gem install jekyll bundler&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This part is for themes and rss feed &lt;code class=&quot;highlighter-rouge&quot;&gt;gem install minima jekyll-feed&lt;/code&gt; (required for easy setup)&lt;/p&gt;
+
+&lt;p&gt;Open a terminal and cd into the github repo.&lt;/p&gt;
+
+&lt;p&gt;Run the command &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new .&lt;/code&gt; if that fails you may need to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new . --force&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;jekyll-layout-structure&quot;&gt;Jekyll layout structure&lt;/h4&gt;
+
+&lt;p&gt;The new jekyll comes with the default theme called minima.  You can see where it is on your computer with &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle show minima&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The folder contents should now include&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;_posts&lt;/li&gt;
+  &lt;li&gt;index.md&lt;/li&gt;
+  &lt;li&gt;about.md&lt;/li&gt;
+  &lt;li&gt;_config.yml&lt;/li&gt;
+  &lt;li&gt;Gemfile&lt;/li&gt;
+  &lt;li&gt;Gemfile.lock&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The important pages to know about here are the _posts directory and index.md.  The index.md is your main markdown page that will greet users coming from the web.  The _posts directory is where all of your blog posts will go in.  It even has an example post already there.&lt;/p&gt;
+
+&lt;h4 id=&quot;running-jekyll&quot;&gt;Running Jekyll&lt;/h4&gt;
+
+&lt;p&gt;To view the webpage locally modify in _config.yml the url variable to “localhost:4000”.&lt;/p&gt;
+
+&lt;p&gt;Now start up Jekyll from the root of the github repo with &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve --watch&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Open up your favorite web browser and in the address bar go to localhost:4000&lt;/p&gt;
+
+&lt;p&gt;You should see your webpage.&lt;/p&gt;
+
+&lt;h4 id=&quot;your-first-post&quot;&gt;Your first post&lt;/h4&gt;
+
+&lt;p&gt;All of the posts are written in markdown.  It’s a nice and convenient way to add style directly in the files.&lt;/p&gt;
+
+&lt;p&gt;Good markdown resources &lt;a href=&quot;https://daringfireball.net/projects/markdown/syntax&quot;&gt;daring fireball&lt;/a&gt; and &lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;mastering markdown&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;putting-your-website-online&quot;&gt;Putting your website online&lt;/h4&gt;
+
+&lt;p&gt;Change the website url to username.github.io (replace username with your github username).&lt;/p&gt;
+
+&lt;p&gt;commit and push your changes to the repo.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git add --all .&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m &quot;new webpage&quot;&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And that’s it.  You might need to wait a few minutes before your webpage becomes visible online.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 Nov 2015 16:18:57 -0600</pubDate>
+        <link>http://localhost:4000/jekyll/github/2015/11/25/creating-my-website/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/github/2015/11/25/creating-my-website/</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>github</category>
+        
+      </item>
+    
+      <item>
         <title>Welcome to my Blog!</title>
         <description>&lt;p&gt;Welcome to my blog.  It will highlight my work and random learnings I do each month.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 20 Dec 2015 16:18:57 -0600</pubDate>
-        <link>http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://xksteven.com/welcome/update/2015/12/20/welcome-to-jekyll/</guid>
+        <pubDate>Fri, 20 Nov 2015 16:18:57 -0600</pubDate>
+        <link>http://localhost:4000/welcome/update/2015/11/20/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/welcome/update/2015/11/20/welcome-to-jekyll/</guid>
         
         
         <category>welcome</category>

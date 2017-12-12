@@ -22,7 +22,7 @@ permalink: /resources/CV/
 
 ### Research Interests
 
-My current research in computer science is in the field of computer vision.  I am working on the problem of visual question answering where the task can be described as given both an image and a question to produce a correct answer.  Most of my research currently involves the use of machine learning and deep learning methods.  
+My current research in computer science is in the field of computer vision.  For the years of 2016-2017 I have worked on generative models, specifically GANs. I have begun investigation into reinforcement learning techniques and their applications into computer vision.  My research focuses on the uses of machine learning.  
 
 
 ------
@@ -51,8 +51,12 @@ My current research in computer science is in the field of computer vision.  I a
 
 ### Teaching
 
-1. TA for [Intro. to Computer Science](https://www.classes.cs.uchicago.edu/archive/2016/winter/15200-1/) (Winter 2016)
-2. TA for [Computational Biology](http://uchicago.bio) (Fall 2015)
+1. TA for [Machine Learning](http://people.cs.uchicago.edu/~risi/cmsc25400.html) (Autumn 2017)
+
+2. TA for [Intro. to Computer Science](https://www.classes.cs.uchicago.edu/archive/2016/fall/12100-1/) (Autumn 2016)
+3. TA for [Machine Learning](http://people.cs.uchicago.edu/~risi/cmsc25400.html)(Spring 2016)
+4. TA for [Intro. to Computer Science](https://www.classes.cs.uchicago.edu/archive/2016/winter/15200-1/) (Winter 2016)
+5. TA for [Computational Biology](http://uchicago.bio) (Autumn 2015)
 
 
 ------
@@ -83,6 +87,11 @@ My current research in computer science is in the field of computer vision.  I a
 
 
 ### Experience
+
+
+**Here Maps** *Research Intern* __Summer 2017__  
+	I worked on models to better predict arrival times (ETA estimates) and lane level navigation prediction which can be used for autonomous vehicles.
+	**python, pytorch** 
 
 **Here Maps** *Research Intern* __Summer 2016__  
 	I developed a model that creates road probability maps that can be used to detect differences between artificial maps and the real roads.

@@ -24,7 +24,7 @@
 
 .post-content .my-headinglastp {
   margin: 0;
-  margin-bottom: 1em;;
+  margin-bottom: 1em;
   line-height: 135%;
   padding-bottom: 2px;
 }
@@ -40,6 +40,7 @@
 .post-content ol li {
   width: 33%;
   margin: 0;
+  margin-bottom: 1em;
   float: left;
 }
 .post-content hr {
@@ -79,7 +80,7 @@
   margin: 0;
 }
 
-/* Larger than desktop */
+/* Larger than phone */
 @media (min-width: 1000px) {
 
 .post-content h3 {
@@ -91,16 +92,10 @@
 
 .post-content ol {
   list-style-type:none;
-  margin: 3em 0em 1em 2em;
+  margin: 3em 0em 1em 1em;
   display: inline-block;
   padding: 0;
   width: 75%;
-}
-
-.post-content ol li {
-  width: 33%;
-  margin: 0;
-  float: left;
 }
 
 .post-content ul {

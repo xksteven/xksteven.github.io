@@ -45,7 +45,7 @@
 }
 .post-content hr {
   display: block;
-  float:none;
+  float:left;
   padding: 0;
   margin: 1em auto;
   width: 100%;
@@ -57,6 +57,7 @@
   font-style: italic;
   font-weight: normal;
   margin: 0.5em 0 0.25em 0;
+  float: left;
 }
 
 .post-content ul li {
@@ -68,13 +69,13 @@
   float: left;
   margin: 1em 0em 1em 2em;
   padding: 0;
-  width: 75%;
+  width: 90%;
 }
 .post-content p {
   float: left;
   margin: 1em 0em 0.5em 2em;
   padding-bottom: 2rem;
-  width: 75%;
+  width: 90%;
 }
 .post-content li p {
   margin: 0;
@@ -113,7 +114,7 @@
 .post-content hr {
   position: relative;
   display: block;
-  float:none;
+  float:left;
   padding: 0;
   margin: 1em auto;
   width: 100%;

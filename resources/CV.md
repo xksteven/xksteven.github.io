@@ -104,6 +104,7 @@ My current research in computer science is in the field of computer vision.  For
 
 ------
 
+
 ### Projects
 
 * **OpenGL Renderer**  

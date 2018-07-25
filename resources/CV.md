@@ -88,6 +88,9 @@ My current research in computer science is in the field of computer vision.  For
 
 ### Experience
 
+**Google Brain** *Research Intern* __Summer 2018__  
+	I worked in NLP and collaborated with several teams.  I worked in the area of Fact Checking related to this [paper](https://dl.acm.org/citation.cfm?id=3184558.3188723) to deal with the problem of content abuse and also worked with the news team.
+	**python, pytorch, tensorflow, apache-beam, flume** 
 
 **Here Maps** *Research Intern* __Summer 2017__  
 	I worked on models to better predict arrival times (ETA estimates) and lane level navigation prediction which can be used for autonomous vehicles.

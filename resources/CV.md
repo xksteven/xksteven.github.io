@@ -22,7 +22,7 @@ permalink: /resources/CV/
 
 ### Research Interests
 
-My current research in computer science is in the field of computer vision.  For the years of 2016-2017 I have worked on generative models, specifically GANs. I have begun investigation into reinforcement learning techniques and their applications into computer vision.  My research focuses on the uses of machine learning.  
+My primary area of focus has been within computer vision.  For the years of 2015-2017, I have worked on generative models, specifically GANs.  I have since begun exploring techniques to make models more robust. The majority of my research focuses on applications of machine learning.  
 
 
 ------

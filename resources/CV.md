@@ -22,7 +22,7 @@ permalink: /resources/CV/
 
 ### Research Interests
 
-My primary area of focus has been within computer vision.  For the years of 2015-2017, I have worked on generative models, specifically GANs.  Coming up with both a measure and a method to use GANs to interpret other classifiers.  I have since begun exploring techniques to make models more robust. The majority of my research focuses on applications of machine learning.  
+My primary area of focus has been within computer vision.  For the years of 2015-2017, I have worked on generative models, specifically GANs, coming up with both a measure and a method to use GANs to interpret other classifiers.  I have since begun exploring techniques to make models more robust. The majority of my research focuses on applications of machine learning.  
 
 
 ------
@@ -80,8 +80,8 @@ My primary area of focus has been within computer vision.  For the years of 2015
 <!-- 1. Android / iOS -->
 <!-- 1. Javascript / NodeJS -->
 1. Git / SVN
-<!-- 1. MySQL 
-1. OpenGL -->
+<!-- 1. MySQL -->
+<!-- 1. OpenGL -->
 
 
 ------

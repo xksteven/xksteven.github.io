@@ -22,7 +22,7 @@ permalink: /resources/CV/
 
 ### Research Interests
 
-My primary area of focus has been within computer vision.  For the years of 2015-2017, I have worked on generative models, specifically GANs.  I have since begun exploring techniques to make models more robust. The majority of my research focuses on applications of machine learning.  
+My primary area of focus has been within computer vision.  For the years of 2015-2017, I have worked on generative models, specifically GANs.  Coming up with both a measure and a method to use GANs to interpret other classifiers.  I have since begun exploring techniques to make models more robust. The majority of my research focuses on applications of machine learning.  
 
 
 ------
@@ -64,7 +64,7 @@ My primary area of focus has been within computer vision.  For the years of 2015
 ### Research Experience
 
 * **Computer Science**  __2014 to current__  
-	I am working with Dr. Greg Shakhnarovich at TTIC in the areas of machine learning and computer vision on the problem of visual question answering. I have worked with Torch to create various neural network models.
+	I am working with Dr. Greg Shakhnarovich at TTIC in the areas of machine learning and computer vision. 
 
 * **Biochemistry**   __2011 to 2014__  
 	I worked with Dr. Richard Myers at the University of Miami trying to create a generic genetic therapy via transducible gene editing proteins.  I ran western blots, gel electrophoresis, transductions, PCR, and electroporation
@@ -76,11 +76,12 @@ My primary area of focus has been within computer vision.  For the years of 2015
 
 1. Python
 1. Java
+1. Pytorch/Tensorflow
 <!-- 1. Android / iOS -->
-1. Javascript / NodeJS
+<!-- 1. Javascript / NodeJS -->
 1. Git / SVN
-1. MySQL
-1. OpenGL
+<!-- 1. MySQL 
+1. OpenGL -->
 
 
 ------
@@ -89,7 +90,7 @@ My primary area of focus has been within computer vision.  For the years of 2015
 ### Experience
 
 **Google Brain** *Research Intern* __Summer 2018__  
-	I worked in NLP and collaborated with several teams.  I worked in the area of Fact Checking related to this [paper](https://dl.acm.org/citation.cfm?id=3184558.3188723) to deal with the problem of content abuse and also worked with the news team.
+	I worked in NLP and collaborated with several teams.  I worked in the area of Fact Checking related to this [paper](https://dl.acm.org/citation.cfm?id=3184558.3188723) to deal with the problem of content abuse and also worked with the Google News team.
 	**python, pytorch, tensorflow, apache-beam, flume** 
 
 **Here Maps** *Research Intern* __Summer 2017__  

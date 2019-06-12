@@ -3,11 +3,11 @@
   <channel>
     <title>Steven's Web Thoughts</title>
     <description>A UChicago student's journey through machine learning and computer science.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 25 Jul 2018 00:39:21 -0700</pubDate>
-    <lastBuildDate>Wed, 25 Jul 2018 00:39:21 -0700</lastBuildDate>
-    <generator>Jekyll v3.7.3</generator>
+    <link>http://xksteven.com/</link>
+    <atom:link href="http://xksteven.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 12 Jun 2019 14:48:51 -0700</pubDate>
+    <lastBuildDate>Wed, 12 Jun 2019 14:48:51 -0700</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>Master's Work</title>
@@ -15,11 +15,11 @@
 
 &lt;p&gt;Here’s a link to my master’s paper draft.  It’s still being worked on at the moment so expect some changes.  I’ll be presenting the work around middle of Janurary so the paper should be finalized around then.&lt;/p&gt;
 
-&lt;p&gt;Master’s Paper: &lt;a href=&quot;http://localhost:4000/resources/masters-thesis-analysis.pdf&quot;&gt;Analysis of Generative Adversarial Networks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Master’s Paper: &lt;a href=&quot;http://xksteven.com/resources/masters-thesis-analysis.pdf&quot;&gt;Analysis of Generative Adversarial Networks&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Dec 2017 04:00:00 -0800</pubDate>
-        <link>http://localhost:4000/masters/update/2017/12/12/Masters-Work/</link>
-        <guid isPermaLink="true">http://localhost:4000/masters/update/2017/12/12/Masters-Work/</guid>
+        <link>http://xksteven.com/masters/update/2017/12/12/Masters-Work/</link>
+        <guid isPermaLink="true">http://xksteven.com/masters/update/2017/12/12/Masters-Work/</guid>
         
         
         <category>masters</category>
@@ -98,8 +98,8 @@ Some examples of what you can quickly do in Torch:
  --&gt;
 </description>
         <pubDate>Fri, 23 Jun 2017 05:00:00 -0700</pubDate>
-        <link>http://localhost:4000/pytorch/update/2017/06/23/Adventures-in-PyTorch/</link>
-        <guid isPermaLink="true">http://localhost:4000/pytorch/update/2017/06/23/Adventures-in-PyTorch/</guid>
+        <link>http://xksteven.com/pytorch/update/2017/06/23/Adventures-in-PyTorch/</link>
+        <guid isPermaLink="true">http://xksteven.com/pytorch/update/2017/06/23/Adventures-in-PyTorch/</guid>
         
         
         <category>pytorch</category>
@@ -465,8 +465,8 @@ this is a comment and an alternative way to load d3--&amp;gt;&lt;/span&gt;
 
 </description>
         <pubDate>Wed, 30 Mar 2016 04:00:31 -0700</pubDate>
-        <link>http://localhost:4000/webdev/d3/2016/03/30/Intro-to-Web-Development/</link>
-        <guid isPermaLink="true">http://localhost:4000/webdev/d3/2016/03/30/Intro-to-Web-Development/</guid>
+        <link>http://xksteven.com/webdev/d3/2016/03/30/Intro-to-Web-Development/</link>
+        <guid isPermaLink="true">http://xksteven.com/webdev/d3/2016/03/30/Intro-to-Web-Development/</guid>
         
         
         <category>webdev</category>
@@ -519,8 +519,8 @@ this is a comment and an alternative way to load d3--&amp;gt;&lt;/span&gt;
 
 </description>
         <pubDate>Tue, 01 Mar 2016 04:00:00 -0800</pubDate>
-        <link>http://localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</link>
-        <guid isPermaLink="true">http://localhost:4000/torch/update/2016/03/01/Adventures-in-Torch/</guid>
+        <link>http://xksteven.com/torch/update/2016/03/01/Adventures-in-Torch/</link>
+        <guid isPermaLink="true">http://xksteven.com/torch/update/2016/03/01/Adventures-in-Torch/</guid>
         
         
         <category>torch</category>
@@ -551,8 +551,8 @@ this is a comment and an alternative way to load d3--&amp;gt;&lt;/span&gt;
 
 </description>
         <pubDate>Fri, 25 Dec 2015 14:18:57 -0800</pubDate>
-        <link>http://localhost:4000/image_processing/update/2015/12/25/image-processing/</link>
-        <guid isPermaLink="true">http://localhost:4000/image_processing/update/2015/12/25/image-processing/</guid>
+        <link>http://xksteven.com/image_processing/update/2015/12/25/image-processing/</link>
+        <guid isPermaLink="true">http://xksteven.com/image_processing/update/2015/12/25/image-processing/</guid>
         
         
         <category>image_processing</category>
@@ -643,8 +643,8 @@ Jekyll is a simple, blog-aware, static site generator. It takes a template direc
 &lt;p&gt;And that’s it.  You might need to wait a few minutes before your webpage becomes visible online.&lt;/p&gt;
 </description>
         <pubDate>Wed, 25 Nov 2015 14:18:57 -0800</pubDate>
-        <link>http://localhost:4000/jekyll/github/2015/11/25/creating-my-website/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/github/2015/11/25/creating-my-website/</guid>
+        <link>http://xksteven.com/jekyll/github/2015/11/25/creating-my-website/</link>
+        <guid isPermaLink="true">http://xksteven.com/jekyll/github/2015/11/25/creating-my-website/</guid>
         
         
         <category>jekyll</category>
@@ -658,8 +658,8 @@ Jekyll is a simple, blog-aware, static site generator. It takes a template direc
         <description>&lt;p&gt;Welcome to my blog.  It will highlight my work and random learnings I do each month.&lt;/p&gt;
 </description>
         <pubDate>Fri, 20 Nov 2015 14:18:57 -0800</pubDate>
-        <link>http://localhost:4000/welcome/update/2015/11/20/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/welcome/update/2015/11/20/welcome-to-jekyll/</guid>
+        <link>http://xksteven.com/welcome/update/2015/11/20/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://xksteven.com/welcome/update/2015/11/20/welcome-to-jekyll/</guid>
         
         
         <category>welcome</category>

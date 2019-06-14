@@ -75,7 +75,7 @@
   float: left;
   margin: 1em 0em 0.5em 2em;
   padding-bottom: 2rem;
-  width: 90%;
+  width: 100%;
 }
 .post-content li p {
   margin: 0;
@@ -87,16 +87,17 @@
 .post-content h3 {
   font-style: italic;
   float: left;
-  width: 15%;
+  width: 20%;
   margin: 0.5em 0.5em 0 0;
 }
 
 .post-content ol {
   list-style-type:none;
-  margin: 3em 0em 1em 1em;
+  margin: 1em 0em 1em 1em;
   display: inline-block;
   padding: 0;
   width: 75%;
+  margin-left: 25%;
 }
 
 .post-content ul {
@@ -124,7 +125,8 @@
 /* The tilde selects the any p element that follows an h3*/
 .post-content h3 ~ p {
     float: left;
-    margin-left: 19%;
+    margin-left: 24%;
+    width: 74%;
 }
 /* This is one is applied first*/
 /* The plus selects the first p element that follows an h3*/

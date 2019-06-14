@@ -75,6 +75,7 @@ My primary area of focus has been within computer vision.  For the years of 2015
 ### Technical
 
 1. Python
+1. C
 1. Java
 1. Pytorch/Tensorflow
 <!-- 1. Android / iOS -->
@@ -117,3 +118,15 @@ My primary area of focus has been within computer vision.  For the years of 2015
 	I created a simple Battleship game in C that has a client, server interface. 
 
 
+
+------
+
+
+### Publications
+
+**[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers)** __ICML 2019 Workshop__  
+	In this work we construct a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.
+
+
+**[Analysis of Generative Adversarial Models](https://newtraell.cs.uchicago.edu/files/ms_paper/xksteven.pdf)** __2017__  
+	This is my master's work in which I introduce a novel measure for quantitatively assessing the quality of generative models and present a method for utilizing GANs to interpret classifiers. 

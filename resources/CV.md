@@ -57,7 +57,7 @@ My primary area of focus has been within computer vision.  For the years of 2015
 4. [Intro. to Computer Science](https://www.classes.cs.uchicago.edu/archive/2016/fall/12100-1/) (Autumn 2016)
 5. [Machine Learning](http://people.cs.uchicago.edu/~risi/cmsc25400.html) (Autumn 2017)
 8. [Intro. to Computer Science](http://people.cs.uchicago.edu/~adamshaw/cmsc15100-2018/index.html) (Autumn 2018)
-9. [Machine Learning](http://people.cs.uchicago.edu/~risi/cmsc25400.html)(Winter 2019)
+9. [Machine Learning](http://people.cs.uchicago.edu/~risi/cmsc25400.html) (Winter 2019)
 10. [Machine Learning and Large-Scale Data Analysis](https://www.stat.uchicago.edu/courseinfo/courses/2019/spr/ann/s37601-1.shtml) (Spring 2019)
 
 
@@ -127,7 +127,7 @@ My primary area of focus has been within computer vision.  For the years of 2015
 **[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers)** __ICML 2019 Workshop__  
 	In this work we construct a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.
 
-**[DIODE: A Dense Indoor and Outdoor DEpth Dataset](https://diode-dataset.org)** __2019__
+**[DIODE: A Dense Indoor and Outdoor DEpth Dataset](https://diode-dataset.org)** __2019__  
 	In this work we use a single depth sensor to capture both indoor and outdoor scenes to create the most accurate depth dataset to date.  
 
 **[Analysis of Generative Adversarial Models](https://newtraell.cs.uchicago.edu/files/ms_paper/xksteven.pdf)** __2017__  

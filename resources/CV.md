@@ -124,6 +124,9 @@ My primary area of focus has been within computer vision.  For the years of 2015
 
 ### Publications
 
+**[A Benchmark for Anomaly Segmentation](https://arxiv.org/abs/1911.11132)** __In Submission__
+        In this work we both construct a synthetic dataset and utilize pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also show how some classic approaches can improve performance in this task.
+
 **[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers)** __ICML 2019 Workshop__  
 	In this work we construct a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.
 

@@ -432,6 +432,9 @@
     <pre id="item0" style="display:none;">
         Javascript Code:
         <code>
+        // This builds a table that will give all possible centers that can 
+        // come from this particular point on the circle. Better thing is to use gradients
+        // for orientation.
         function buildLookUpTable(radiusMin, radiusMax) 
         {
             var i = 0;
@@ -519,10 +522,11 @@
 
                     for (var tempRadius = radiusMin; tempRadius &lt;= radiusMax; tempRadius++) 
                     {
-
+                        // Binary image and image is a 1-D array so we need to skip by 4.
                         if (pix[4*((row)*img.width+(col))] > 1) 
                         {
                             var indexR = (tempRadius - radiusMin);
+                            // Let's add to the counter to every possible center or could be.
                             for (var i = 0; i &lt; lut[0][indexR].length; i++) 
                             {
                                 var a = col + lut[1][indexR][i];

@@ -88,7 +88,11 @@ My primary area of focus has been within computer vision.  For the years of 2015
 ------
 
 
-### Experience
+### Professional History
+
+**Autobon AI** *Head of AI* __2019 to 2020__  
+	I worked on developing the AI/ML infrastructure at Autobon, which involves designing data ingestion into Amazon AWS, constructing labeling tasks, and quality assurance over the labeled data.
+	**aws**
 
 **Google Brain** *Research Intern* __Summer 2018__  
 	I worked in NLP and collaborated with several teams.  I worked in the area of Fact Checking related to this [paper](https://dl.acm.org/citation.cfm?id=3184558.3188723) to deal with the problem of content abuse and also worked with the Google News team.
@@ -109,6 +113,14 @@ My primary area of focus has been within computer vision.  For the years of 2015
 
 ### Projects
 
+* **Multilabel OOD Detection**  
+	[multilabel-ood](https://github.com/xksteven/multilabel-ood)  
+	Evaluating out-of-distribution (OOD) techniques on multilabel classification tasks.
+
+* **Sparse Hypercolumns**  
+	[sparse hypercolumns](https://github.com/xksteven/Sparse-Hypercolumns)  
+	Makes an interface for creating memory efficient sparse hypercolumns.  Used in automatic colorization and classification.
+
 * **OpenGL Renderer**  
 	[myRenderer](http://www.github.com/xksteven/myOpenGl)  
 	I created a simple OpenGL renderer to render some height maps and draw some objects.  Applies simple lighting and texturing.
@@ -118,11 +130,16 @@ My primary area of focus has been within computer vision.  For the years of 2015
 	I created a simple Battleship game in C that has a client, server interface.
 
 
-
 ------
 
 
 ### Publications
+
+**[Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275)** __In Submission__  
+	We create a new benchmark to evaluate AI Safety by measuring how well models agree with human values.
+
+**[The Many Faces of Robustness: A Critical Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241)** __In Submission__  
+	We collect a new dataset and introduce a new technique which achieves SOTA on OOD detection.
 
 **[A Benchmark for Anomaly Segmentation](https://arxiv.org/abs/1911.11132)** __In Submission__  
 	In this work we both construct a synthetic dataset and utilize pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also show how some classic approaches can improve performance in this task.

@@ -11,16 +11,31 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-	<link rel="stylesheet" href="{{ "/css/skeleton.css" | prepend: site.baseurl }}">
-	<link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.baseurl }}">
-	<link rel="stylesheet" href="{{ "/css/resume.css" | prepend: site.baseurl }}">
-	
+    <link rel="stylesheet" href="{{ "/css/skeleton.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/resume.css" | prepend: site.baseurl }}">
+
+    <!-- Because we removed the header add back in the google tag -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60607608-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-60607608-1');
+    </script>
+
 
 </head>
 
     <body>
 
+    {% comment %}
     {% include header.html %}
+    {% endcomment %}
+
+   
 
     <div class="page-content">
       <div class="wrap">
@@ -34,7 +49,9 @@
       </div>
     </div>
 
+    {% comment %}
     {% include footer.html %}
+    {% endcomment %}
 
     </body>
 </html>

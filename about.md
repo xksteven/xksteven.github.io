@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
-I am a doctoral student at UChicago studying machine learning.
+I am a doctoral student at University of Chicago studying machine learning.
 
-Here's my [Resume/CV]({{ site.url }}/resources/CV/)
+Here's my [Resume/CV]({{ site.url }}/resources/resume/)
 
 I built this website using Jekyll.
 

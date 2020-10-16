@@ -6,7 +6,7 @@ permalink: /about/
 
 I am a doctoral student at University of Chicago studying machine learning.
 
-Here's my [Resume/CV]({{ site.url }}/resources/resume/)
+Here's my [Resume]({{ site.url }}/resources/resume/)
 
 I built this website using Jekyll.
 

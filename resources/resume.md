@@ -52,7 +52,7 @@ permalink: /resources/resume/
 	**python, pytorch, tensorflow, apache-beam, flume**
 
 **Here Maps** *Research Intern* __May 2017 to September 2017__  
-	Engineered models to better predict arrival times (ETA estimates) and lane level navigation prediction which can be used for autonomous vehicles.
+	Engineered models to better estimate time of arrival (ETA), and also improved lane level navigation prediction.
 	**python, pytorch**
 
 **Here Maps** *Research Intern* __May 2016 to September 2016__  

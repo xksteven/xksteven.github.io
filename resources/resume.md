@@ -27,9 +27,9 @@ permalink: /resources/resume/
     <p> <b>University of Miami</b> B.S. in Biochemistry and CS May 2014  </p>
     <h4 class="my-heading4"> Teaching </h4>
     <p><a href="http://people.cs.uchicago.edu/~adamshaw/cmsc15100-2018/index.html">Intro. to Computer Science</a></p>
-    <p><a href="http://uchicago.bio">Computational Biology</a></p>
+    <p><a href="https://mpcs-courses.cs.uchicago.edu/2015-16/autumn/courses/56420">Computational Biology</a></p>
 <p><a href="http://people.cs.uchicago.edu/~risi/cmsc25400.html"> Machine Learning </a></p>
-<p><a href="https://www.stat.uchicago.edu/courseinfo/courses/2019/spr/ann/s37601-1.shtml"> Machine Learning and Large-Scale Data Analysis</a></p>
+<p><a href="http://collegecatalog.uchicago.edu/thecollege/statistics/"> Machine Learning and Large-Scale Data Analysis</a></p>
  
   </div>
   <div class="five columns">
@@ -89,19 +89,19 @@ permalink: /resources/resume/
 
 ### Publications
 **[Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275)** __In Submission__  
-	We create a new benchmark to evaluate AI Safety by measuring how well models agree with human values.
+	Created a new benchmark to evaluate AI Safety by measuring how well models agree with human values.
 
 **[Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241)** __In Submission__  
-	We collect a new dataset and introduce a new technique which achieves state of the art on out of distribution detection.
+	Collected a new dataset and introduced a new technique which achieves state of the art on out of distribution detection.
 
 **[A Benchmark for Anomaly Segmentation](https://arxiv.org/abs/1911.11132)** __In Submission__  
-	In this work we both construct a synthetic dataset and utilize pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also show how some classic approaches can improve performance in this task.
+	Constructed a synthetic dataset and utilize pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also showed how some classic approaches can improve performance in this task.
 
 **[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers)** __ICML 2019 Workshop__  
-	In this work we construct a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.
+	Constructed a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.
 
 **[DIODE: A Dense Indoor and Outdoor DEpth Dataset](https://diode-dataset.org)** __2019__  
-	In this work we use a single depth sensor to capture both indoor and outdoor scenes to create the most accurate depth dataset to date.  
+	Utilized a single depth sensor to capture both indoor and outdoor scenes to create the most accurate depth dataset to date.  
 
 **[Analysis of Generative Adversarial Models](https://newtraell.cs.uchicago.edu/files/ms_paper/xksteven.pdf)** __2017__  
-	This is my master's work in which I introduce a novel measure for quantitatively assessing the quality of generative models and present a method for utilizing GANs to interpret classifiers.
+	Introduce a novel measure for quantitatively assessing the quality of generative models and presented a method for utilizing GANs to interpret classifiers.

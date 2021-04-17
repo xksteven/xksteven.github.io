@@ -4,8 +4,6 @@ title:  "Owning a Tesla while Renting"
 date:   2020-03-21 22:18:57
 categories: Tesla renting Model3
 ---
-
-
 I didn't see much talk about owning a Tesla or electric vehicle (EV) online while renting so I thought I would share my own experience.
 
 ## Choosing my Tesla:  

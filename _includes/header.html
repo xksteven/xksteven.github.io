@@ -24,12 +24,12 @@
           {% if page.title == "Blog" %}<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
           {% endif %}
         {% endfor %}
+        <div class="dark-mode-container page-link">
+          <input style="display: none;" type="checkbox" id="darkSwitch">
+          <label class="dark-mode-btn" for="darkSwitch">🌒</label>
+        </div>
       </div>
     </nav>
-    <div class="dark-mode-container">
-      <input style="display: none;" type="checkbox" id="darkSwitch">
-      <label class="dark-mode-btn" for="darkSwitch">🌒+</label>
-    </div>
   </div>
   <script src="/js/dark-mode-switch.min.js"></script>
 

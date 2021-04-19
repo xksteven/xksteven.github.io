@@ -16,3 +16,4 @@
 }
 .dark-mode-btn { opacity: 50%; }
 .dark-mode-btn:hover { opacity: 90%; }
+.dark-mode-container { float: right; }

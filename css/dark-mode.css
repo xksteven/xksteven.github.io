@@ -14,3 +14,5 @@
 [data-theme="dark"] .bg-black {
   background-color: #eee !important;
 }
+.dark-mode-btn { opacity: 50%; }
+.dark-mode-btn:hover { opacity: 90%; }

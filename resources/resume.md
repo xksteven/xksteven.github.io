@@ -43,6 +43,10 @@ permalink: /resources/resume/
 
 
 ### Professional History
+**SpaceX** *Software Engineer II* __Februrary 2021 to Present__  
+	Worked on updating the kubernetes environment to support new vehicles. Worked on StarLink mobility effort to allow for mobile User terminals. Worked on low level RAM interface.
+	**K8s, kubernetes, C++**
+
 **Autobon AI** *Head of AI* __Auguest 2019 to September 2020__  
 	Developed the AI/ML infrastructure at Autobon, which involves designing data ingestion into Amazon AWS, constructing labeling tasks, and quality assurance over the labeled data.
 	**aws**

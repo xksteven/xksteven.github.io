@@ -43,8 +43,8 @@ permalink: /resources/resume/
 
 
 ### Professional History
-**SpaceX** *Software Engineer II* __Februrary 2021 to Present__  
-	Worked on updating the kubernetes environment to support new vehicles. Worked on StarLink mobility effort to allow for mobile User terminals. Worked on low level RAM interface.
+**SpaceX** *Software Engineer II* __Februrary 2021 to May 2022__  
+	Updated the kubernetes environment to support new satellites. Worked on StarLink mobility effort to allow for mobile User Terminals (UTs). Worked on low level RAM interface that was used to store critical information about satellite ephemeris.
 	**K8s, kubernetes, C++**
 
 **Autobon AI** *Head of AI* __Auguest 2019 to September 2020__  

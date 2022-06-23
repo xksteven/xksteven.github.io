@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a doctoral student at University of Chicago studying machine learning.
+I am trying to make the world a little better mostly through programming.  Also trying to have some fun along the way.
 
 Here's my [Resume]({{ site.url }}/resources/resume/)
 

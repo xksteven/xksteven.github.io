@@ -13,7 +13,7 @@ permalink: /resources/resume/
 	</div>
 	<div class="four columns">
 		<p class="my-headingp"><a href="http://stevenbas.art" >stevenbas.art</a></p>
-		<p class="my-headingp"><a href="mailto:xksteven@uchicago.edu"> xksteven@uchicago.edu</a></p>
+		<p class="my-headingp"><a href="mailto:xksteven@gmail.com"> xksteven@gmail.com</a></p>
 		<p class="my-headingp">(954) 805-3651</p>
 	</div>
   </div>

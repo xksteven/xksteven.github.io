@@ -9,7 +9,7 @@ permalink: /resources/resume/
   <div class="row">
     <div class="eight columns">
 		<h1 class="my-heading1">Steven Basart </h1>
-		<h2 class="my-heading2"> Computer Science PhD student </h2>
+		<h2 class="my-heading2"> Computer Science PhD </h2>
 	</div>
 	<div class="four columns">
 		<p class="my-headingp"><a href="http://stevenbas.art" >stevenbas.art</a></p>
@@ -34,10 +34,10 @@ permalink: /resources/resume/
   </div>
   <div class="five columns">
     <h2 class="my-heading2"> Technical Skills </h2>
-      <p> <b>Languages:</b> (Order of Proficiency) Python, C, C++, Java </p>
+      <p> <b>Languages:</b> (Order of Proficiency) Python, C, C++, Java</p>
       <p> <b> Machine Learningi: </b>Pytorch, Tensorflow, sklearn</p>
       <p><b>Web Tools:</b> HTML/CSS, NodeJS, Selenium</p>
-      <p><b> Other Tools:</b> Git, SVN</p>
+      <p><b> Other Tools:</b> Git</p>
   </div>
 </div>
 
@@ -45,14 +45,14 @@ permalink: /resources/resume/
 ### Professional History
 **SpaceX** *Software Engineer II* __Februrary 2021 to May 2022__  
 	Updated the kubernetes environment to support new satellites. Worked on StarLink mobility effort to allow for mobile User Terminals (UTs). Worked on low level RAM interface that was used to store critical information about satellite ephemeris.
-	**K8s, kubernetes, C++**
+	**K8s, kubernetes, flatbuffers, bazel, C++**
 
 **Autobon AI** *Head of AI* __Auguest 2019 to September 2020__  
 	Developed the AI/ML infrastructure at Autobon, which involves designing data ingestion into Amazon AWS, constructing labeling tasks, and quality assurance over the labeled data.
 	**aws**
 
 **Google Brain** *Research Intern* __May 2018 to September  2018__  
-	Researched the area of Fact Checking related to this [paper](https://dl.acm.org/citation.cfm?id=3184558.3188723) and developed solutions to deal with the problem of content abuse and contributed with the Google News team.
+	Researched the area of Fact Checking related to this [paper](https://dl.acm.org/citation.cfm?id=3184558.3188723) and developed solutions to deal with the problem of content abuse and collaborated with the Google News team.
 	**python, pytorch, tensorflow, apache-beam, flume**
 
 **Here Maps** *Research Intern* __May 2017 to September 2017__  
@@ -68,7 +68,6 @@ permalink: /resources/resume/
 
 
 <!------
-
 
 ### Projects
 
@@ -92,20 +91,29 @@ permalink: /resources/resume/
 
 
 ### Publications
-**[Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275)** __In Submission__  
-	Created a new benchmark to evaluate AI Safety by measuring how well models agree with human values.
+**[Scaling Out-of-Distribution Detection for Real-World Settings](https://arxiv.org/abs/1911.11132)** __ICML 2022__  
+	Constructed a synthetic dataset and utilized pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also showed how some classic approaches can improve performance in this task.  
 
-**[Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241)** __In Submission__  
-	Collected a new dataset and introduced a new technique which achieves state of the art on out of distribution detection.
+**[Measuring Coding Challenge Competence With APPS](https://arxiv.org/abs/2105.09938v3)** __NeurIPS 2021__  
+	Collected and created an evaluation benchmark for converting word problems and tasks into python code. The evaluation framework consisted of taking abitrary python code and running it to compare against ground truth solutions.  
 
-**[A Benchmark for Anomaly Segmentation](https://arxiv.org/abs/1911.11132)** __In Submission__  
-	Constructed a synthetic dataset and utilize pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also showed how some classic approaches can improve performance in this task.
+**[Measuring Mathematical Problem Solving With the MATH Dataset](https://arxiv.org/abs/2103.03874)**  __NeurIPS 2021__  
+	Creating functions that can generate arbitrary math problems to evaluate models for different grade levels of math competency.  
+
+**[Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275)** __ICLR 2021__  
+	Created a new benchmark to evaluate AI Safety by measuring how well models agree with human values.  
+
+**[Towards Robustness of Neural Networks](https://arxiv.org/abs/2112.15188)** __Thesis 2021__  
+	Thesis consisting of the previous work in robustness, and trying to make few-shot models robust.  
+
+**[Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241)** __ICCV 2021__  
+	Collected a new dataset and introduced a new technique which achieves state of the art on out of distribution detection.  
 
 **[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers)** __ICML 2019 Workshop__  
-	Constructed a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.
+	Constructed a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.  
 
 **[DIODE: A Dense Indoor and Outdoor DEpth Dataset](https://diode-dataset.org)** __2019__  
 	Utilized a single depth sensor to capture both indoor and outdoor scenes to create the most accurate depth dataset to date.  
 
 **[Analysis of Generative Adversarial Models](https://newtraell.cs.uchicago.edu/files/ms_paper/xksteven.pdf)** __2017__  
-	Introduce a novel measure for quantitatively assessing the quality of generative models and presented a method for utilizing GANs to interpret classifiers.
+	Introduce a novel measure for quantitatively assessing the quality of generative models and presented a method for utilizing GANs to interpret classifiers.  

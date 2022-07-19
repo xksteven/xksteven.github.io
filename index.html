@@ -3,9 +3,48 @@ layout: default
 ---
 
 <div class="home">
+  <!-- .container is main centered wrapper -->
+  <div class="container">
+
+    <!-- columns should be the immediate child of a .row -->
+    <div class="row">
+      <div class="four columns">
+        <div class="author__avatar">
+          <img src="/resources/images/avatar.jpg" alt="Steven Basart" itemprop="image">
+        </div>
+        <div class="author__content">
+          <h5 class="author__name" itemprop="name">Steven Basart</h5>
+          <div class="author__bio" itemprop="description">
+            <p>Research Engineer</p>
+          </div>
+        </div>
+        <div class="author__urls-wrapper">
+          <button class="btn btn--inverse">Follow</button>
+          <ul class="author__urls social-icons">
+              <li itemprop="homeLocation" itemscope="" itemtype="https://schema.org/Place">
+                <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Miami, FL</span>
+              </li>
+              <li><a href="https://stackoverflow.com/users/100297/martijn-pieters" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i><span class="label">Stack Overflow</span></a></li>
+              <li><a href="https://github.com/xksteven" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github-square" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://www.linkedin.com/in/xksteven" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://twitter.com/zopatista" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://keybase.io/zopatista" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-keybase" aria-hidden="true"></i><span class="label">Keybase</span></a></li>
+              <li><a href="https://instagram.com/zopatista" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="eight columns">
+        <h4 class="author__name" itemprop="name">Steven Basart - Research Engineer</h4>
+        
+      </div>
+    </div>
+
+  </div>
 
   <!-- <h4> <a href="{{ "/blog/" | prepend: site.baseurl }}">Blog</a></h4> -->
-  <h1>Posts</h1>
+  <!-- <h1>Posts</h1>
 
   <ul class="posts">
     {% for post in site.posts %}
@@ -16,6 +55,6 @@ layout: default
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
 
 </div>

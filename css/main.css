@@ -265,6 +265,22 @@ a:visited { color: #205caa; }
 
 .post pre.terminal code { background-color: #333; }
 
+/* Steven's addition */
+.no_bull {
+  list-style-type: none;
+}
+
+.vert_centered {
+  display: flex;
+  align-items: center;
+}
+
+.avatar_profile_pic {
+  width: 98px;
+  height: 98px;
+  border-radius: 50%;
+}
+
 /* Syntax highlighting styles */
 /* ----------------------------------------------------------*/
 
@@ -412,5 +428,11 @@ a:visited { color: #205caa; }
     clear: both;
     width: auto;
     margin: 0 0 15px; }
+
+    .avatar_profile_pic {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
 
 }

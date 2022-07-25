@@ -3,44 +3,39 @@ layout: default
 ---
 
 <div class="home">
-  <!-- .container is main centered wrapper -->
-  <div class="container">
-
-    <!-- columns should be the immediate child of a .row -->
-    <div class="row">
-      <div class="four columns">
-        <div class="author__avatar">
-          <img src="/resources/images/avatar.jpg" alt="Steven Basart" itemprop="image">
-        </div>
-        <div class="author__content">
-          <h5 class="author__name" itemprop="name">Steven Basart</h5>
-          <div class="author__bio" itemprop="description">
-            <p>Research Engineer</p>
-          </div>
-        </div>
-        <div class="author__urls-wrapper">
-          <button class="btn btn--inverse">Follow</button>
-          <ul class="author__urls social-icons">
-              <li itemprop="homeLocation" itemscope="" itemtype="https://schema.org/Place">
-                <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Miami, FL</span>
-              </li>
-              <li><a href="https://stackoverflow.com/users/100297/martijn-pieters" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i><span class="label">Stack Overflow</span></a></li>
-              <li><a href="https://github.com/xksteven" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github-square" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
-              <li><a href="https://www.linkedin.com/in/xksteven" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
-              <li><a href="https://twitter.com/zopatista" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
-              <li><a href="https://keybase.io/zopatista" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-keybase" aria-hidden="true"></i><span class="label">Keybase</span></a></li>
-              <li><a href="https://instagram.com/zopatista" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
-          </ul>
+  <!-- columns should be the immediate child of a .row -->
+  <div class="row">
+    <div class="four columns">
+      <div>
+        <img src="/resources/images/avatar.jpg" alt="Steven Basart" class="avatar_profile_pic">
+      </div>
+      <div>
+        <h5>Steven Basart</h5>
+        <div>
+          <p>Research Engineer</p>
         </div>
       </div>
-
-
-      <div class="eight columns">
-        <h4 class="author__name" itemprop="name">Steven Basart - Research Engineer</h4>
-        
+      <div>
+        <ul class="no_bull">
+            <li class="vert_centered"><img src="resources/icons/location_icon.png" width="36" height="36">Miami, FL</li>
+            <li class="vert_centered"><a class="vert_centered" href="https://stackoverflow.com/users/6416660/steven" rel="nofollow noopener noreferrer">
+              <img src="resources/icons/stackoverflow_icon.png" width="36" height="36"> StackOverflow</a></li>
+            <li class="vert_centered"><a class="vert_centered" href="https://github.com/xksteven" rel="nofollow noopener noreferrer">
+              <img src="resources/icons/github_icon.png" width="36" height="36"> GitHub</a></li>
+            <li class="vert_centered"><a class="vert_centered" href="https://www.linkedin.com/in/xksteven" rel="nofollow noopener noreferrer">
+              <img src="resources/icons/linkedin_black_icon.png" width="30" height="30">&nbsp; LinkedIn</a></li>
+            <li class="vert_centered"><a class="vert_centered" href="https://twitter.com/xksteven" rel="nofollow noopener noreferrer">
+              <img src="resources/icons/twitter_icon.png" width="30" height="30">&nbsp; Twitter</a></li>
+        </ul>
       </div>
     </div>
 
+    <div class="eight columns">
+      <h4>Steven Basart - Research Engineer</h4>
+      <h5 style="font-size: 2.0rem;">Software engineer, Python afficiado & AI/ML Researcher.</h5>
+      <h5 style="font-size: 2.0rem;">I have worked with data collection and processing, training large ML models, and leading small teams. Experience in small startups, and was an engineer at SpaceX. </h5> 
+      <h6>See my <a href="{{ site.url }}/resources/resume/">resume</a> for more info.</h6>
+    </div>
   </div>
 
   <!-- <h4> <a href="{{ "/blog/" | prepend: site.baseurl }}">Blog</a></h4> -->

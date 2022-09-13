@@ -100,6 +100,10 @@ body {
   margin: 0;
 }
 
+/* The tilde selects the any p element that follows an h3*/
+.post-content h3 ~ p {
+  margin-bottom: 0.5em;
+}
 
 /* Larger than phone */
 @media (min-width: 800px) {
@@ -141,13 +145,6 @@ body {
   width: 100%;
 }
 
-/* This is one is applied second*/
-/* The tilde selects the any p element that follows an h3*/
-.post-content h3 ~ p {
-    float: left;
-    margin-left: 24%;
-    width: 74%;
-}
 /* This is one is applied first*/
 /* The plus selects the first p element that follows an h3
 .post-content h3 + p {
@@ -155,6 +152,15 @@ body {
     float: left;
     width: 75%;
 }*/
+
+/* This is one is applied second*/
+/* The tilde selects the any p element that follows an h3*/
+.post-content h3 ~ p {
+  float: left;
+  margin-left: 24%;
+  width: 74%;
+  margin-bottom: 0.5em;
+}
 
 #education + p {
     padding-bottom: 0rem;
@@ -164,7 +170,7 @@ body {
   margin: 0;
 }
 
-
+/* Ends Larger than phone */
 }
 
 

@@ -29,7 +29,7 @@ def hello_world():
 
 ## How to run it
 
-```
+```bash
 export FLASK_APP=hello.py
 
 flask run

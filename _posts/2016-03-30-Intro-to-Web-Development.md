@@ -34,7 +34,7 @@ This first example is to get you to see something a bit more complicated than ne
 </html>
 {% endhighlight %}
 
-If you downloaded emmet in sublime you can quickly type all of this by typing "html:5" (without quotes) and pressing Ctrl + e. 
+If you downloaded emmet in sublime you can quickly type all of this by typing "html:5" (without quotes) and pressing Ctrl + e.
 
 A quick intro HTML is short for hypertext markup language, fancy terms but basically meaning it isn't a programming language which means it can't do much on its own. You can think about html as specifying the content of a web page by enclosing the content like words, paragraphs, images etc. in the page by some descriptor in the these <>. The things enclosed in <> are called **tags** for example head, body, title are all tags. The objects enclosed between <> and </> are called **elements** for example "My First Awesome Webpage" is an element.  This format serves to let the browser know how the elements should be processed to be displayed on the browser.
 
@@ -162,7 +162,6 @@ this file is still called index.html
 </html>
 {% endhighlight %}
 
-
 This looks familiar because it is almost exactly the same as what's the above css example. You don't need any extra titles or anything of the sort for the mystyle.css file.  The only other thing to note is that I combined the two p selectors from the first one into one p selector here to make it cleaner.
 
 That's it on CSS for now.
@@ -194,7 +193,7 @@ var x = 1
 {% endhighlight %}
 
 Javascript also has arrays and objects.  Array elements can be of any type, and can be changed. Objects represent a map or like a python dictionary and are denoted with {}.
-You can add to both of them like so. 
+You can add to both of them like so.
 
 {% highlight Javascript %}
 myArray = ["Steven"] 
@@ -222,7 +221,7 @@ for (var x in myObj) {
     console.log(x);
 }
 
-var study = function() 
+var study = function()
 {
     console.log("All theory and no play makes UChicago student");
 }
@@ -367,10 +366,8 @@ I'll go over [this one](http://thinkingonthinking.com/Getting-Started-With-D3/)
 </head>
 
 <body onload="todo()">
-    <div id="graph">
-    </div>
+    <div id="graph"></div>
     <p onclick="myFunction()">Hello World</p>
-
 </body>
 </html>
 {% endhighlight %}

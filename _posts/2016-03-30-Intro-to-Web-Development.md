@@ -74,7 +74,15 @@ There are many ways to do this and I'll go with the one I've found to be the eas
 
 Next open up a terminal (or some place where you can execute python code).    Next run this command
 
+For old systems with python2.7
+```bash
     python -m http.server
+```
+
+For python3 and newer:
+```bash
+python -m http.server
+```
 
 Some notes:  
 if you installed or have installed python2.7 replace "http.server" with "SimpleHTTPServer".  

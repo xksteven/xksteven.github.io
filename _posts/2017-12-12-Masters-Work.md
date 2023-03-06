@@ -7,6 +7,6 @@ categories: masters update
 
 #### Master's Paper
 
-Here's a link to my master's paper draft.  It's still being worked on at the moment so expect some changes.  I'll be presenting the work around middle of Janurary so the paper should be finalized around then.
+We created explored several early versions of Generative Adversarial Networks (GANs) and came up with a few early measures to try to address the problem of mode collapse for GANs.
 
 Master's Paper: [Analysis of Generative Adversarial Networks]({{ site.url }}/resources/masters-thesis-analysis.pdf)

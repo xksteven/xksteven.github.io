@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Finding good ML paper sources"
+title:  "Finding Good ML Paper Sources"
 date:   2023-02-02 12:00:00
 categories: ML machine learning papers reading recommenders 
 ---
 
-## Finding good ML papers to read
+## Finding Good ML Papers to Read
 
 This will be a short post to hopefully get me to write and post more often.  I have mostly found it quite a struggle as time goes by to find more relevant papers to read.  The reasons are plenty there is less free time for me to read now than as a graduate student and possibly the other bigger reason there are many many more publications now than there used to be in the areas I care about.  See [nice plot here](https://nicholas.carlini.com/writing/2019/all-adversarial-example-papers.html) of number of adversarial examples publications approaching an exponential function over a short period of time.
 

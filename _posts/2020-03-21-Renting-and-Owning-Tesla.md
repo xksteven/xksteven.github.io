@@ -8,9 +8,9 @@ I didn't see much talk about owning a Tesla or electric vehicle (EV) online whil
 
 ## Choosing my Tesla
 
-To start with I bought the model 3 performance. With the chrome delete option now a standard on the vehicle, this lowered the cost for me to get the vehicle blackout. Plus I needed a new car so I thought the time was right for me. Why did I get the model 3 performance though as opposed to any of the other offerings? 
+To start with I bought the model 3 performance. With the chrome delete option now a standard on the vehicle, this lowered the cost for me to get the vehicle blackout. Plus I needed a new car so I thought the time was right for me. Why did I get the model 3 performance though as opposed to any of the other offerings?
 
-### A quick biased comparison between the current offerings. 
+### A quick biased comparison between the current offerings
 
 #### Model S vs Model 3
 
@@ -32,7 +32,7 @@ Okay so why Tesla and not the mustang EV? The mustang was probably the biggest c
 
 ### Owning while renting
 
-So my biggest concern before purchasing was that my car would just lose battery and die while parked. So while "phantom drain" is a thing in my experience it is about 1-2 miles per night. This can also be adjusted lower but I have sentry mode on which consumes more battery. 
+So my biggest concern before purchasing was that my car would just lose battery and die while parked. So while "phantom drain" is a thing in my experience it is about 1-2 miles per night. This can also be adjusted lower but I have sentry mode on which consumes more battery.
 
 #### Street parking vs garage parking
 

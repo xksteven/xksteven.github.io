@@ -20,7 +20,7 @@ Hello I'm Steven.  At the time of writing this I'm a second year PhD student and
 
 In this section we will build a simple website which will be needed to test out the code later.  First thing's first we need to pick an editor to write and work with.  Notepad is okay, vim is good (best for working over a server), and my personal preference is [sublime](https://www.sublimetext.com/3).  In sublime you can download packages to make building a website easier like emmet and even a package for assisting in code completion for D3.js.  
 
-This first example is to get you to see something a bit more complicated than necessary and then we will strip away the unnecessary details 
+This first example is to get you to see something a bit more complicated than necessary and then we will strip away the unnecessary details.
 
 {% highlight HTML %}
 <!DOCTYPE html>
@@ -52,11 +52,11 @@ This tag does two things: first it starts the html document by specifying the "h
         ...
     </head>
 
-This part opens something on webpages called the head as designated by <head> and then closes it like so </head>.  The head basically gives an overview of the webpage for your web browser.  In the example above it sets the title of the webpage to be "My First Awesome Webpage".
+This part opens something on webpages called the head as designated by `<head>` and then closes it like so `</head>`.  The head basically gives an overview of the webpage for your web browser.  In the example above it sets the title of the webpage to be "My First Awesome Webpage".
 
-Here we have where the majority of the content in a webpage will go.  You can think of the <body> like the body of essay where it contains all of the actual content and majority of what's actually on the page goes in here.
+Here we have where the majority of the content in a webpage will go.  You can think of the `<body>` like the body of essay where it contains all of the actual content and majority of what's actually on the page goes in here.
 
-Finally there's the closing </html>.  This tells the browser that it is the end of the document because it closes the opening DOCTYPE html.  
+Finally there's the closing `</html>`.  This tells the browser that it is the end of the document because it closes the opening DOCTYPE html.  
 
 Well that was a bit tedious now lets get rid of what we don't need and keep the bare minimum.  Open your favorite editor and let's make a website. Copy the code below and paste it into a file called "index.html" (without quotes).
 
@@ -75,14 +75,16 @@ There are many ways to do this and I'll go with the one I've found to be the eas
 Next open up a terminal (or some place where you can execute python code).    Next run this command
 
 For old systems with python2.7
-```bash
+
+    ```bash
     python -m http.server
-```
+    ```
 
 For python3 and newer:
-```bash
-python -m http.server
-```
+
+    ```bash
+    python -m http.server
+    ```
 
 Some notes:  
 if you installed or have installed python2.7 replace "http.server" with "SimpleHTTPServer".  
@@ -120,7 +122,6 @@ There's a sort of conflict presented here, which color will the p tags be blue o
 
 The basic syntax of CSS is `selector {property: value; [property: value; ...]}`
 One can chain various selectors to become more specific about which element we are referring to. This process of chaining is also called cascasding hence the C in CSS.
-
 
 Now that we've read a little bit about CSS let's use them. There are two ways to incorporate this style sheet into our web page.
 
@@ -304,7 +305,7 @@ For a slightly more in depth look at javascript you can look at [javascript][jav
 
 ## Debugging
 
-Like any code not written by super human or Linus Torvalds it will eventually break and when it does you'd like to be ready to debug it. 
+Like any code not written by super human or Linus Torvalds it will eventually break and when it does you'd like to be ready to debug it.
 
 So how do we debug our javacript code?
 

@@ -46,7 +46,6 @@ The ability to use masking is missing for the loss and is confusing for the inpu
 
 Accessing submodules needs some attention as well if you want to use a pretrained model and get the output of a certain layer takes some work.  
 
-
 There are more and this page will be updated with more information soon.
 
 <!-- Table testing
@@ -56,8 +55,6 @@ There are more and this page will be updated with more information soon.
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
-
-
 
 Some examples of what you can quickly do in Torch:
 

@@ -290,4 +290,4 @@ export default function Login() {
 
 Honestly I did not find the language/library that bad to learn.  It only took me a few days to get comfortable with the JSX language and the rest of week I spent learning React.  Granted I'm still not a React pro and don't feel completely comfortable doing a solo project.  I do feel comfortable reading and editing code though.  
 
-In the next post in the learning full-stack series I'll be covering materials as I learn them from: [fullstackopen.com](fullstackopen.com).
+Eventually I'll want to go through learning full stack: [fullstackopen.com](fullstackopen.com).

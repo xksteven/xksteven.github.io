@@ -19,14 +19,17 @@ This will be a short post to hopefully get me to write and post more often.  I h
 
 * [Alignment newsletter](https://rohinshah.com/alignment-newsletter/) alignment newsletter by Rohin Shah formerly at [CHAI](https://humancompatible.ai) and currently at Deepmind as of the time of writing.
 * [Import AI](https://jack-clark.net) Worked on by Jack Clark co-founder of Anthropic talks about different aspects of AI not neccessarily all research related.
+* [Davis Summarizes Papers](https://dblalock.substack.com) Written by Davis Blalock is a research scientist at MosaicML who worked on optimizing ML algorithms.
+* [Deep Learning Weekly](https://www.deeplearningweekly.com) Written mostly be Mikhail Franco Planas who studied industrial engineering and works exclusively on this website as a writer/editor.
 
-### Sources for others to possibly check out
+### AI News and Politics
 
+* [Last Week in AI](https://lastweekin.ai) A relatively community run newsletter.  Most prominent writers are a Andrey Kurenkov Standford student and Daniel Bashir a compiler engineer.
 * [EuropeanAI newsletter](https://us19.campaign-archive.com/home/?u=eaeece823e606d2458a568db9&id=b32cc2b876) Covers AI policy in Europe mostly.
 * [ChinAI Newsletter](https://chinai.substack.com) Covers Chinese policy with a slight focus on AI.
 
 ### Dead Sources I wish would come back
 
-I used to user [r/TopOfArxivSanity](https://www.reddit.com/r/TopOfArxivSanity/hot/).
+I used to read [r/TopOfArxivSanity](https://www.reddit.com/r/TopOfArxivSanity/hot/).
 
 Please reach out if there are any other good sources that I should look into.

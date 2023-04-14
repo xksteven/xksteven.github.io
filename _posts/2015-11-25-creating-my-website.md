@@ -56,11 +56,12 @@ The important pages to know about here are the \_posts directory and index.md.  
 
 To view the webpage locally modify in \_config.yml the url variable to "localhost:4000".
 
-Now start up Jekyll from the root of the github repo with `jekyll serve --watch`
+Now start up Jekyll from the root of the github repo with `jekyll serve --watch`. If that fails you can run `bundle exec` before the jekyll commands
+like so `bundle exec jekyll serve --watch`.
 
-Open up your favorite web browser and in the address bar go to localhost:4000
+Open up your favorite web browser (if it's not already open) and in the address bar go to [localhost:4000](http://localhost:4000).
 
-You should see your webpage.
+You should be able to see your webpage.
 
 #### Your first post
 

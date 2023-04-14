@@ -47,7 +47,7 @@ It wasn't starting because it requires KVM.
 
 Make sure (SVM) or KVM is enabled in the BIOS.  Otherwise you'll see the message Docker is stopped in Docker Desktop.
 
-##### Optional Installing on a Linux Server
+#### Optional Installing on a Linux Server
 
 I prefer to use Docker's automated script to add their repository and install all dependencies: curl -sSL https://get.docker.com/ | sh  but you can also install in a more manual method by following specific instructions that Docker provides for your Linux distribution.
 
@@ -104,14 +104,14 @@ What did docker (container) run do?
 - Routes that traffic to the container IP, port 80.
 - Note the first arg is the host port so it can be 8080 and the second arg is the container port.
 
-##### View all of the containers
+#### View all of the containers
 
 ```bash
 docker container ls # docker ps
 docker container ls -a
 ```
 
-##### View the logs
+#### View the logs
 
 ```bash
 docker container logs webhost
@@ -186,5 +186,5 @@ Get to know Alpine
 
 ```bash
 docker container run -it alpine sh
-apk # the apt equivalent
+apk # the apt or pacman equivalent for alpine
 ```

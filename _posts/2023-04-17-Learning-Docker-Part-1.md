@@ -24,25 +24,25 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 # verify that it works
 sudo service docker start
 sudo docker run hello-world
 ```
 
-[Install Docker on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)
+Then [Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)
 
 ```bash
-# Download it from the above link.
+# Download deb file from the above link.
 
-sudo apt-get update
+sudo apt update
 mv docker-desktop-<version>-<arch>.deb /tmp/
-sudo apt-get install /tmp/docker-desktop-<version>-<arch>.deb
+sudo apt install /tmp/docker-desktop-<version>-<arch>.deb
 ```
 
-It wasn't starting because it requires KVM.
+If it still doesn't start it might be because it requires KVM.
 [Install KVM on Ubuntu](https://www.linuxtechi.com/how-to-install-kvm-on-ubuntu-22-04/)
 
 Make sure (SVM) or KVM is enabled in the BIOS.  Otherwise you'll see the message Docker is stopped in Docker Desktop.
@@ -56,7 +56,7 @@ I prefer to use Docker's automated script to add their repository and install al
 [Install Docker credentials](https://github.com/docker/docker-credential-helpers/issues/102#issuecomment-388974092)
 
 ```bash
-sudo apt-get install pass
+sudo apt install pass
 wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.4/docker-credential-pass-v0.6.4-amd64.tar.gz
 
 tar -xf docker-credential-pass-v0.6.4-amd64.tar.gz

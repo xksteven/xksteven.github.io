@@ -18,6 +18,10 @@ published: false
     - Achieve through others and tear down roadblocks.
     - You lose touch of the tech.
 
+## Blog Posts
+
+- [Engineering Management Pendulum](https://charity.wtf/2019/01/04/engineering-management-the-pendulum-or-the-ladder/)
+
 ## Management Books
 
 My reading list:

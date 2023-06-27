@@ -94,6 +94,12 @@ permalink: /resources/resume/
 
 ### Publications
 
+**[Do the Rewards Justify the Means? Measuring Trade-Offs Between Rewards and Ethical Behavior in the MACHIAVELLI Benchmark](https://arxiv.org/abs/2304.03279)** **ICML 2023**
+    We created a benchmark to evaluate agent decision making and try to evaluate paths.  I contributed to a few of the benchmarks but mostly worked to coordinate, plan, and manage resources. 
+
+**[How Would The Viewer Feel? Estimating Wellbeing From Video Scenarios](https://papers.nips.cc/paper_files/paper/2022/hash/75ff01252ab45ce278cb060effce4ca1-Abstract-Datasets_and_Benchmarks.html)**  **NeurIPS 2022**
+    Reevaluated the results and ran additional experiments for submission and rebuttal periods.
+
 **[Scaling Out-of-Distribution Detection for Real-World Settings](https://arxiv.org/abs/1911.11132)** **ICML 2022**  
     Constructed a synthetic dataset and utilized pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also showed how some classic approaches can improve performance in this task.  
 

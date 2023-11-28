@@ -149,5 +149,9 @@ assignment is in [dockerfile-assingment-1/](https://github.com/BretFisher/udemy-
 ```bash
 docker image build --progress=plain -t my-node .
 
-docker container run -p 8080:80 --rm my-node
+docker container run -p 8080:80 my-node # do not run it with --rm to be able to commit any changes to it
+
+docker commit my-node stevenbasart/my-node:latest
+
+docker push stevenbasart/my-node:latest
 ```

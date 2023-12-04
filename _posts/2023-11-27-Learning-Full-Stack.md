@@ -576,12 +576,11 @@ nodemon --inspect index.js
 ```
 
 
-
-## Databases
+# Databases
 
 We need to store the data somehow and create backups etc. 
 
-### MongoDB
+## MongoDB
 
 We'll use MongoDB Atlas for our server.
 Steps 
@@ -590,5 +589,643 @@ Steps
 1. Click database tab and connect. Copy the server address
 
 
+```javascript
+mongodb+srv://admin:<password>@db.12zqhl8.mongodb.net/?retryWrites=true&w=majority
+```
+
 We'll use the `mongoose` library
 
+```
+cd backend
+
+npm install mongoose
+```
+
+Make a test application `mongo.js`
+
+
+```javascript
+const mongoose = require('mongoose')
+
+if (process.argv.length<3) {
+  console.log('give password as argument')
+  process.exit(1)
+}
+
+const password = process.argv[2]
+
+const url =
+  `mongodb+srv://admin:${password}@db.12zqhl8.mongodb.net/?retryWrites=true&w=majority`
+
+mongoose.set('strictQuery',false)
+mongoose.connect(url)
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+const Note = mongoose.model('Note', noteSchema)
+
+const note = new Note({
+  content: 'HTML is Easy',
+  important: true,
+})
+
+note.save().then(result => {
+  console.log('note saved!')
+  mongoose.connection.close()
+})
+```
+
+Run it with 
+
+```
+node mongo.js insert_password_here
+```
+
+On the website click on the databases tab and then click on browse collections to view what we've added.
+
+```javascript
+// edit the const url
+
+// from
+const url =
+  `mongodb+srv://admin:${password}@db.12zqhl8.mongodb.net/?retryWrites=true&w=majority`
+
+// to
+const url =
+  `mongodb+srv://admin:${password}@db.12zqhl8.mongodb.net/noteApp?retryWrites=true&w=majority`
+```
+
+## Adding mongoose to the backend
+
+Add the base of the previous part to the top of `index.js`
+
+```javascript
+const mongoose = require('mongoose')
+
+// DO NOT SAVE YOUR PASSWORD TO GITHUB!!
+const url =
+  `mongodb+srv://admin:${password}@db.12zqhl8.mongodb.net/noteApp?retryWrites=true&w=majority`
+
+mongoose.set('strictQuery',false)
+mongoose.connect(url)
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+const Note = mongoose.model('Note', noteSchema)
+```
+
+Update the getter
+
+```javascript
+app.get('/api/notes', (request, response) => {
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
+})
+```
+
+Run it
+
+`node index.js password`
+
+Make a few changes.  Make the id parameter valid such as from `_id` to `id` and don't return the version i.e. `_v` field.
+
+```javascript
+noteSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+```
+
+Move the code out of the file to it's own folder and file. `models/notes.js`
+
+```javascript
+const mongoose = require('mongoose')
+
+mongoose.set('strictQuery', false)
+
+
+const url = process.env.MONGODB_URI
+
+
+console.log('connecting to', url)
+
+mongoose.connect(url)
+
+  .then(result => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connecting to MongoDB:', error.message)
+  })
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+noteSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+
+
+module.exports = mongoose.model('Note', noteSchema)
+```
+
+Run it via commandline like so
+
+```bash
+MONGODB_URI=address_here npm run dev
+```
+
+Alternatively lets just use an environment file to define all of the hard coded values.
+
+```bash
+npm install dotenv
+```
+
+Create `.env` file.  (Replace <password> with the actual password.)
+
+```
+MONGODB_URI=mongodb+srv://admin:<password>@db.12zqhl8.mongodb.net/noteApp?retryWrites=true&w=majority
+PORT=3001
+```
+
+Add `.env` to both `.gitignore` and to `.dockerignore` (if it isn't already there).
+
+Now we can update index.js and don't need the OR around the PORT variable.
+
+```javascript
+require('dotenv').config()
+const express = require('express')
+const app = express()
+const Note = require('./models/note')
+
+...
+
+const PORT = process.env.PORT
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
+```
+
+For fly.io make a new secret and pass in the full url (along with the real password).
+
+```
+fly secrets set MONGODB_URI='mongodb+srv://admin:<password>@db.12zqhl8.mongodb.net/noteApp?retryWrites=true&w=majority'
+```
+
+Lets finish updating the rest of the routes. Update the post method.
+
+```javascript
+app.post('/api/notes', (request, response) => {
+  const body = request.body
+
+  if (body.content === undefined) {
+    return response.status(400).json({ error: 'content missing' })
+  }
+
+  const note = new Note({
+    content: body.content,
+    important: body.important || false,
+  })
+
+  note.save().then(savedNote => {
+    response.json(savedNote)
+  })
+})
+```
+
+Update getting a note by id.
+
+```javascript
+app.get('/api/notes/:id', (request, response) => {
+  Note.findById(request.params.id).then(note => {
+    response.json(note)
+  })
+})
+```
+
+After changing the backend it's a good thing to verify it before continuing.  Test with either VSCode Rest tests, the browser or postman.
+
+
+Adding some more functionality that we'll need.  Deletion
+
+```javascript
+app.delete('/api/notes/:id', (request, response, next) => {
+  Note.findByIdAndDelete(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
+})
+```
+
+Update the contents like toggling importance
+
+```javascript
+app.put('/api/notes/:id', (request, response, next) => {
+  const body = request.body
+
+  const note = {
+    content: body.content,
+    important: body.important,
+  }
+
+  Note.findByIdAndUpdate(request.params.id, note, { new: true })
+    .then(updatedNote => {
+      response.json(updatedNote)
+    })
+    .catch(error => next(error))
+})
+```
+
+There is one important detail regarding the use of the findByIdAndUpdate method. By default, the updatedNote parameter of the event handler receives the original document [without the modifications](https://mongoosejs.com/docs/api/model.html#Model.findByIdAndUpdate()). We added the optional { new: true } parameter, which will cause our event handler to be called with the new modified document instead of the original.
+
+
+## Error Handling
+
+### Basic Error Handling
+
+If we visit an id that doesn't exist such as http://localhost:3001/api/notes/5c41c90e84d891c15dfa3431 then we get null.  Let's make that prettier.
+
+```javascript
+app.get('/api/notes/:id', (request, response) => {
+  Note.findById(request.params.id)
+    .then(note => {
+      if (note) {
+        response.json(note)
+      } else {
+        response.status(404).end()
+      }
+    })
+    .catch(error => {
+      console.log(error)
+      response.status(500).end()
+    })
+})
+
+// Alternatively
+    .catch(error => {
+      console.log(error)
+      response.status(400).send({ error: 'malformatted id' })
+    })
+```
+
+Look at the terminal, console for these errors appearing.
+
+### Error Handling Middleware
+
+
+```javascript
+app.get('/api/notes/:id', (request, response, next) => {
+  Note.findById(request.params.id)
+    .then(note => {
+      if (note) {
+        response.json(note)
+      } else {
+        response.status(404).end()
+      }
+    })
+    .catch(error => next(error))
+})
+```
+
+```javascript
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message)
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  } 
+
+  next(error)
+}
+
+// this has to be the last loaded middleware.
+app.use(errorHandler)
+```
+
+## Validation and Linting
+
+### Validation
+
+Besides not posting in case the body is empty
+
+```javascript
+app.post('/api/notes', (request, response) => {
+  const body = request.body
+  if (body.content === undefined) {
+    return response.status(400).json({ error: 'content missing' })
+  }
+```
+
+We can also add a content schema to mongoose
+
+```
+const noteSchema = new mongoose.Schema({
+
+  content: {
+    type: String,
+    minLength: 5,
+    required: true
+  },
+  important: Boolean
+})
+```
+
+Add a catch error `.catch(error => next(error))` to `app.post` and a new error condition to the error handler
+
+```javascript
+app.put('/api/notes/:id', (request, response, next) => {
+
+  const { content, important } = request.body
+
+  Note.findByIdAndUpdate(
+    request.params.id, 
+
+    { content, important },
+    { new: true, runValidators: true, context: 'query' }
+  ) 
+    .then(updatedNote => {
+      response.json(updatedNote)
+    })
+    .catch(error => next(error))
+})
+```
+
+Deploy to prod backend
+
+```bash
+fly secrets set MONGODB_URI='mongodb+srv://admin:<password>@db.12zqhl8.mongodb.net/noteApp?retryWrites=true&w=majority'
+```
+
+### Linting
+
+Install ESLint
+
+```bash
+# backend repo
+npm install eslint --save-dev
+
+npx eslint --init
+```
+
+
+```
+You can also run this command directly using 'npm init @eslint/config'.
+✔ How would you like to use ESLint? · style
+✔ What type of modules does your project use? · commonjs
+✔ Which framework does your project use? · vue
+✔ Does your project use TypeScript? · No / Yes
+✔ Where does your code run? · browser
+✔ How would you like to define a style for your project? · prompt
+✔ What format do you want your config file to be in? · JavaScript
+✔ What style of indentation do you use? · 4
+✔ What quotes do you use for strings? · double
+✔ What line endings do you use? · unix
+✔ Do you require semicolons? · No
+The config that you've selected requires the following dependencies:
+
+@typescript-eslint/eslint-plugin@latest eslint-plugin-vue@latest @typescript-eslint/parser@latest
+✔ Would you like to install them now? · No / Yes
+✔ Which package manager do you want to use? · npm
+```
+
+Install ESLint in VSCode
+
+in `eslintrc.js` add the following rules
+
+```javascript
+  'eqeqeq': 'error',
+  "@typescript-eslint/no-var-requires": "off",
+```
+
+TODO: Need to double check which packages can be imported as requires or not.
+
+Add the file `.eslintignore` to ignore a bunch of the node_modules and dist.
+
+```
+dist
+node_modules
+```
+
+## Project structure
+
+```
+├── index.js
+├── app.js
+├── dist
+│   └── ...
+├── controllers
+│   └── notes.js
+├── models
+│   └── note.js
+├── package-lock.json
+├── package.json
+├── utils
+│   ├── config.js
+│   ├── logger.js
+│   └── middleware.js  
+```
+
+`utils/logger.js` helpful for whenever you want to change how you log stuff.
+
+```javascript
+const info = (...params) => {
+  console.log(...params)
+}
+
+const error = (...params) => {
+  console.error(...params)
+}
+
+module.exports = {
+  info, error
+}
+```
+
+The handling of environment variables is extracted into a separate `utils/config.js`` file:
+
+```javascript
+require('dotenv').config()
+
+const PORT = process.env.PORT
+const MONGODB_URI = process.env.MONGODB_URI
+
+module.exports = {
+  MONGODB_URI,
+  PORT
+}
+```
+
+The other parts of the application can access the environment variables by importing the configuration module:
+
+```javascript
+const config = require('./utils/config')
+
+logger.info(`Server running on port ${config.PORT}`)
+```
+
+`app.js`
+
+```javascript
+const config = require('./utils/config')
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const notesRouter = require('./controllers/notes')
+const middleware = require('./utils/middleware')
+const logger = require('./utils/logger')
+const mongoose = require('mongoose')
+
+mongoose.set('strictQuery', false)
+
+logger.info('connecting to', config.MONGODB_URI)
+
+mongoose.connect(config.MONGODB_URI)
+  .then(() => {
+    logger.info('connected to MongoDB')
+  })
+  .catch((error) => {
+    logger.error('error connecting to MongoDB:', error.message)
+  })
+
+app.use(cors())
+app.use(express.static('dist'))
+app.use(express.json())
+app.use(middleware.requestLogger)
+
+app.use('/api/notes', notesRouter)
+
+app.use(middleware.unknownEndpoint)
+app.use(middleware.errorHandler)
+
+module.exports = app
+```
+
+`controllers/notes.js`
+
+```javascript
+const notesRouter = require('express').Router()
+const Note = require('../models/note')
+
+notesRouter.get('/', (request, response) => {
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
+})
+
+notesRouter.get('/:id', (request, response, next) => {
+  Note.findById(request.params.id)
+    .then(note => {
+      if (note) {
+        response.json(note)
+      } else {
+        response.status(404).end()
+      }
+    })
+    .catch(error => next(error))
+})
+
+notesRouter.post('/', (request, response, next) => {
+  const body = request.body
+
+  const note = new Note({
+    content: body.content,
+    important: body.important || false,
+  })
+
+  note.save()
+    .then(savedNote => {
+      response.json(savedNote)
+    })
+    .catch(error => next(error))
+})
+
+notesRouter.delete('/:id', (request, response, next) => {
+  Note.findByIdAndDelete(request.params.id)
+    .then(() => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
+})
+
+notesRouter.put('/:id', (request, response, next) => {
+  const body = request.body
+
+  const note = {
+    content: body.content,
+    important: body.important,
+  }
+
+  Note.findByIdAndUpdate(request.params.id, note, { new: true })
+    .then(updatedNote => {
+      response.json(updatedNote)
+    })
+    .catch(error => next(error))
+})
+
+module.exports = notesRouter
+```
+
+`index.js`
+
+```javascript
+const app = require('./app') // the actual Express application
+const config = require('./utils/config')
+const logger = require('./utils/logger')
+
+app.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`)
+})
+```
+
+`utils/middleware.js`
+
+```javascript
+const logger = require('./logger')
+
+const requestLogger = (request, response, next) => {
+  logger.info('Method:', request.method)
+  logger.info('Path:  ', request.path)
+  logger.info('Body:  ', request.body)
+  logger.info('---')
+  next()
+}
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+
+const errorHandler = (error, request, response, next) => {
+  logger.error(error.message)
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message })
+  }
+
+  next(error)
+}
+
+module.exports = {
+  requestLogger,
+  unknownEndpoint,
+  errorHandler
+}
+```

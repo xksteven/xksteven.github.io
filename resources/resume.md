@@ -33,8 +33,8 @@ permalink: /resources/resume/
     </div>
     <div class="five columns">
         <h2 class="my-heading2"> Technical Skills </h2>
-        <p><b>Languages:</b> (Order of Proficiency) Python, C, C++, Java</p>
-        <p><b> Machine Learningi: </b>Pytorch, Tensorflow, sklearn</p>
+        <p><b>Languages:</b> (Order of Proficiency) Python, C, C++, Javascript</p>
+        <p><b> Machine Learning: </b>Pytorch, Tensorflow, sklearn</p>
         <p><b>Web Tools:</b> HTML/CSS, NodeJS, Selenium</p>
         <p><b> Other Tools:</b> Git</p>
     </div>

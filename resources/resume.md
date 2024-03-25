@@ -42,9 +42,9 @@ permalink: /resources/resume/
 
 ### Professional History
 
-**The Center for AI Safety** *Research Engineer/Reliability Engineer* **May 2022 to present**  
-    Research Engineer responsibilities: Data collection and using huggingface for model fine-tuning and evaluation. Managed small teams on a adversarial examples project and other safety projects.  
-    Reliability Engineer responsibilities: Set up technical procedures and infrastructure for the company such as github actions and formalizing code review processes. Contract negotiations with several cloud providers, and architecting the design for the cloud infrastructure.  
+**The Center for AI Safety (CAIS)** *Research Engineer/Reliability Engineer* **May 2022 to present**  
+    Research Engineer responsibilities: Data collection and evaluation of huggingface models, as well as fine-tuning. Managed small teams on various safety research projects.  
+    Reliability Engineer responsibilities: Set up technical procedures and infrastructure for the company such as github actions and formalizing code review processes. Set up the [CAIS compute cluster](https://www.safe.ai/work/compute-cluster) now used by over 300 users to do safety reseach.  
     **Github, Kubernetes (K8s), python**
 
 **SpaceX** *Software Engineer II* **Februrary 2021 to May 2022**  

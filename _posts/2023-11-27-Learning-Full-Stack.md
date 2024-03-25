@@ -575,6 +575,25 @@ node --inspect index.js
 nodemon --inspect index.js
 ```
 
+### Database debugging
+
+This section is covered later but adding all of my debugging notes together.
+If not getting any data from the database check you can still access it
+
+```bash
+node mongo.js insert_password_here
+```
+
+If using `.env` you can add the following to automatically grab the URL and passwords from the file.
+```javascript
+require('dotenv').config()
+
+const PORT = process.env.PORT
+const MONGODB_URI = process.env.MONGODB_URI
+```
+Also try to visit the website directly to see if it's reachable:
+https://test-express-db.fly.dev/api/note
+
 
 # Databases
 
@@ -889,7 +908,6 @@ Look at the terminal, console for these errors appearing.
 
 ### Error Handling Middleware
 
-
 ```javascript
 app.get('/api/notes/:id', (request, response, next) => {
   Note.findById(request.params.id)
@@ -1058,7 +1076,7 @@ module.exports = {
 }
 ```
 
-The handling of environment variables is extracted into a separate `utils/config.js`` file:
+The handling of environment variables is extracted into a separate `utils/config.js` file:
 
 ```javascript
 require('dotenv').config()
@@ -1116,6 +1134,16 @@ app.use(middleware.errorHandler)
 
 module.exports = app
 ```
+
+Shortened the following 
+```javascript
+const express = require('express')
+const app = express()
+// to 
+const notesRouter = require('express').Router()
+```
+
+The router is in fact a middleware, that can be used for defining "related routes" in a single place, which is typically placed in its own module.
 
 `controllers/notes.js`
 
@@ -1229,3 +1257,142 @@ module.exports = {
   errorHandler
 }
 ```
+
+## Testing
+
+### Unit testing Basics
+
+This is mostly for automated tests.  We will use [jest](https://jestjs.io)
+
+```bash
+npm install --save-dev jest
+```
+
+to the scripts in package.json add `"test": "jest --verbose"`. We also need to add to package.json to let jest know which environment we're using.
+
+```javascript
+ "jest": {
+   "testEnvironment": "node"
+ }
+```
+
+Add a file called `utils/for_testing.js`
+
+```javascript
+const reverse = (string) => {
+  return string
+    .split('')
+    .reverse()
+    .join('')
+}
+
+const average = (array) => {
+  const reducer = (sum, item) => {
+    return sum + item
+  }
+
+  return array.reduce(reducer, 0) / array.length
+}
+
+module.exports = {
+  reverse,
+  average,
+}
+```
+
+Add a simple test file in folder `tests/reverse.test.js`
+
+```javascript
+const reverse = (string) => {
+    return string
+      .split('')
+      .reverse()
+      .join('')
+}
+  
+const average = (array) => {
+const reducer = (sum, item) => {
+    return sum + item
+}
+
+return array.reduce(reducer, 0) / array.length
+}
+
+module.exports = {
+    reverse,
+    average,
+}
+```
+
+The linter will complain about `test` being undefined so lets fix that by modifying the `.eslintrc.js` file Add the `'jest' : true`
+
+```javascript
+module.exports = {
+  'env': {
+    'commonjs': true,
+    'es2021': true,
+    'node': true,
+    'jest': true,
+  },
+```
+
+describe blocks are necessary when we want to run some shared setup or teardown operations for a group of tests.
+
+Test with 
+
+```
+npm run test
+```
+
+### Integration Testing
+
+Add `NODE_ENV` to package.json scripts
+
+```javascript
+"scripts": {
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "build:ui": "rm -rf build && cd ../frontend/ && npm run build && cp -r build ../backend",
+    "deploy": "fly deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "fly logs",
+    "lint": "eslint .",
+    "test": "NODE_ENV=test jest --verbose --runInBand"
+}, //...
+```
+
+If you need to run on windows install `cross-env` globally and add it before all of the `NODE_ENV` variables such as `"start": "cross-env NODE_ENV=production ...`.
+
+TODO return to https://fullstackopen.com/en/part4/testing_the_backend later
+Currently suggests to test the database with a test DB also on atlas.
+
+
+## Asynchronous async/await
+
+Code for context.
+
+In file `backend/models/note.js`
+```
+const mongoose = require("mongoose")
+const noteSchema = new mongoose.Schema({
+    content: {
+        type: String,
+    },
+    important: Boolean,
+})
+module.exports = mongoose.model("Note", noteSchema)
+```
+
+In `backend/controllers/notes.js`
+```
+const Note = require('../models/note')
+...
+Note.find({}).then(notes => {
+  console.log('operation returned the following notes', notes)
+})
+```
+
+The Note.find() method returns a promise and we can access the result of the operation by registering a callback function with the `then` method. 
+
+
+

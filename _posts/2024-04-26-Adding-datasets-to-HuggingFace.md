@@ -26,7 +26,7 @@ Then add your public key i.e. `~/.ssh/id_ed25519.pub` to your [ssh user settings
 Make a hugginface profile (if you don't already have one).
 Click on the top right and click New Dataset give it a name and select the license.
 
-## Change remote to git push
+## Change remote to be able to git push
 
 Go to the dataset card and you should be able to run
 

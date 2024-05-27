@@ -26,12 +26,20 @@ Then add your public key i.e. `~/.ssh/id_ed25519.pub` to your [ssh user settings
 Make a hugginface profile (if you don't already have one).
 Click on the top right and click New Dataset give it a name and select the license.
 
+## Change remote to git push
+
 Go to the dataset card and you should be able to run
 
 ```
 git clone https://huggingface.co/datasets/xksteven/dialogue_nli
 #git remote set-url origin git@hf.co:<repo_path>
 git remote set-url origin git@hf.co:datasets/xksteven/dialogue_nli
+```
+
+For updating a huggingface org.  You'll need to create an access token instead of an SSH key.
+
+```
+git remote set-url origin https://user_name:<access_token>@huggingface.co/<repo_path>
 ```
 
 `repo_path` is of the form 

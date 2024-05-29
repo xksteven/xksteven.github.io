@@ -94,9 +94,9 @@ permalink: /resources/resume/
 
 ### Publications
 
-**[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/)**
+**[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/)** **ICML 2024**
 
-**[HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/)**
+**[HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/)** **ICML 2024**
 
 **[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/)**
 

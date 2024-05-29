@@ -94,6 +94,14 @@ permalink: /resources/resume/
 
 ### Publications
 
+**[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/)**
+
+**[HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/)**
+
+**[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/)**
+
+**[Testing Robustness Against Unforeseen Adversaries](https://arxiv.org/abs/1908.08016)**
+    
 **[Do the Rewards Justify the Means? Measuring Trade-Offs Between Rewards and Ethical Behavior in the MACHIAVELLI Benchmark](https://arxiv.org/abs/2304.03279)** **ICML 2023**
     We created a benchmark to evaluate agent decision making and try to evaluate paths.  I contributed to a few of the benchmarks but mostly worked to coordinate, plan, and manage resources. 
 

@@ -94,6 +94,8 @@ permalink: /resources/resume/
 
 ### Publications
 
+**[Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?](https://safetywashing-website.vercel.app)** **In Submission**
+
 **[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/)** **ICML 2024**
 
 **[HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/)** **ICML 2024**

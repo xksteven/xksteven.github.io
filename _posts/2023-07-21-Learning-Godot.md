@@ -7,11 +7,12 @@ published: false
 ---
 
 - [Godot Tutorials](#godot-tutorials)
-  - [Setup godot to work in VSCode](#setup-godot-to-work-in-vscode)
-  - [](#)
-  - [Make a snake clone](#make-a-snake-clone)
-    - [Signals](#signals)
-    - [Creation / Destruction](#creation--destruction)
+	- [Setup godot to work in VSCode](#setup-godot-to-work-in-vscode)
+	- [](#)
+	- [Make a snake clone](#make-a-snake-clone)
+		- [Signals](#signals)
+		- [Creation / Destruction](#creation--destruction)
+- [](#-1)
 
 ## Godot Tutorials
 
@@ -95,5 +96,40 @@ In that same file you'll need to add in when the signal should be emitted. As fa
 
 
 #### Creation / Destruction
+
+```gdscript
+  var food_scene:PackedScene = preload("res://gameplay/food.tscn")
+
+	# 1 where to spawn it(position)
+	var spawn_point:Vector2 = Vector2.ZERO
+	spawn_point.x = randf_range(bounds.x_min + Global.GRID_SIZE, bounds.x_max - Global.GRID_SIZE)
+	spawn_point.y = randf_range(bounds.y_min + Global.GRID_SIZE, bounds.y_max - Global.GRID_SIZE)
+	
+	spawn_point.x = floorf(spawn_point.x / Global.GRID_SIZE) * Global.GRID_SIZE
+	spawn_point.y = floorf(spawn_point.y / Global.GRID_SIZE) * Global.GRID_SIZE
+	
+	# 2 what we're spawning (instantiating)
+	var food = food_scene.instantiate()
+	food.position = spawn_point
+	
+	# 3 where we're putting it (parenting)
+	get_parent().add_child(food)
+	# in a more complicated project you need to directly reference the gameplay node
+  # get_tree().get_root().get_node("World/YSort/Player/Camera2D").add_child(current_scene)
+  # get_tree().current_scene.add_child(<your scene here>)
+```
+
+
+
+
+##
+
+Godot 
+
+
+https://github.com/MichaelMacha/SteamMultiplayerPeerExample/blob/demo/project.godot
+
+it autoloads the gamestate.gd
+
 
 

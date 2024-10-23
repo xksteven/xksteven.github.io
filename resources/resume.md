@@ -42,7 +42,10 @@ permalink: /resources/resume/
 
 ### Professional History
 
-**The Center for AI Safety (CAIS)** *Research Engineer/Reliability Engineer* **May 2022 to present**  
+**The Center for AI Safety (CAIS)** *Research Manager* **May 2023 to present**  
+    Hired all the full time technical and research staff at the company.  Overseeing all of the technical and research projects while also contributing to the projects as needed.  
+
+**The Center for AI Safety (CAIS)** *Research Engineer/Reliability Engineer* **May 2022 to May 2023**  
     Research Engineer responsibilities: Data collection and evaluation of huggingface models, as well as fine-tuning. Managed small teams on various safety research projects.  
     Reliability Engineer responsibilities: Set up technical procedures and infrastructure for the company such as github actions and formalizing code review processes. Set up the [CAIS compute cluster](https://www.safe.ai/work/compute-cluster) now used by over 300 users to do safety reseach.  
     **Github, Kubernetes (K8s), python**
@@ -94,15 +97,20 @@ permalink: /resources/resume/
 
 ### Publications
 
-**[Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?](https://safetywashing-website.vercel.app)** **In Submission**
+**[Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?](https://safetywashing-website.vercel.app)** **NeurIPS 2024**  
+    Provides a quantitative answer to the question which tasks are actually safety tasks? We do this by measuring which tasks does progress automatically happen as model's improve.
 
-**[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/)** **ICML 2024**
+**[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/)** **ICML 2024**  
+    Creates both a dataset for measuring information hazards as well as provides a baseline method for removing said information from Large Language Models (LLMs).
 
-**[HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/)** **ICML 2024**
+**[HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/)** **ICML 2024**  
+    Provides an evaluation framework to probe models against various harmful behaviours such as misinformation, bullying, cybercrime, and chemical weapons/drugs (among others).
 
-**[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/)**
+**[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/)** **In Submission**  
+    Provides a new way to probe model internals and allows for both interpretability and control.
 
-**[Testing Robustness Against Unforeseen Adversaries](https://arxiv.org/abs/1908.08016)**
+**[Testing Robustness Against Unforeseen Adversaries](https://arxiv.org/abs/1908.08016)** **In Submission**
+    Adversarial evaluation that tests models against new unseen attack varieties.
     
 **[Do the Rewards Justify the Means? Measuring Trade-Offs Between Rewards and Ethical Behavior in the MACHIAVELLI Benchmark](https://arxiv.org/abs/2304.03279)** **ICML 2023**  
     We created a benchmark to evaluate agent decision making and try to evaluate paths.  I contributed to a few of the benchmarks but mostly worked to coordinate, plan, and manage resources. 

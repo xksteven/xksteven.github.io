@@ -12,6 +12,12 @@ published: false
 ## Books recommended
 
 
+## Comics
+
+Time before time
+tokyo ghost
+
+## Manga
 
 
 

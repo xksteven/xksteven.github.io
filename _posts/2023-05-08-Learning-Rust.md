@@ -116,7 +116,27 @@ fn main() {
 
 ```
 
-TODO Look up a better way to do this
+Better way to do this
+
+```rust
+use std::fs::File;
+use std::io;
+use std::io::prelude::*;
+
+fn read_all_lines(filename: &str) -> io::Result<()> {
+    let mut reader = io::BufReader::new(file);
+    let mut buf = String::new();
+    while reader.read_line(&mut buf)? > 0 {
+        {
+            let line = buf.trim_right();
+            println!("{}", line);
+        }
+        buf.clear();
+    }
+    Ok(())
+}
+```
+
 
 #### traits
 
@@ -158,15 +178,263 @@ fn main() {
 
 ### Practicing for leetcode
 
-```
+#### Binary Heap
+
+```rust
 use std::collections::BinaryHeap;
+use std::cmp::Reverse;
 
+fn main() {
+    let mut heap = BinaryHeap::new();
+    
+    // Push elements wrapped in `Reverse` for a min-heap
+    heap.push(Reverse(3));
+    heap.push(Reverse(5));
+    heap.push(Reverse(1));
+    heap.push(Reverse(4));
+    // Can also just use negatives but then need to remember to negate the 
+    // numbers at the end.
+    
+    // Pop the smallest element
+    println!("Smallest element: {}", heap.pop().unwrap().0); // 1
+    
+    // Continue popping the elements
+    while let Some(Reverse(val)) = heap.pop() {
+        println!("{}", val);
+    }
+}
 ```
 
+#### HashMap
 
-
-```
+```rust
 use std::collections::HashMap;
+
+let mut map: HashMap<(i32, i32),i32> = HashMap::new();
+
+map.insert((1,2), 1);
+
+map.get(&(1,2)); // Return Some(1) or None;
+if let Some(x) = map.get(&(1,2)) {
+    // do something here
+}
+// Or
+*map.get(&(1,2)).unwrap();
+```
+
+#### Indexing strings
+
+Note using `nth()` is O(n) as it has to loop through the string to get to said index.
+
+```rust
+let s_chars: Vec<char> = s.chars().collect();
+// Now it's order O(1)
+s_chars[5]
+```
+
+
+### Let's build micrograd in rust
+
+Cargo steps
+
+``` bash
+cargo new micrograd --lib
+```
+
+Code in lib.rs
+
+Simplified implementation
+
+```rust
+use std::ops::{Add, Mul};
+use std::rc::Rc;
+use std::cell::RefCell;
+// Used for the debug printing
+use std::fmt;
+
+pub struct Value {
+    pub data: f64,
+    pub grad: Rc<RefCell<f64>>,  // Shared, mutable gradient
+    _backward: Rc<RefCell<Option<Box<dyn FnMut()>>>>,  // Backward function for backpropagation
+}
+
+// Manually implementing Debug to skip the _backward field
+impl fmt::Debug for Value {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("Value")
+            .field("data", &self.data)
+            .field("grad", &self.grad)
+            .finish() // Skip the _backward field
+    }
+}
+
+// Implementing Clone manually
+impl Clone for Value {
+    fn clone(&self) -> Self {
+        Value {
+            data: self.data,
+            grad: self.grad.clone(),
+            _backward: Rc::new(RefCell::new(None)),  // We ignore _backward here
+        }
+    }
+}
+
+impl Value {
+    pub fn new(data: f64) -> Self {
+        Value {
+            data,
+            grad: Rc::new(RefCell::new(0.0)),  // Initialize gradient to 0.0
+            _backward: Rc::new(RefCell::new(None)), 
+        }
+    }
+}
+
+impl Add for Value {
+    type Output = Value;
+
+    fn add(self, other: Value) -> Value {
+        let out = Value::new(self.data + other.data);
+
+        // Cloning references to gradients for use in the closure
+        let grad_self = Rc::clone(&self.grad);
+        let grad_other = Rc::clone(&other.grad);
+        let grad_out = Rc::clone(&out.grad);  // Clone out.grad to use it inside the closure
+
+        // Capture the backward function for both operands
+        let backward_self = Rc::clone(&self._backward);
+        let backward_other = Rc::clone(&other._backward);
+
+        // Store the backward function
+        *out._backward.borrow_mut()= Some(Box::new(move || {
+            // Modify gradients for the backpropagation
+            *grad_self.borrow_mut() += *grad_out.borrow();
+            *grad_other.borrow_mut() += *grad_out.borrow();
+
+            // Recursively trigger the backward functions of inputs
+            if let Some(mut backward) = backward_self.borrow_mut().take() {
+                backward();
+            }
+            if let Some(mut backward) = backward_other.borrow_mut().take() {
+                backward();
+            }
+        }));
+
+        out
+    }
+}
+
+impl Add for &Value {
+    type Output = Value;
+
+    fn add(self, other: &Value) -> Value {
+        let out = Value::new(self.data + other.data);
+
+        let grad_self = Rc::clone(&self.grad);
+        let grad_other = Rc::clone(&other.grad);
+        let grad_out = Rc::clone(&out.grad);  // Clone out.grad to use it inside the closure
+
+        // Capture the backward function for both operands
+        let backward_self = Rc::clone(&self._backward);
+        let backward_other = Rc::clone(&other._backward);
+
+        *out._backward.borrow_mut() = Some(Box::new(move || {
+            *grad_self.borrow_mut() += *grad_out.borrow();
+            *grad_other.borrow_mut() += *grad_out.borrow();
+
+            // Recursively trigger the backward functions of inputs
+            if let Some(mut backward) = backward_self.borrow_mut().take() {
+                backward();
+            }
+            if let Some(mut backward) = backward_other.borrow_mut().take() {
+                backward();
+            }
+        }));
+
+        out
+    }
+}
+
+impl Mul for Value {
+    type Output = Value;
+
+    fn mul(self, other: Value) -> Value {
+        let out = Value::new(self.data * other.data);
+
+        // Cloning references to gradients for use in the closure
+        let grad_self = Rc::clone(&self.grad);
+        let grad_other = Rc::clone(&other.grad);
+        let grad_out = Rc::clone(&out.grad);  // Clone out.grad to use it inside the closure
+
+        // Capture the backward function for both operands
+        let backward_self = Rc::clone(&self._backward);
+        let backward_other = Rc::clone(&other._backward);
+
+        // Store the backward function
+        *out._backward.borrow_mut() = Some(Box::new(move || {
+            // Modify gradients for the backpropagation
+            *grad_self.borrow_mut() += other.data * *grad_out.borrow();
+            *grad_other.borrow_mut() += self.data * *grad_out.borrow();
+
+            // Recursively trigger the backward functions of inputs
+            if let Some(mut backward) = backward_self.borrow_mut().take() {
+                backward();
+            }
+            if let Some(mut backward) = backward_other.borrow_mut().take() {
+                backward();
+            }
+        }));
+
+        out
+    }
+}
+```
+
+Add tests to check at the end of the file
+```rust
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_addition() {
+        let v1 = Value::new(3.0);
+        let v2 = Value::new(2.0);
+        let result = v1 + v2;
+        assert_eq!(result.data, 5.0);
+    }
+
+    #[test]
+    fn test_multiplication() {
+        let v1 = Value::new(3.0);
+        let v2 = Value::new(2.0);
+        let result = v1 * v2;
+        assert_eq!(result.data, 6.0);
+    }
+
+
+    #[test]
+    fn test_function() {
+        let v1 = Value::new(3.0);
+        let v2 = Value::new(2.0);
+        let temp = &v1 + &v2;
+        let result = temp * Value::new(4.0);
+        *result.grad.borrow_mut() = 1.0;
+        // You can now invoke the backward pass manually if needed
+        if let Some(mut backward) = result._backward.borrow_mut().take() {
+            backward();  // Manually trigger the backpropagation
+        }
+        assert_eq!(*result.grad.borrow(), 1.0);
+        assert_eq!(*v1.grad.borrow(), 4.0);
+    }
+}
+```
+
+```bash
+# If it's a binary
+cargo run
+
+# For libs
+cargo test  # --lib unsure when this flag is needed
 ```
 
 

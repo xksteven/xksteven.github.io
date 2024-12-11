@@ -109,7 +109,7 @@ permalink: /resources/resume/
 **[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/)** **In Submission**  
     Provides a new way to probe model internals and allows for both interpretability and control.
 
-**[Testing Robustness Against Unforeseen Adversaries](https://arxiv.org/abs/1908.08016)** **In Submission**
+**[Testing Robustness Against Unforeseen Adversaries](https://arxiv.org/abs/1908.08016)** **In Submission**  
     Adversarial evaluation that tests models against new unseen attack varieties.
     
 **[Do the Rewards Justify the Means? Measuring Trade-Offs Between Rewards and Ethical Behavior in the MACHIAVELLI Benchmark](https://arxiv.org/abs/2304.03279)** **ICML 2023**  

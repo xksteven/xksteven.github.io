@@ -8,6 +8,55 @@ published: false
 
 Career coaching
 
+## Oct 27th
+
+Discussing the move
+Discussing the initial questions
+
+Try to be relaxed as possible
+Make sure to meditate
+
+Resume review
+Max 1 page
+
+Have bullet points in favor of the company
+What's the value I can provide and the value in previous jobs
+Any sort of statistics
+
+How much I owned the work that I did
+
+Swap the Position and where I worked at then say the year
+Possibly add a splash of color to the position
+Consider doing bullets or at least indent the what I did underneath
+
+Add huggingface to Machine Learning
+
+Fix the testing robustness against unforseen adversaries
+
+Change my Title.  (Change the title to the position I want)
+Watch the my resume as an Example by Ethan Evans: https://www.youtube.com/watch?v=yPW0iyNLQtA
+
+Why am I meditating?
+Try out Dr. K's guide for meditation
+Try more stuff and figure out what works for me
+You're not going to see positive results
+Giving an intent to those meditating moments
+
+My hurdles are giving up or getting started
+Which emotion am I feeling 
+Psychomatic sensations
+Body conveys a feeling of what emotions are going on.
+
+Ask ChatGPT why it is important to name emotions and sensations
+Takes time to be able name emotions 
+Might be easier to name things retroactively
+Small notepad and pen
+Make a notch or scribble something and mark the hour
+Give yourself space to think about the emotions and thoughts
+It can feel overwhelming to do it in the moment
+
+You can possibly fine tune which emotion even if its incorrect
+
 
 ## Oct 20th
 skipped a week

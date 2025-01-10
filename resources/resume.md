@@ -25,15 +25,15 @@ permalink: /resources/resume/
         <h2 class="my-heading2"> Education </h2>
         <p> <b>University of Chicago</b> PhD in Computer Science (CS) Dec 2020 </p>
         <p> <b>University of Miami</b> B.S. in Biochemistry and CS May 2014  </p>
-        <h4 class="my-heading4"> Teaching </h4>
+        <!-- <h4 class="my-heading4"> Teaching </h4>
         <p><a href="http://people.cs.uchicago.edu/~adamshaw/cmsc15100-2018/index.html">Intro. to Computer Science</a></p>
         <p><a href="https://mpcs-courses.cs.uchicago.edu/2015-16/autumn/courses/56420">Computational Biology</a></p>
         <p><a href="http://people.cs.uchicago.edu/~risi/cmsc25400.html"> Machine Learning </a></p>
-        <p><a href="http://collegecatalog.uchicago.edu/thecollege/statistics/"> Machine Learning and Large-Scale Data Analysis</a></p>
+        <p><a href="http://collegecatalog.uchicago.edu/thecollege/statistics/"> Machine Learning and Large-Scale Data Analysis</a></p> -->
     </div>
     <div class="five columns">
         <h2 class="my-heading2"> Technical Skills </h2>
-        <p><b>Languages:</b> (Order of Proficiency) Python, C, C++, Javascript</p>
+        <p><b>Languages:</b> (Order of Proficiency) Python, C, C++, Rust, Javascript</p>
         <p><b>Machine Learning:</b> Pytorch, Tensorflow, sklearn</p>
         <p><b>Web Tools:</b> HTML/CSS, NodeJS, Selenium</p>
         <p><b> Other Tools:</b> Git, Docker, Linux, Bash</p>
@@ -136,7 +136,7 @@ permalink: /resources/resume/
 **[Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241)** **ICCV 2021**  
     Collected a new dataset and introduced a new technique which achieves state of the art on out of distribution detection.  
 
-**[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers)** **ICML 2019 Workshop**  
+**[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers)** **ICML 2019**  
     Constructed a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.  
 
 **[DIODE: A Dense Indoor and Outdoor DEpth Dataset](https://diode-dataset.org)** **2019**  

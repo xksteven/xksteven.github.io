@@ -70,8 +70,8 @@ permalink: /resources/resume/
     Developed a model that creates road probability maps that can be used to detect differences between artificial maps and the real roads.  
     **python, tensorflow**
 
-**University of Miami** *Undergraduate Project*  **May 2012 to September 2014**  
-    Created a genetic therapy via transducible gene editing proteins with Dr. Richard Myers.  Involves running western blots, gel electrophoresis, transductions, PCR, and electroporation.
+<!-- **University of Miami** *Undergraduate Project*  **May 2012 to September 2014**  
+    Created a genetic therapy via transducible gene editing proteins with Dr. Richard Myers.  Involves running western blots, gel electrophoresis, transductions, PCR, and electroporation. -->
 
 <!------
 

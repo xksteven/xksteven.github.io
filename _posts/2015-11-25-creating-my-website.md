@@ -25,7 +25,7 @@ Here, [Jekyll Home Page](https://jekyllrb.com/docs/home/) is their webpage for a
 * Github account (free)
 * git
 
-#### Getting Started
+#### Getting Started (fresh)
 
 Make a new github repo with the repo name username.github.io (replace username with your github username).  Clone the directory somewhere on your machine.  
 
@@ -36,6 +36,20 @@ This part is for themes and rss feed `gem install minima jekyll-feed` (required 
 Open a terminal and cd into the github repo.
 
 Run the command `jekyll new .` if that fails you may need to run `jekyll new . --force`
+
+#### Installation
+
+```bash
+# Install gems
+
+sudo apt install ruby-dev
+sudo gem install jekyll bundler
+# sudo gem install commonmarker -v '0.23.10' --source 'https://rubygems.org/'  # Unsure if this is needed
+sudo bundle install
+
+# Run it
+bundle exec jekyll serve --watch
+```
 
 #### Jekyll layout structure
 

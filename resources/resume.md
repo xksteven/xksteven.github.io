@@ -42,33 +42,41 @@ permalink: /resources/resume/
 
 ### Professional History
 
-**The Center for AI Safety (CAIS)** *Research Manager* **May 2023 to present**  
-    Hired all the full time technical and research staff at the company.  Overseeing all of the technical and research projects while also contributing to the projects as needed.  
+###### Center for AI Safety (CAIS)
 
-**The Center for AI Safety (CAIS)** *Research Engineer/Reliability Engineer* **May 2022 to May 2023**  
+*Research Manager* **May 2023 to present**  
+    Hired all the full time technical and research staff at the company collectively outputting 10 research papers a year.
+
+*Research Engineer/Reliability Engineer* **May 2022 to May 2023**  
     Research Engineer responsibilities: Data collection and evaluation of huggingface models, as well as fine-tuning. Managed small teams on various safety research projects.  
     Reliability Engineer responsibilities: Set up technical procedures and infrastructure for the company such as github actions and formalizing code review processes. Set up the [CAIS compute cluster](https://www.safe.ai/work/compute-cluster) now used by over 300 users to do safety reseach.  
-    **Github, Kubernetes (K8s), python**
+    <!-- <b>Github, Kubernetes (K8s), python</b><br/> -->
 
-**SpaceX** *Software Engineer II* **Februrary 2021 to May 2022**  
+###### SpaceX  
+*Software Engineer II* **Februrary 2021 to May 2022**  
     Updated the kubernetes environment to support new satellites. Worked on StarLink mobility effort to allow for mobile User Terminals (UTs). Worked on low level RAM interface that was used to store critical information about satellite ephemeris.  
-    **Kubernetes (K8s), flatbuffers, bazel, C++**
+    <!-- **Kubernetes (K8s), flatbuffers, bazel, C++** -->
 
-**Autobon AI** *Head of AI* **August 2019 to September 2020**  
+###### Autobon AI  
+*Head of AI* **August 2019 to September 2020**  
     Developed the AI/ML infrastructure at Autobon, which involves designing data ingestion into Amazon AWS, constructing labeling tasks, and quality assurance over the labeled data.  
-    **aws**
+    <!-- **aws** -->
 
-**Google Brain** *Research Intern* **May 2018 to September  2018**  
+###### Google Brain  
+*Research Intern* **May 2018 to September 2018**  
     Researched the area of Fact Checking related to this [paper](https://dl.acm.org/citation.cfm?id=3184558.3188723) and developed solutions to deal with the problem of content abuse and collaborated with the Google News team.  
-    **python, pytorch, tensorflow, apache-beam, flume**
+    <!-- **python, pytorch, tensorflow, apache-beam, flume** -->
 
-**Here Maps** *Research Intern* **May 2017 to September 2017**  
+###### Here Maps 
+
+*Research Intern* **May 2017 to September 2017**  
     Engineered models to better estimate time of arrival (ETA), and also improved lane level navigation prediction.  
-    **python, pytorch**
+    <!-- **python, pytorch** -->
 
-**Here Maps** *Research Intern* **May 2016 to September 2016**  
+*Research Intern* **May 2016 to September 2016**  
     Developed a model that creates road probability maps that can be used to detect differences between artificial maps and the real roads.  
-    **python, tensorflow**
+    <!-- **python, tensorflow** -->
+
 
 <!-- **University of Miami** *Undergraduate Project*  **May 2012 to September 2014**  
     Created a genetic therapy via transducible gene editing proteins with Dr. Richard Myers.  Involves running western blots, gel electrophoresis, transductions, PCR, and electroporation. -->
@@ -96,51 +104,52 @@ permalink: /resources/resume/
 ------>
 
 ### Publications
+[Google Scholar](https://scholar.google.com/citations?user=MzKvJhAAAAAJ&hl=en&oi=ao)
 
-**[Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?](https://safetywashing-website.vercel.app)** **NeurIPS 2024**  
+[Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?](https://safetywashing-website.vercel.app) **NeurIPS 2024**  
     Provides a quantitative answer to the question which tasks are actually safety tasks? We do this by measuring which tasks does progress automatically happen as model's improve.
 
-**[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/)** **ICML 2024**  
+[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/) **ICML 2024**  
     Creates both a dataset for measuring information hazards as well as provides a baseline method for removing said information from Large Language Models (LLMs).
 
-**[HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/)** **ICML 2024**  
+[HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/) **ICML 2024**  
     Provides an evaluation framework to probe models against various harmful behaviours such as misinformation, bullying, cybercrime, and chemical weapons/drugs (among others).
 
-**[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/)** **In Submission**  
+[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/) **In Submission**  
     Provides a new way to probe model internals and allows for both interpretability and control.
 
-**[Testing Robustness Against Unforeseen Adversaries](https://arxiv.org/abs/1908.08016)** **In Submission**  
+[Testing Robustness Against Unforeseen Adversaries](https://arxiv.org/abs/1908.08016) **In Submission**  
     Adversarial evaluation that tests models against new unseen attack varieties.
     
-**[Do the Rewards Justify the Means? Measuring Trade-Offs Between Rewards and Ethical Behavior in the MACHIAVELLI Benchmark](https://arxiv.org/abs/2304.03279)** **ICML 2023**  
+[Do the Rewards Justify the Means? Measuring Trade-Offs Between Rewards and Ethical Behavior in the MACHIAVELLI Benchmark](https://arxiv.org/abs/2304.03279) **ICML 2023**  
     We created a benchmark to evaluate agent decision making and try to evaluate paths.  I contributed to a few of the benchmarks but mostly worked to coordinate, plan, and manage resources. 
 
-**[How Would The Viewer Feel? Estimating Wellbeing From Video Scenarios](https://papers.nips.cc/paper_files/paper/2022/hash/75ff01252ab45ce278cb060effce4ca1-Abstract-Datasets_and_Benchmarks.html)**  **NeurIPS 2022**  
+[How Would The Viewer Feel? Estimating Wellbeing From Video Scenarios](https://papers.nips.cc/paper_files/paper/2022/hash/75ff01252ab45ce278cb060effce4ca1-Abstract-Datasets_and_Benchmarks.html)  **NeurIPS 2022**  
     Reevaluated the results and ran additional experiments for submission and rebuttal periods.
 
-**[Scaling Out-of-Distribution Detection for Real-World Settings](https://arxiv.org/abs/1911.11132)** **ICML 2022**  
+[Scaling Out-of-Distribution Detection for Real-World Settings](https://arxiv.org/abs/1911.11132) **ICML 2022**  
     Constructed a synthetic dataset and utilized pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also showed how some classic approaches can improve performance in this task.  
 
-**[Measuring Coding Challenge Competence With APPS](https://arxiv.org/abs/2105.09938v3)** **NeurIPS 2021**  
+[Measuring Coding Challenge Competence With APPS](https://arxiv.org/abs/2105.09938v3) **NeurIPS 2021**  
     Collected and created an evaluation benchmark for converting word problems and tasks into python code. The evaluation framework consisted of taking abitrary python code and running it to compare against ground truth solutions.  
 
-**[Measuring Mathematical Problem Solving With the MATH Dataset](https://arxiv.org/abs/2103.03874)**  **NeurIPS 2021**  
+[Measuring Mathematical Problem Solving With the MATH Dataset](https://arxiv.org/abs/2103.03874)  **NeurIPS 2021**  
     Creating functions that can generate arbitrary math problems to evaluate models for different grade levels of math competency.  
 
-**[Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275)** **ICLR 2021**  
+[Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275) **ICLR 2021**  
     Created a new benchmark to evaluate AI Safety by measuring how well models agree with human values.  
 
-**[Towards Robustness of Neural Networks](https://arxiv.org/abs/2112.15188)** **Thesis 2021**  
+[Towards Robustness of Neural Networks](https://arxiv.org/abs/2112.15188) **Thesis 2021**  
     Thesis consisting of the previous work in robustness, and trying to make few-shot models robust.  
 
-**[Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241)** **ICCV 2021**  
+[Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241) **ICCV 2021**  
     Collected a new dataset and introduced a new technique which achieves state of the art on out of distribution detection.  
 
-**[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers)** **ICML 2019**  
+[Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers) **ICML 2019**  
     Constructed a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.  
 
-**[DIODE: A Dense Indoor and Outdoor DEpth Dataset](https://diode-dataset.org)** **2019**  
+[DIODE: A Dense Indoor and Outdoor DEpth Dataset](https://diode-dataset.org) **2019**  
     Utilized a single depth sensor to capture both indoor and outdoor scenes to create the most accurate depth dataset to date.  
 
-**[Analysis of Generative Adversarial Models](https://newtraell.cs.uchicago.edu/files/ms_paper/xksteven.pdf)** **2017**  
+[Analysis of Generative Adversarial Models](https://newtraell.cs.uchicago.edu/files/ms_paper/xksteven.pdf) **2017**  
     Introduce a novel measure for quantitatively assessing the quality of generative models and presented a method for utilizing GANs to interpret classifiers.  

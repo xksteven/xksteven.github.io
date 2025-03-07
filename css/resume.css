@@ -49,11 +49,21 @@ body {
   margin: 0.4em 0 0.25em 0;
   float: left;
 }
+.post-content h6 {
+  margin-left: 18%;  /* Increase this value as needed for extra indentation */
+  width: 78%;
+  margin-bottom: 0.5em;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 .post-content .my-headingp {
   margin: 0;
   margin-bottom: -4px;
   line-height: 135%;
   padding-bottom: 2px;
+  text-align: right;
+  float: right;
+  margin-right: 1.5rem;
 }
 .column, .columns {
   margin-left: 2%;
@@ -103,6 +113,10 @@ body {
 /* The tilde selects the any p element that follows an h3*/
 .post-content h3 ~ p {
   margin-bottom: 0.5em;
+}
+
+strong {
+  float: right;
 }
 
 /* Larger than phone */
@@ -157,9 +171,19 @@ body {
 /* The tilde selects the any p element that follows an h3*/
 .post-content h3 ~ p {
   float: left;
-  margin-left: 24%;
-  width: 74%;
+  margin-left: 18%;
+  width: 72%;
   margin-bottom: 0.5em;
+}
+
+.post-content h6 ~ p {
+  margin-left: 18%;
+  width: 78%;
+}
+
+strong {
+  float: right;
+  margin-right: 0.9rem;
 }
 
 #education + p {

@@ -50,7 +50,6 @@ body {
   float: left;
 }
 .post-content h6 {
-  margin-left: 18%;  /* Increase this value as needed for extra indentation */
   width: 78%;
   margin-bottom: 0.5em;
   font-size: 1.5rem;
@@ -61,9 +60,6 @@ body {
   margin-bottom: -4px;
   line-height: 135%;
   padding-bottom: 2px;
-  text-align: right;
-  float: right;
-  margin-right: 1.5rem;
 }
 .column, .columns {
   margin-left: 2%;
@@ -121,12 +117,28 @@ strong {
 
 /* Larger than phone */
 @media (min-width: 800px) {
+.post-content .my-headingp {
+  margin: 0;
+  margin-bottom: -4px;
+  line-height: 135%;
+  padding-bottom: 2px;
+  text-align: right;
+  float: right;
+  margin-right: 1.5rem;
+}
 
 .post-content h3 {
   font-style: italic;
   float: left;
   width: 30%;
   margin: 0.5em 0.5em 0 0;
+}
+.post-content h6 {
+  margin-left: 18%;  /* Increase this value as needed for extra indentation */
+  width: 78%;
+  margin-bottom: 0.5em;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .post-content ol {

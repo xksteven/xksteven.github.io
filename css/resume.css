@@ -116,7 +116,7 @@ strong {
 }
 
 /* Larger than phone */
-@media (min-width: 800px) {
+@media (min-width: 550px) {
 .post-content .my-headingp {
   margin: 0;
   margin-bottom: -4px;

@@ -130,7 +130,7 @@ strong {
 .post-content h3 {
   font-style: italic;
   float: left;
-  width: 30%;
+  width: 100%;
   margin: 0.5em 0.5em 0 0;
 }
 .post-content h6 {

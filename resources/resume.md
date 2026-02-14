@@ -47,7 +47,7 @@ permalink: /resources/resume/
 *Research Manager* **May 2023 to present**  
     Hired all the full time technical and research staff at the company collectively outputting 10 research papers a year.
 
-*Research Engineer/Reliability Engineer* **May 2022 to May 2023**  
+*Cofounder/Research Engineer* **May 2022 to May 2023**  
     Research Engineer responsibilities: Data collection and evaluation of huggingface models, as well as fine-tuning. Managed small teams on various safety research projects.  
     Reliability Engineer responsibilities: Set up technical procedures and infrastructure for the company such as github actions and formalizing code review processes. Set up the [CAIS compute cluster](https://www.safe.ai/work/compute-cluster) now used by over 300 users to do safety reseach.  
     <!-- <b>Github, Kubernetes (K8s), python</b><br/> -->

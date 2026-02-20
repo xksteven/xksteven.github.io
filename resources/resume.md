@@ -45,11 +45,11 @@ permalink: /resources/resume/
 ###### Center for AI Safety (CAIS)
 
 *Research Manager* **May 2023 to present**  
-    Hired all the full time technical and research staff at the company collectively outputting 10 research papers a year.
+    Led technical research teams, hiring all full-time technical and research staff and collectively outputting 10 research papers a year.
 
 *Cofounder/Research Engineer* **May 2022 to May 2023**  
-    Research Engineer responsibilities: Data collection and evaluation of huggingface models, as well as fine-tuning. Managed small teams on various safety research projects.  
-    Reliability Engineer responsibilities: Set up technical procedures and infrastructure for the company such as github actions and formalizing code review processes. Set up the [CAIS compute cluster](https://www.safe.ai/work/compute-cluster) now used by over 300 users to do safety reseach.  
+    Research Engineer responsibilities: Data collection and evaluation of huggingface models, as well as fine-tuning. Led small technical teams on various safety research projects.  
+    Reliability Engineer responsibilities: Designed technical infrastructure and procedures for the company including github actions and formalized code review processes. Set up the [CAIS compute cluster](https://www.safe.ai/work/compute-cluster) now used by over 300 users to do safety reseach.  
     <!-- <b>Github, Kubernetes (K8s), python</b><br/> -->
 
 ###### SpaceX  
@@ -59,7 +59,7 @@ permalink: /resources/resume/
 
 ###### Autobon AI  
 *Head of AI* **August 2019 to September 2020**  
-    Developed the AI/ML infrastructure at Autobon, which involves designing data ingestion into Amazon AWS, constructing labeling tasks, and quality assurance over the labeled data.  
+    Led development of the AI/ML infrastructure at Autobon, designing data ingestion into Amazon AWS, constructing labeling tasks, and quality assurance over the labeled data.  
     <!-- **aws** -->
 
 ###### Google Brain  
@@ -113,10 +113,10 @@ permalink: /resources/resume/
     Quantified which AI safety benchmarks actually measure safety by analyzing whether task performance improves automatically as models scale.
 
 [The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/) **ICML 2024**  
-	Developed a benchmark for measuring information hazards and a baseline unlearning method for removing dangerous knowledge from large language models.
+	Designed the research methodology and developed a benchmark for measuring information hazards and a baseline unlearning method for removing dangerous knowledge from large language models.
 
 [HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/) **ICML 2024**  
-    Built a standardized evaluation framework for probing models against harmful behaviors including misinformation, cybercrime, and chemical/drug synthesis.
+    Designed a standardized evaluation framework for probing models against harmful behaviors including misinformation, cybercrime, and chemical/drug synthesis.
 
 [Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/) **2024**  
     Introduced a top-down approach to probing model internals, enabling both interpretability and control of learned representations.

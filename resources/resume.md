@@ -67,13 +67,13 @@ permalink: /resources/resume/
     Researched the area of Fact Checking related to this [paper](https://dl.acm.org/citation.cfm?id=3184558.3188723) and developed solutions to deal with the problem of content abuse and collaborated with the Google News team.  
     <!-- **python, pytorch, tensorflow, apache-beam, flume** -->
 
-###### Here Maps 
+<!--- ###### Here Maps 
 
 *Research Intern* **May 2017 to September 2017**  
     Engineered models to better estimate time of arrival (ETA), and also improved lane level navigation prediction.  
     <!-- **python, pytorch** -->
 
-*Research Intern* **May 2016 to September 2016**  
+<!--- *Research Intern* **May 2016 to September 2016**  
     Developed a model that creates road probability maps that can be used to detect differences between artificial maps and the real roads.  
     <!-- **python, tensorflow** -->
 
@@ -106,50 +106,49 @@ permalink: /resources/resume/
 ### Publications
 [Google Scholar](https://scholar.google.com/citations?user=MzKvJhAAAAAJ&hl=en&oi=ao)
 
+[Remote Labor Index: Measuring AI Automation of Remote Work](https://www.remotelabor.ai) **2025**  
+    Built a broadly multi-sector benchmark of real-world, economically valuable remote-work projects to evaluate end-to-end agent performance in practical settings.
+
 [Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?](https://safetywashing-website.vercel.app) **NeurIPS 2024**  
-    Provides a quantitative answer to the question which tasks are actually safety tasks? We do this by measuring which tasks does progress automatically happen as model's improve.
+    Quantified which AI safety benchmarks actually measure safety by analyzing whether task performance improves automatically as models scale.
 
 [The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/) **ICML 2024**  
-    Creates both a dataset for measuring information hazards as well as provides a baseline method for removing said information from Large Language Models (LLMs).
+	Developed a benchmark for measuring information hazards and a baseline unlearning method for removing dangerous knowledge from large language models.
 
 [HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/) **ICML 2024**  
-    Provides an evaluation framework to probe models against various harmful behaviours such as misinformation, bullying, cybercrime, and chemical weapons/drugs (among others).
+    Built a standardized evaluation framework for probing models against harmful behaviors including misinformation, cybercrime, and chemical/drug synthesis.
 
-[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/) **In Submission**  
-    Provides a new way to probe model internals and allows for both interpretability and control.
-
-[Testing Robustness Against Unforeseen Adversaries](https://arxiv.org/abs/1908.08016) **In Submission**  
-    Adversarial evaluation that tests models against new unseen attack varieties.
+[Representation Engineering: A Top-Down Approach to AI Transparency](https://www.ai-transparency.org/) **2024**  
+    Introduced a top-down approach to probing model internals, enabling both interpretability and control of learned representations.
     
 [Do the Rewards Justify the Means? Measuring Trade-Offs Between Rewards and Ethical Behavior in the MACHIAVELLI Benchmark](https://arxiv.org/abs/2304.03279) **ICML 2023**  
-    We created a benchmark to evaluate agent decision making and try to evaluate paths.  I contributed to a few of the benchmarks but mostly worked to coordinate, plan, and manage resources. 
+    Coordinated research planning and resource allocation for the benchmark evaluating ethical trade-offs in agent decision-making.
 
 [How Would The Viewer Feel? Estimating Wellbeing From Video Scenarios](https://papers.nips.cc/paper_files/paper/2022/hash/75ff01252ab45ce278cb060effce4ca1-Abstract-Datasets_and_Benchmarks.html)  **NeurIPS 2022**  
-    Reevaluated the results and ran additional experiments for submission and rebuttal periods.
 
 [Scaling Out-of-Distribution Detection for Real-World Settings](https://arxiv.org/abs/1911.11132) **ICML 2022**  
-    Constructed a synthetic dataset and utilized pre-existing datasets to evaluate different techniques for Anomaly Segmentation.  We also showed how some classic approaches can improve performance in this task.  
+    Constructed synthetic and curated real-world datasets for anomaly segmentation, demonstrating that classic approaches can match or exceed modern methods.
 
 [Measuring Coding Challenge Competence With APPS](https://arxiv.org/abs/2105.09938v3) **NeurIPS 2021**  
-    Collected and created an evaluation benchmark for converting word problems and tasks into python code. The evaluation framework consisted of taking abitrary python code and running it to compare against ground truth solutions.  
+    Collected and built an evaluation benchmark for converting natural language programming problems into executable Python, with automated comparison against ground truth solutions.  
 
 [Measuring Mathematical Problem Solving With the MATH Dataset](https://arxiv.org/abs/2103.03874)  **NeurIPS 2021**  
-    Creating functions that can generate arbitrary math problems to evaluate models for different grade levels of math competency.  
+    Developed procedural generation functions for creating math problems across difficulty levels to evaluate model competency.  
 
 [Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275) **ICLR 2021**  
-    Created a new benchmark to evaluate AI Safety by measuring how well models agree with human values.  
+	Created a benchmark measuring how well models align with human moral judgments.  
 
 [Towards Robustness of Neural Networks](https://arxiv.org/abs/2112.15188) **Thesis 2021**  
-    Thesis consisting of the previous work in robustness, and trying to make few-shot models robust.  
+	Unified prior robustness work and extended it to few-shot learning settings.  
 
 [Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241) **ICCV 2021**  
-    Collected a new dataset and introduced a new technique which achieves state of the art on out of distribution detection.  
+	Collected a new dataset and introduced a technique achieving state-of-the-art out-of-distribution generalization.  
 
 [Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers) **ICML 2019**  
-    Constructed a dataset which captures long tail distributions to highlight where current models fail in terms of generalization.  
+    Constructed a dataset capturing long-tail distributions to expose generalization failures in current models.  
 
 [DIODE: A Dense Indoor and Outdoor DEpth Dataset](https://diode-dataset.org) **2019**  
-    Utilized a single depth sensor to capture both indoor and outdoor scenes to create the most accurate depth dataset to date.  
+    Captured indoor and outdoor scenes with a single depth sensor to produce the highest-accuracy depth dataset at time of publication.  
 
 [Analysis of Generative Adversarial Models](https://newtraell.cs.uchicago.edu/files/ms_paper/xksteven.pdf) **2017**  
-    Introduce a novel measure for quantitatively assessing the quality of generative models and presented a method for utilizing GANs to interpret classifiers.  
+    Introduced a quantitative measure for assessing generative model quality and a method for using GANs to interpret classifiers.  

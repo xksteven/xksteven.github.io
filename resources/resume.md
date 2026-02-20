@@ -124,7 +124,7 @@ permalink: /resources/resume/
 [Do the Rewards Justify the Means? Measuring Trade-Offs Between Rewards and Ethical Behavior in the MACHIAVELLI Benchmark](https://arxiv.org/abs/2304.03279) **ICML 2023**  
     Coordinated research planning and resource allocation for the benchmark evaluating ethical trade-offs in agent decision-making.
 
-[How Would The Viewer Feel? Estimating Wellbeing From Video Scenarios](https://papers.nips.cc/paper_files/paper/2022/hash/75ff01252ab45ce278cb060effce4ca1-Abstract-Datasets_and_Benchmarks.html)  **NeurIPS 2022**  
+<!--- [How Would The Viewer Feel? Estimating Wellbeing From Video Scenarios](https://papers.nips.cc/paper_files/paper/2022/hash/75ff01252ab45ce278cb060effce4ca1-Abstract-Datasets_and_Benchmarks.html)  **NeurIPS 2022**  --->
 
 [Scaling Out-of-Distribution Detection for Real-World Settings](https://arxiv.org/abs/1911.11132) **ICML 2022**  
     Constructed synthetic and curated real-world datasets for anomaly segmentation, demonstrating that classic approaches can match or exceed modern methods.

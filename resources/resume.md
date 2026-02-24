@@ -112,8 +112,8 @@ permalink: /resources/resume/
 [Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?](https://safetywashing-website.vercel.app) **NeurIPS 2024**  
     Quantified which AI safety benchmarks actually measure safety by analyzing whether task performance improves automatically as models scale.
 
-[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/) **ICML 2024**  
-	Designed the research methodology and developed a benchmark for measuring information hazards and a baseline unlearning method for removing dangerous knowledge from large language models.
+[The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning](https://www.wmdp.ai/) **ICML 2024**
+    Designed the research methodology and developed a benchmark for measuring information hazards and a baseline unlearning method for removing dangerous knowledge from large language models.
 
 [HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal](https://www.harmbench.org/) **ICML 2024**  
     Designed a standardized evaluation framework for probing models against harmful behaviors including misinformation, cybercrime, and chemical/drug synthesis.
@@ -135,14 +135,14 @@ permalink: /resources/resume/
 [Measuring Mathematical Problem Solving With the MATH Dataset](https://arxiv.org/abs/2103.03874)  **NeurIPS 2021**  
     Developed procedural generation functions for creating math problems across difficulty levels to evaluate model competency.  
 
-[Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275) **ICLR 2021**  
-	Created a benchmark measuring how well models align with human moral judgments.  
+[Aligning AI With Shared Human Values](https://arxiv.org/abs/2008.02275) **ICLR 2021**
+    Created a benchmark measuring how well models align with human moral judgments.  
 
-[Towards Robustness of Neural Networks](https://arxiv.org/abs/2112.15188) **Thesis 2021**  
-	Unified prior robustness work and extended it to few-shot learning settings.  
+[Towards Robustness of Neural Networks](https://arxiv.org/abs/2112.15188) **Thesis 2021**
+    Unified prior robustness work and extended it to few-shot learning settings.  
 
-[Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241) **ICCV 2021**  
-	Collected a new dataset and introduced a technique achieving state-of-the-art out-of-distribution generalization.  
+[Many Faces of Robustness: An Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241) **ICCV 2021**
+    Collected a new dataset and introduced a technique achieving state-of-the-art out-of-distribution generalization.  
 
 [Natural Adversarial Examples](https://sites.google.com/view/icml2019-generalization/accepted-papers) **ICML 2019**  
     Constructed a dataset capturing long-tail distributions to expose generalization failures in current models.  

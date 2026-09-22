@@ -49,11 +49,11 @@ permalink: /resources/resume/
 
 *Research Engineer/Reliability Engineer* **May 2022 to May 2023**  
     Research Engineer responsibilities: Data collection and evaluation of huggingface models, as well as fine-tuning. Managed small teams on various safety research projects.  
-    Reliability Engineer responsibilities: Set up technical procedures and infrastructure for the company such as github actions and formalizing code review processes. Set up the [CAIS compute cluster](https://www.safe.ai/work/compute-cluster) now used by over 300 users to do safety reseach.  
+    Reliability Engineer responsibilities: Set up technical procedures and infrastructure for the company such as github actions and formalizing code review processes. Set up the [CAIS compute cluster](https://www.safe.ai/work/compute-cluster) now used by over 300 users to do safety research.  
     <!-- <b>Github, Kubernetes (K8s), python</b><br/> -->
 
 ###### SpaceX  
-*Software Engineer II* **Februrary 2021 to May 2022**  
+*Software Engineer II* **February 2021 to May 2022**  
     Updated the kubernetes environment to support new satellites. Worked on StarLink mobility effort to allow for mobile User Terminals (UTs). Worked on low level RAM interface that was used to store critical information about satellite ephemeris.  
     <!-- **Kubernetes (K8s), flatbuffers, bazel, C++** -->
 
